@@ -2,5 +2,5 @@
 
 ```sh
 $ bundle install
-$ bundle exec ruby server.rb
+$ bundle exec unicorn -c unicorn.rb -E development -D 
 ```
