@@ -2,3 +2,4 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'redis-sinatra'
+gem 'unicorn'
