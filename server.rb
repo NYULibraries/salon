@@ -19,6 +19,4 @@ class Permalinks < Sinatra::Base
   not_found do
     status 404
   end
-
-  run! if app_file == $0
 end
