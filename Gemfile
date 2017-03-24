@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'sinatra'
-gem 'redis-sinatra', github: 'NYULibraries/redis-sinatra'
-gem 'unicorn'
+gem 'sinatra', '~> 1.4.8'
+gem 'redis-store', '~> 1.3.0'
+gem 'unicorn', '~> 5.2.0'
