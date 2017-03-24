@@ -10,7 +10,7 @@ general:
       - /chore\/.+/
 dependencies:
   override:
-    - gem install bundle
+    - gem install bundler
     - bundle install
 test:
   override:
