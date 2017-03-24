@@ -1,0 +1,17 @@
+machine:
+  ruby:
+    version: 2.4.0
+general:
+  branches:
+    only:
+      - master
+      - /feature\/.+/
+      - /bug\/.+/
+      - /chore\/.+/
+dependencies:
+  override:
+    - gem install bundle
+    - bundle install
+test:
+  override:
+    - bundle exec rspec
