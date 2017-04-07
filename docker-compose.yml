@@ -1,0 +1,17 @@
+app:
+  volumes:
+    - .:/salon
+  links:
+    - redis
+  links:
+    - 3000:3000
+web:
+  build: ./nginx
+  ports:
+    - 80:80
+  links:
+    - app
+redis:
+  image: redis
+  ports:
+    - 6379:6379
