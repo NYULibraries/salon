@@ -1,6 +1,4 @@
-FROM ruby:2.3
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
-RUN npm install -g phantomjs-prebuilt
+FROM ruby:2.4
 
 ENV INSTALL_PATH /apps/salon
 RUN mkdir -p $INSTALL_PATH
@@ -16,4 +14,4 @@ RUN gem install bundler && bundle install --jobs 20 --retry 5
 
 COPY . .
 
-CMD bundle exec unicorn -c unicorn.rb -E development -D
+#CMD bundle exec unicorn -c unicorn.rb -E development -D
