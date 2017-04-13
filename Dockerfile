@@ -1,6 +1,6 @@
 FROM ruby:2.4
 
-ENV INSTALL_PATH /apps/salon
+ENV INSTALL_PATH /app
 RUN mkdir -p $INSTALL_PATH
 
 WORKDIR $INSTALL_PATH
@@ -14,5 +14,4 @@ RUN gem install bundler && bundle install --jobs 20 --retry 5
 
 COPY . .
 
-
-#CMD bundle exec unicorn -c unicorn.rb -E development -D
+CMD bundle exec unicorn -c unicorn.rb -E production -D -p 8080

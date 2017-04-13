@@ -4,8 +4,10 @@ app:
     - .:/salon
   links:
     - redis:redishost
-  expose:
-    - "80"
+  ports:
+    - "8080:8080"
+  volumes:
+    - data-volume:/app
 redis:
   image: redis
   expose:
@@ -16,3 +18,5 @@ web:
     - "80:80"
   links:
     - app
+  volumes:
+    - data-volume:/app
