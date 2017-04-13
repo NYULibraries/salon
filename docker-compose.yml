@@ -9,4 +9,4 @@ app:
 redis:
   image: redis
   expose:
-    - 6379
+    - "6379"

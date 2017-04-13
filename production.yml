@@ -1,17 +1,18 @@
 app:
+  build: .
   volumes:
     - .:/salon
   links:
-    - redis
-  links:
-    - 3000:3000
+    - redis:redishost
+  expose:
+    - "80"
+redis:
+  image: redis
+  expose:
+    - "6379"
 web:
   build: ./nginx
   ports:
-    - 80:80
+    - "80:80"
   links:
     - app
-redis:
-  image: redis
-  ports:
-    - 6379:6379
