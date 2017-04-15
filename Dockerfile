@@ -14,4 +14,4 @@ RUN gem install bundler && bundle install --jobs 20 --retry 5
 
 COPY . .
 
-CMD bundle exec unicorn -c unicorn.rb -E production -D -p 8080
+CMD ["unicorn", "-c", "unicorn.rb" , "-D"]
