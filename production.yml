@@ -4,11 +4,9 @@ app:
     - .:/app
   links:
     - redis:redishost
-  ports:
-    - "8080:8080"
-  # volumes:
-    # - data-volume:/app
-  command: ./scripts/start.sh
+  expose:
+    - "8080"
+  command: "scripts/start.sh"
 redis:
   image: redis
   expose:
@@ -19,5 +17,3 @@ web:
     - "80:80"
   links:
     - app
-  # volumes:
-    # - data-volume:/app
