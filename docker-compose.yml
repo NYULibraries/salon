@@ -1,11 +1,12 @@
 app:
   build: .
   volumes:
-    - .:/salon
+    - .:/app
   links:
     - redis:redishost
   ports:
     - "9292:9292"
+  command: "bundle exec rackup -o 0.0.0.0"
 redis:
   image: redis
   expose:
