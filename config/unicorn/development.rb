@@ -9,7 +9,7 @@ timeout 30
 
 # Specify path to socket unicorn listens to,
 # this location because its a permissions thing
-listen "/var/run/unicorn.sock", backlog: 64
+listen "#{@dir}tmp/sockets/unicorn.sock", :backlog => 64
 
 # Set process id path
 pid "#{@dir}tmp/pids/unicorn.pid"
