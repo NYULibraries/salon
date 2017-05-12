@@ -1,13 +1,30 @@
-app:
-  build: .
-  volumes:
-    - .:/app
-  links:
-    - redis:redishost
-  ports:
-    - "9292:9292"
-  command: "bundle exec rackup -o 0.0.0.0"
-redis:
-  image: redis
-  expose:
-    - "6379"
+version: "3"
+services:
+  arch:
+    build: .
+    volumes:
+      - .:/app
+    links:
+      - redis_arch:redishost
+    ports:
+      - "9292:9292"
+    entrypoint: "tail -f /dev/null"
+  getit:
+    build: .
+    volumes:
+      - .:/app
+    links:
+      - redis_getit:redishost
+    ports:
+      - "9293:9292"
+    entrypoint: "tail -f /dev/null"
+  redis_arch:
+    build: ./redis
+    environment:
+      - REDIS_PORT=6379
+    expose:
+      - "6379"
+  redis_getit:
+    build: ./redis
+    expose:
+      - "6379"
