@@ -1,0 +1,19 @@
+app:
+  build: .
+  volumes:
+    - .:/app
+  links:
+    - redis:redishost
+  expose:
+    - "8080"
+  command: "scripts/start.sh"
+redis:
+  image: redis
+  expose:
+    - "6379"
+web:
+  build: ./nginx
+  ports:
+    - "80:80"
+  links:
+    - app

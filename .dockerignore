@@ -1,0 +1,2 @@
+tmp/sockets/*.sock
+tmp/pids/*.pid
