@@ -24,7 +24,7 @@ class Permalinks < Sinatra::Base
     status 200
   end
 
-  post 'reset' do
+  post '/reset' do
     json_params.each do |key, url|
       redis.set key, url
     end
@@ -49,8 +49,8 @@ class Permalinks < Sinatra::Base
     def json_params
       begin
         JSON.parse(request.body.read)
-      rescue
-        halt 400, { message:'Invalid JSON' }.to_json
+      rescue JSON::ParserError => e
+        halt 400, { message: "Invalid JSON #{e.message}" }.to_json #"{\"message\":\"Invalid JSON: #{e.message}\"}" #
       end
     end
 
