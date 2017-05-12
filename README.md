@@ -58,13 +58,21 @@ To use the API, use must have an authentication token.
 To create new permalinks:
 
 ```
-curl -H "Content-Type: application/json" -H "Auth: $SALON_AUTH_TOKEN" -X POST -d '{"key":"http://example.com"}'' http://localhost:9292 -v
+curl -H "Content-Type: application/json" \
+  -H "Auth: $SALON_AUTH_TOKEN" \
+  -X POST \
+  -d '{"key":"http://example.com"}' \
+  http://localhost:9292 -v
 ```
 
-To reset all permalinks (destroying all existing permalinks except those in the POST JSON data):
+To reset all permalinks (destroying all existing permalinks except those in the POST JSON data), use the `/reset` endpoint:
 
 ```
-curl -H "Content-Type: application/json" -H "Auth: $SALON_AUTH_TOKEN" -X POST -d @permalinks.json http://localhost:9292 -v
+curl -H "Content-Type: application/json" \
+  -H "Auth: $SALON_AUTH_TOKEN" \
+  -X POST \
+  -d @permalinks.json \
+  http://localhost:9292/reset -v
 ```
 
 ## Stack notes
