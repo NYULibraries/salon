@@ -11,7 +11,7 @@ class Permalinks < Sinatra::Base
   end
 
   get '/:identifier' do
-    redirect_url = settings.cache.get("#{params['identifier']}")
+    redirect_url = redis.get("#{params['identifier']}")
     redirect to(redirect_url) if redirect_url
     status 400
   end
@@ -24,11 +24,39 @@ class Permalinks < Sinatra::Base
     status 200
   end
 
+  post '/reset' do
+    json_params.each do |key, url|
+      redis.set key, url
+    end
+    omitted_stored_params.each do |key|
+      redis.del key
+    end
+    status 200
+  end
+
   not_found do
     erb :not_found
   end
 
   error 400 do
     erb :bad_request
+  end
+
+  helpers do
+    def redis
+      settings.cache
+    end
+
+    def json_params
+      begin
+        @json_params ||= JSON.parse(request.body.read)
+      rescue JSON::ParserError => e
+        halt 400, { message: "Invalid JSON #{e.message}" }.to_json #"{\"message\":\"Invalid JSON: #{e.message}\"}" #
+      end
+    end
+
+    def omitted_stored_params
+      settings.cache.keys - json_params.keys
+    end
   end
 end
