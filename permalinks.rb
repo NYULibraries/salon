@@ -17,17 +17,12 @@ class Permalinks < Sinatra::Base
   end
 
   post '/' do
-    parsed_json = JSON.parse(request.body.read)
-    parsed_json.keys.each do |key|
-      settings.cache.set(key, parsed_json[key])
-    end
+    export_json_to_redis
     status 200
   end
 
   post '/reset' do
-    json_params.each do |key, url|
-      redis.set key, url
-    end
+    export_json_to_redis
     omitted_stored_params.each do |key|
       redis.del key
     end
@@ -52,6 +47,12 @@ class Permalinks < Sinatra::Base
         @json_params ||= JSON.parse(request.body.read)
       rescue JSON::ParserError => e
         halt 400, { message: "Invalid JSON #{e.message}" }.to_json #"{\"message\":\"Invalid JSON: #{e.message}\"}" #
+      end
+    end
+
+    def export_json_to_redis
+      json_params.each do |key, url|
+        redis.set key, url
       end
     end
 
