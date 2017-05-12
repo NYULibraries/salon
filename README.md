@@ -57,7 +57,7 @@ To access permalinks with key `KEY`, visit `http://localhost:9292/KEY`
 
 #### `POST /`
 
-To use POST functions in the API, use must have an authentication token.
+To use POST functions in the API, you must have an authentication token.
 
 To create new permalinks:
 
