@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:1.13
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY conf.d/salon.conf /etc/nginx/conf.d/salon.conf
