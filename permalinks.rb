@@ -31,6 +31,7 @@ class Permalinks < Sinatra::Base
     omitted_stored_params.each do |key|
       redis.del key
     end
+    status 200
   end
 
   not_found do
@@ -48,7 +49,7 @@ class Permalinks < Sinatra::Base
 
     def json_params
       begin
-        JSON.parse(request.body.read)
+        @json_params ||= JSON.parse(request.body.read)
       rescue JSON::ParserError => e
         halt 400, { message: "Invalid JSON #{e.message}" }.to_json #"{\"message\":\"Invalid JSON: #{e.message}\"}" #
       end
