@@ -49,11 +49,15 @@ Visit your `http://dockerhost:9292`/`http://{docker-machine ip}:9292` to see the
 
 ## Usage
 
-To access permalinks with key `KEY`, visit `http://localhost:9292/KEY`
-
 ### API
 
-To use the API, use must have an authentication token.
+#### `GET /`
+
+To access permalinks with key `KEY`, visit `http://localhost:9292/KEY`
+
+#### `POST /`
+
+To use POST functions in the API, use must have an authentication token.
 
 To create new permalinks:
 
@@ -65,7 +69,9 @@ curl -H "Content-Type: application/json" \
   http://localhost:9292 -v
 ```
 
-To reset all permalinks (destroying all existing permalinks except those in the POST JSON data), use the `/reset` endpoint:
+#### `POST /reset`
+
+To reset all permalinks (destroying all existing permalinks except those in the POST JSON data):
 
 ```
 curl -H "Content-Type: application/json" \
