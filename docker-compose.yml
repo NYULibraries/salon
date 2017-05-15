@@ -8,20 +8,24 @@ services:
       - redis_arch:redishost
     ports:
       - "9292:9292"
-    entrypoint: "tail -f /dev/null"
+    environment:
+      - REDIS_ADDRESS=http://redishost:6379
+    command: ./scripts/start.sh
+    # http://dockerhost:9292
   getit:
     build: .
     volumes:
       - .:/app
     links:
       - redis_getit:redishost
+    environment:
+      - REDIS_ADDRESS=http://redishost:6379
     ports:
       - "9293:9292"
-    entrypoint: "tail -f /dev/null"
+    command: ./scripts/start.sh
+    # http://dockerhost:9293
   redis_arch:
     build: ./redis
-    environment:
-      - REDIS_PORT=6379
     expose:
       - "6379"
   redis_getit:
