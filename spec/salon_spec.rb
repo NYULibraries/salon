@@ -1,11 +1,11 @@
 require_relative 'spec_helper'
 
-describe 'Permalinks' do
+describe 'Salon' do
   let(:example_site) { 'https://www.example.com/' }
   before(:each) do
     cache = double('cache', :get => nil)
     allow(cache).to receive(:get).with('good_identifier') { example_site }
-    allow(Permalinks.settings).to receive(:cache) {cache}
+    allow(Salon.settings).to receive(:cache) {cache}
     get identifier
   end
 
