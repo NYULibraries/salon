@@ -16,7 +16,13 @@ preload_app true
 listen (ENV['UNICORN_PORT'] || 8080)
 
 # Set process id path
-pid "#{@dir}tmp/pids/unicorn.pid"
+if ENV['APP_NAME']
+  @pid_file = "#{@dir}tmp/pids/unicorn-#{ENV['APP_NAME']}.pid"
+else
+  @pid_file = "#{@dir}tmp/pids/unicorn.pid"
+end
+
+pid @pid_file
 
 # Set log file paths
 # stderr_path "#{@dir}log/unicorn.stderr.log"

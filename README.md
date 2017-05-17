@@ -40,6 +40,8 @@ You can also run the application within docker:
 ```
 # Start the dev services up
 $ docker-compose up -d
+# Start the production services up
+$ docker-compose -f production.yml up -d
 # Run the tests
 $ docker-compose run app rspec
 ```

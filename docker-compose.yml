@@ -10,7 +10,8 @@ services:
       - "9292:9292"
     environment:
       - REDIS_ADDRESS=http://redishost:6379
-    command: ./scripts/start.sh
+      - APP_NAME=arch
+    command: ./scripts/start.sh arch
     # http://dockerhost:9292
   getit:
     build: .
@@ -20,15 +21,12 @@ services:
       - redis_getit:redishost
     environment:
       - REDIS_ADDRESS=http://redishost:6379
+      - APP_NAME=getit
     ports:
       - "9293:9292"
-    command: ./scripts/start.sh
+    command: ./scripts/start.sh getit
     # http://dockerhost:9293
   redis_arch:
     build: ./redis
-    expose:
-      - "6379"
   redis_getit:
     build: ./redis
-    expose:
-      - "6379"
