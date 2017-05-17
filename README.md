@@ -1,11 +1,11 @@
-# Permalinks
-[![CircleCI](https://circleci.com/gh/NYULibraries/permalinks.svg?style=svg)](https://circleci.com/gh/NYULibraries/permalinks)
+# Salon
+[![CircleCI](https://circleci.com/gh/NYULibraries/salon.svg?style=svg)](https://circleci.com/gh/NYULibraries/salon)
 
-Permalinks is a simple app that redirects from short key `identifier`s to real URLs.
+Salon is a simple app that redirects from short key `identifier`s to real URLs. It makes your links permed.
 
 ## Getting Started
 
-To start, first have a local instance of Redis running at `localhost:6379`, then run:
+To start, first have a local instance of Redis running at `localhost:6379` (see below), then run:
 
 ```sh
 $ bundle install
@@ -46,6 +46,10 @@ $ docker-compose run --service-ports -e REDIS_ADDRESS=http://redishost:6379 app 
 ```
 
 Visit your `http://dockerhost:9292`/`http://{docker-machine ip}:9292` to see the app in development.
+
+Or
+
+Visit your `http://dockerhost/arch`/`http://{docker-machine ip}/arch` to see the app with production-ready architecture.
 
 ## Usage
 

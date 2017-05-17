@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'redis-store'
 require 'json'
 
-class Permalinks < Sinatra::Base
+class Salon < Sinatra::Base
   set :cache, Redis::Store::Factory.create("#{ENV.fetch('REDIS_ADDRESS','localhost:6379')}", { marshalling: false })
 
   before do
