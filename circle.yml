@@ -15,3 +15,6 @@ dependencies:
 test:
   override:
     - bundle exec rspec
+database:
+  override:
+    - echo "Skipping DB section."
