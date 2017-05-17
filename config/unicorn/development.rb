@@ -14,4 +14,10 @@ preload_app false
 listen (ENV['UNICORN_PORT'] || 9292)
 
 # Set process id path
-pid "#{@dir}tmp/pids/unicorn.pid"
+if ENV['APP_NAME']
+  @pid_file = "#{@dir}tmp/pids/unicorn-#{ENV['APP_NAME']}.pid"
+else
+  @pid_file = "#{@dir}tmp/pids/unicorn.pid"
+end
+
+pid @pid_file

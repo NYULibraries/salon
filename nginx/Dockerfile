@@ -1,7 +1,7 @@
 FROM nginx:1.13
 
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY conf.d/salon.conf /etc/nginx/conf.d/salon.conf
+ADD conf.d /etc/nginx/conf.d
 
 RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak
 

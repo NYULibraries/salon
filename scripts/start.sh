@@ -1,10 +1,13 @@
 #!/bin/bash
 
-echo "Removing existing unicorn pid..."
-rm -rf tmp/pids/unicorn.pid
+# USAGE:
+# ./start.sh {APP_NAME} {ENVIRONMENT}
 
-echo "Running unicorn..."
-if [ "$1" == "production" ]; then
+# Stop existing process first, if any
+./scripts/stop.sh $1
+
+echo "Starting up unicorn..."
+if [ "$2" == "production" ]; then
   bundle exec unicorn -c config/unicorn/production.rb -E production
 else
   bundle exec unicorn -c config/unicorn/development.rb

@@ -4,35 +4,33 @@ services:
     build: .
     links:
       - redis_getit:redishost
-    # ports:
-      # - "8080:8080"
     environment:
       - REDIS_ADDRESS=http://redishost:6379
-    command: "./scripts/start.sh production"
+      - APP_NAME=getit
+    command: "./scripts/start.sh getit production"
     deploy:
       mode: replicated
       replicas: 2
-  # arch:
-  #   build: .
-  #   links:
-  #     - redis_arch:redishost
-  #   environment:
-  #     - REDIS_ADDRESS=http://redishost:6379
-  #   command: "scripts/start.sh production"
-  #   deploy:
-  #     mode: replicated
-  #     replicas: 2
+  arch:
+    build: .
+    links:
+      - redis_arch:redishost
+    environment:
+      - REDIS_ADDRESS=http://redishost:6379
+      - APP_NAME=arch
+    command: "./scripts/start.sh arch production"
+    deploy:
+      mode: replicated
+      replicas: 2
   redis_getit:
     build: ./redis
-    # expose:
-      # - "6379"
-  # redis_arch:
-  #   build: ./redis
+  redis_arch:
+    build: ./redis
   nginx:
     build: ./nginx
     links:
       - getit
-      # - arch
+      - arch
     ports:
       - "80:80"
     deploy:
