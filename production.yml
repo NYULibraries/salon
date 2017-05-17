@@ -7,6 +7,8 @@ services:
     environment:
       - REDIS_ADDRESS=http://redishost:6379
       - APP_NAME=getit
+    env_file:
+      - secrets.env
     command: "./scripts/start.sh getit production"
     deploy:
       mode: replicated
@@ -18,6 +20,8 @@ services:
     environment:
       - REDIS_ADDRESS=http://redishost:6379
       - APP_NAME=arch
+    env_file:
+      - secrets.env
     command: "./scripts/start.sh arch production"
     deploy:
       mode: replicated
