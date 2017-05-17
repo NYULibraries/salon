@@ -1,3 +1,4 @@
 log/*.log
 tmp/pids/*.pid
 tmp/sockets/*.sock
+*.env
