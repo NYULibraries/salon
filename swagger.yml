@@ -31,6 +31,7 @@ paths:
         description: "ID of persistent link to redirect to"
         required: true
         type: "string"
+        x-example: "abc"
       responses:
         302:
           description: "Link found – redirected to URL"

@@ -12,9 +12,11 @@ dependencies:
   override:
     - gem install bundler
     - bundle install
+    - npm install -g dredd@3.5.0
 test:
   override:
     - bundle exec rspec
+    - dredd
 database:
   override:
     - echo "Skipping DB section."
