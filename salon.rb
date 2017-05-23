@@ -6,6 +6,7 @@ class Salon < Sinatra::Base
   set :cache, Redis::Store::Factory.create("#{ENV.fetch('REDIS_ADDRESS','localhost:6379')}", { marshalling: false })
 
   before do
+    content_type :json
     next unless request.post?
     halt 401 unless request.env["HTTP_AUTH"].eql?(ENV['TEST_AUTH'])
   end
