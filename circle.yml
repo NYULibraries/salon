@@ -21,4 +21,4 @@ test:
     - dredd
 database:
   override:
-    - redis-server
+    - redis-server --daemonize yes
