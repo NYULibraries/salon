@@ -2,7 +2,7 @@ dry-run: null
 hookfiles: null
 language: ruby
 sandbox: false
-server: bundle exec unicorn
+server: bundle exec unicorn -p 8081
 server-wait: 3
 init: false
 custom: {}
@@ -31,4 +31,4 @@ hooks-worker-handler-host: 127.0.0.1
 hooks-worker-handler-port: 61321
 config: ./dredd.yml
 blueprint: swagger.yml
-endpoint: 'http://127.0.0.1:8080'
+endpoint: 'http://127.0.0.1:8081'
