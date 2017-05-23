@@ -21,4 +21,4 @@ test:
     - dredd
 database:
   override:
-    - echo "Skipping DB section."
+    - redis-server -D
