@@ -1,6 +1,8 @@
 machine:
   ruby:
     version: 2.4.0
+  node:
+    version: 4.5.0
 general:
   branches:
     only:
