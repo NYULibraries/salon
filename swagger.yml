@@ -58,7 +58,7 @@ paths:
           description: "Success - persistent link(s) created"
         400:
           description: "Bad request - check your JSON formatting"
-        403:
+        401:
           description: "Unauthorized - invalid API key"
       security:
       - api_key: []
@@ -84,7 +84,7 @@ paths:
           description: "Success - persistent link(s) created"
         400:
           description: "Bad request - check your JSON formatting"
-        403:
+        401:
           description: "Unauthorized - invalid API key"
       security:
       - api_key: []
