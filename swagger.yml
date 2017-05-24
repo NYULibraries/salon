@@ -57,6 +57,8 @@ paths:
       responses:
         200:
           description: "Success - persistent link(s) created"
+          schema:
+            type: object
         400:
           description: "Bad request - check your JSON formatting"
         401:
@@ -83,6 +85,8 @@ paths:
       responses:
         200:
           description: "Success - persistent link(s) created"
+          schema:
+            type: object
         400:
           description: "Bad request - check your JSON formatting"
         401:

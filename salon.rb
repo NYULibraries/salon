@@ -19,7 +19,7 @@ class Salon < Sinatra::Base
 
   post '/' do
     export_json_to_redis
-    status 200
+    {success: true}.to_json
   end
 
   post '/reset' do
@@ -27,7 +27,7 @@ class Salon < Sinatra::Base
     omitted_stored_params.each do |key|
       redis.del key
     end
-    status 200
+    {success: true}.to_json
   end
 
   not_found do
