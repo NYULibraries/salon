@@ -18,7 +18,7 @@ dependencies:
 test:
   override:
     - bundle exec rspec
-    - dredd
+    - TEST_AUTH=Qjnt9U4D+oXQB8/i6w7vkeWuAT3J0uIik9zgKOouKq8 dredd
 database:
   override:
     - redis-server --daemonize yes
