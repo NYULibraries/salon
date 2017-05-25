@@ -61,8 +61,12 @@ paths:
             type: object
         400:
           description: "Bad request - check your JSON formatting"
+          schema:
+            type: object
         401:
           description: "Unauthorized - invalid API key"
+          schema:
+            type: object
       security:
       - api_key: []
   /reset:
@@ -89,8 +93,12 @@ paths:
             type: object
         400:
           description: "Bad request - check your JSON formatting"
+          schema:
+            type: object
         401:
           description: "Unauthorized - invalid API key"
+          schema:
+            type: object
       security:
       - api_key: []
 securityDefinitions:
