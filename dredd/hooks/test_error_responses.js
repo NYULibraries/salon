@@ -10,5 +10,9 @@ hooks.beforeEach(function (transaction) {
   if (transaction.expected.statusCode !== '401') {
     transaction.request.headers.Auth = process.env.TEST_AUTH;
   }
+  // replace with bad JSON for 400
+  if (transaction.expected.statusCode === '400') {
+    transaction.request.body = 'bad json';
+  }
   transaction.skip = false;
 });
