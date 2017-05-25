@@ -2,72 +2,64 @@ version: "3"
 services:
 
   getit:
-    image: nyulibraries/salon
-    networks:
-      redis_getit:
-        aliases:
-          - redishost
+    build: .
+    # image: nyulibraries/salon
     environment:
-      - REDIS_ADDRESS=http://redishost:6379
+      - REDIS_ADDRESS=http://redis_getit:6379
       - APP_NAME=getit
     env_file:
       - secrets.env
-    ports:
-      - "8080:8080"
+    expose:
+      - "8080"
     command: "./scripts/start.sh getit production"
+    depends_on:
+      - redis_getit
     deploy:
       mode: replicated
       replicas: 2
 
   arch:
-    image: nyulibraries/salon
-    networks:
-      redis_arch:
-        aliases:
-          - redishost
+    build: .
+    # image: nyulibraries/salon
     environment:
-      - REDIS_ADDRESS=http://redishost:6379
+      - REDIS_ADDRESS=http://redis_arch:6379
       - APP_NAME=arch
     env_file:
       - secrets.env
-    ports:
-      - "8081:8080"
+    expose:
+      - "8080"
+    volumes:
+      - public-volume:/app/public
     command: "./scripts/start.sh arch production"
+    depends_on:
+      - redis_arch
     deploy:
       mode: replicated
       replicas: 2
 
   redis_getit:
     image: nyulibraries/salon_redis
-    ports:
-      - "6378:6379"
-    networks:
-      - redis_getit
+    expose:
+      - "6379"
 
   redis_arch:
     image: nyulibraries/salon_redis
-    ports:
-      - "6379:6379"
-    networks:
-      - redis_arch
+    expose:
+      - "6379"
 
   nginx:
-    image: nyulibraries/salon_nginx
-    networks:
-      getit:
-        aliases:
-          - getit
-      arch:
-        aliases:
-          - arch
+    build: ./nginx
+    # image: nyulibraries/salon_nginx
     ports:
-      - "8001:80"
+      - "80:80"
+    volumes:
+      - public-volume:/app/public
+    depends_on:
+      - arch
+      - getit
     deploy:
       mode: replicated
       replicas: 6
 
-networks:
-  redis_getit:
-  redis_arch:
-  getit:
-  arch:
+volumes:
+  public-volume:
