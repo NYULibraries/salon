@@ -43,7 +43,7 @@ class Salon < Sinatra::Base
   end
 
   not_found do
-    erb :not_found
+    send_file(File.join(File.dirname(__FILE__), 'public', '40x.html'), { status: 404 })
   end
 
   helpers do
