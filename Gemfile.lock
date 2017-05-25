@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/NYULibraries/salon_loaders.git
-  revision: e83693865cd939f06d1167ca372c481a9adab434
+  revision: 5d46bdcca7c29826a8cc8cb6a430d55a4caa6e2b
   specs:
     salon_loaders (0.0.1)
       activerecord
@@ -48,7 +48,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    rack (1.6.5)
+    rack (1.6.8)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
