@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'redis-store'
 require 'json'
+require 'yaml'
 
 class Salon < Sinatra::Base
   set :cache, Redis::Store::Factory.create("#{ENV.fetch('REDIS_ADDRESS','localhost:6379')}", { marshalling: false })
@@ -8,6 +9,14 @@ class Salon < Sinatra::Base
   before do
     next unless request.post?
     halt 401 unless request.env["HTTP_AUTH"].eql?(ENV['TEST_AUTH'])
+  end
+
+  get '/' do
+    erb :swagger_redoc
+  end
+
+  get '/swagger.json' do
+    YAML.load(File.open('swagger.yml'){|f| f.read }).to_json
   end
 
   get '/:identifier' do
