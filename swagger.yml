@@ -49,7 +49,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "List of persistent links to be created"
+        description: "List of persistent links to be created, represented as a JSON object whose keys are IDs and whose values are their respective URLs"
         required: true
         schema:
           $ref: "#/definitions/PersistentLink"
@@ -75,7 +75,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "List of persistent links to be created"
+        description: "List of persistent links to be created, represented as a JSON object whose keys are IDs and whose values are their respective URLs"
         required: true
         schema:
           $ref: "#/definitions/PersistentLink"
