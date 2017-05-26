@@ -8,7 +8,9 @@ class Salon < Sinatra::Base
   before do
     content_type :json
     next unless request.post?
-    halt 401 unless request.env["HTTP_AUTH"].eql?(ENV['TEST_AUTH'])
+    unless request.env["HTTP_AUTH"] && request.env["HTTP_AUTH"].eql?(ENV['TEST_AUTH'])
+      halt 401, {error: "Auth header not found or invalid"}.to_json
+    end
   end
 
   get '/:identifier' do
@@ -32,10 +34,6 @@ class Salon < Sinatra::Base
 
   not_found do
     erb :not_found
-  end
-
-  error 400 do
-    erb :bad_request
   end
 
   helpers do
