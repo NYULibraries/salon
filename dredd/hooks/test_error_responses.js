@@ -8,7 +8,7 @@ hooks.beforeEach(function (transaction) {
   }
   // add auth headers unless testing 401
   if (transaction.expected.statusCode !== '401') {
-    transaction.request.headers.Auth = process.env.TEST_AUTH;
+    transaction.request.headers.Auth = 'test_auth_key';
   }
   // replace with bad JSON for 400
   if (transaction.expected.statusCode === '400') {
@@ -16,3 +16,9 @@ hooks.beforeEach(function (transaction) {
   }
   transaction.skip = false;
 });
+
+//
+// hooks.afterEach(function(transaction) {
+//   if (transaction.test.status === 'fail')
+//     console.log(transaction);
+// })
