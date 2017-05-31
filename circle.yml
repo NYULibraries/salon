@@ -17,8 +17,7 @@ dependencies:
     - npm install -g dredd@3.5.0
 test:
   override:
-    - bundle exec rspec
-    - TEST_AUTH=Qjnt9U4D+oXQB8/i6w7vkeWuAT3J0uIik9zgKOouKq8 dredd
+    - bundle exec rake
 database:
   override:
     - redis-server --daemonize yes
