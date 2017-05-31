@@ -16,6 +16,7 @@ class Salon < Sinatra::Base
   end
 
   get '/swagger.json' do
+    headers 'Access-Control-Allow-Origin' => '*'
     YAML.load(File.open('swagger.yml'){|f| f.read }).to_json
   end
 
