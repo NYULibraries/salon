@@ -11,8 +11,8 @@ describe 'Salon' do
 
   context 'if no identifier is passed in' do
     let(:identifier) {'/'}
-    it 'it should not allow accessing the page' do
-      expect(last_response).to be_not_found
+    it 'it should show documentation' do
+      expect(last_response).to be_ok
     end
   end
   context 'if an identifier is passed in' do
