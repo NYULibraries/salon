@@ -100,3 +100,12 @@ $ bundle exec unicorn -c unicorn.rb -E ENVIRONMENT_NAME
 ```
 
 to start `permalinks`.
+
+### Swagger
+
+Open swagger editor using docker:
+
+```
+docker pull swaggerapi/swagger-editor
+docker run -p 8080:8080 swaggerapi/swagger-editor
+```
