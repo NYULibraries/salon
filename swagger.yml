@@ -9,7 +9,7 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "https://nyu-salon.herokuapp.com/"
+host: "nyu-salon.herokuapp.com"
 tags:
 - name: "persistent links"
   description: "Use and generate persistent links"
