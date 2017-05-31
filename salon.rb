@@ -6,8 +6,8 @@ class Salon < Sinatra::Base
   set :cache, Redis::Store::Factory.create("#{ENV.fetch('REDIS_ADDRESS','localhost:6379')}", { marshalling: false })
 
   before do
-    content_type :json
     next unless request.post?
+    content_type :json
     unless request.env["HTTP_AUTH"] && request.env["HTTP_AUTH"].eql?(ENV['TEST_AUTH'])
       halt 401, {error: "Auth header not found or invalid"}.to_json
     end
@@ -17,6 +17,7 @@ class Salon < Sinatra::Base
     redirect_url = redis.get("#{params['identifier']}")
     redirect to(redirect_url) if redirect_url
     status 400
+    erb :bad_request
   end
 
   post '/' do
