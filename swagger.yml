@@ -25,6 +25,10 @@ paths:
       - "persistent links"
       summary: "Use a persistent link"
       description: ""
+      consumes:
+      - "text/html"
+      produces:
+      - "text/html"
       parameters:
       - name: "id"
         in: "path"
@@ -35,7 +39,7 @@ paths:
       responses:
         302:
           description: "Link found – redirected to URL"
-        404:
+        400:
           description: "Identifier not found"
   /:
     post:
