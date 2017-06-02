@@ -12,7 +12,7 @@ describe 'Salon' do
   context 'if no identifier is passed in' do
     let(:identifier) {'/'}
     it 'it should show documentation' do
-      expect(last_response).to be_ok
+      expect(last_response).to be_not_found
     end
   end
   context 'if an identifier is passed in' do
