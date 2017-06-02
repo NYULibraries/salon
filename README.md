@@ -85,6 +85,26 @@ curl -H "Content-Type: application/json" \
   http://localhost:9292/reset -v
 ```
 
+## Testing
+
+Run all tests:
+
+```
+rake
+```
+
+Run rspec tests, which check HTML functionality:
+
+```
+rake spec
+```
+
+Run [dredd](https://github.com/apiaryio/dredd) tests, which check API JSON functionality against the [Swagger YAML](#swagger):
+
+```
+rake dredd
+```
+
 ## Stack notes
 
 ### Sinatra
@@ -103,7 +123,9 @@ to start `permalinks`.
 
 ### Swagger
 
-Open swagger editor using docker:
+Swagger describes the API in a YAML format such that documentation can be automatically generated on the `gh-pages` branch. We can also test against it using dredd.
+
+Since Swagger is picky about specification syntax, edit the YAML within the Swagger Editor – either on its [website](http://editor.swagger.io/) or via docker:
 
 ```
 docker pull swaggerapi/swagger-editor
