@@ -55,6 +55,8 @@ Visit your `http://dockerhost/arch`/`http://{docker-machine ip}/arch` to see the
 
 ### API
 
+Full interactive specification: https://nyulibraries.github.io/salon/
+
 #### `GET /`
 
 To access permalinks with key `KEY`, visit `http://localhost:9292/KEY`
