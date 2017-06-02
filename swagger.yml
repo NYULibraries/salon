@@ -63,14 +63,26 @@ paths:
           description: "Success - persistent link(s) created"
           schema:
             type: object
+            properties:
+              success:
+                type: boolean
+                example: true
         400:
           description: "Bad request - check your JSON formatting"
           schema:
             type: object
+            properties:
+              error:
+                type: string
+                example: "Invalid JSON"
         401:
           description: "Unauthorized - invalid API key"
           schema:
             type: object
+            properties:
+              error:
+                type: string
+                example: "Auth header not found or invalid"
       security:
       - api_key: []
   /reset:
@@ -95,14 +107,26 @@ paths:
           description: "Success - persistent link(s) created"
           schema:
             type: object
+            properties:
+              success:
+                type: boolean
+                example: true
         400:
           description: "Bad request - check your JSON formatting"
           schema:
             type: object
+            properties:
+              error:
+                type: string
+                example: "Invalid JSON"
         401:
           description: "Unauthorized - invalid API key"
           schema:
             type: object
+            properties:
+              error:
+                type: string
+                example: "Auth header not found or invalid"
       security:
       - api_key: []
 securityDefinitions:
