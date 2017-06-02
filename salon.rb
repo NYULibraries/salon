@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'redis-store'
 require 'json'
+require 'yaml'
 
 class Salon < Sinatra::Base
   set :cache, Redis::Store::Factory.create("#{ENV.fetch('REDIS_ADDRESS','localhost:6379')}", { marshalling: false })
@@ -11,6 +12,15 @@ class Salon < Sinatra::Base
     unless request.env["HTTP_AUTH"] && request.env["HTTP_AUTH"].eql?(ENV['TEST_AUTH'])
       halt 401, {error: "Auth header not found or invalid"}.to_json
     end
+  end
+
+  get '/' do
+    erb :swagger_redoc
+  end
+
+  get '/swagger.json' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    YAML.load(File.open('swagger.yml'){|f| f.read }).to_json
   end
 
   get '/:identifier' do
