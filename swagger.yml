@@ -25,16 +25,21 @@ paths:
       - "persistent links"
       summary: "Use a persistent link"
       description: ""
+      consumes:
+      - "text/html"
+      produces:
+      - "text/html"
       parameters:
       - name: "id"
         in: "path"
         description: "ID of persistent link to redirect to"
         required: true
         type: "string"
+        x-example: "abc"
       responses:
         302:
           description: "Link found – redirected to URL"
-        404:
+        400:
           description: "Identifier not found"
   /:
     post:
@@ -56,10 +61,16 @@ paths:
       responses:
         200:
           description: "Success - persistent link(s) created"
+          schema:
+            type: object
         400:
           description: "Bad request - check your JSON formatting"
+          schema:
+            type: object
         401:
           description: "Unauthorized - invalid API key"
+          schema:
+            type: object
       security:
       - api_key: []
   /reset:
@@ -82,10 +93,16 @@ paths:
       responses:
         200:
           description: "Success - persistent link(s) created"
+          schema:
+            type: object
         400:
           description: "Bad request - check your JSON formatting"
+          schema:
+            type: object
         401:
           description: "Unauthorized - invalid API key"
+          schema:
+            type: object
       security:
       - api_key: []
 securityDefinitions:

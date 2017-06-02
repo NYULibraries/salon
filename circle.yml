@@ -1,6 +1,8 @@
 machine:
   ruby:
     version: 2.4.0
+  node:
+    version: 4.5.0
 general:
   branches:
     only:
@@ -12,9 +14,10 @@ dependencies:
   override:
     - gem install bundler
     - bundle install
+    - npm install -g dredd@3.5.0
 test:
   override:
-    - bundle exec rspec
+    - bundle exec rake
 database:
   override:
-    - echo "Skipping DB section."
+    - redis-server --daemonize yes

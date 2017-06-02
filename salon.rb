@@ -7,18 +7,22 @@ class Salon < Sinatra::Base
 
   before do
     next unless request.post?
-    halt 401 unless request.env["HTTP_AUTH"].eql?(ENV['TEST_AUTH'])
+    content_type :json
+    unless request.env["HTTP_AUTH"] && request.env["HTTP_AUTH"].eql?(ENV['TEST_AUTH'])
+      halt 401, {error: "Auth header not found or invalid"}.to_json
+    end
   end
 
   get '/:identifier' do
     redirect_url = redis.get("#{params['identifier']}")
     redirect to(redirect_url) if redirect_url
     status 400
+    erb :bad_request
   end
 
   post '/' do
     export_json_to_redis
-    status 200
+    {success: true}.to_json
   end
 
   post '/reset' do
@@ -26,15 +30,11 @@ class Salon < Sinatra::Base
     omitted_stored_params.each do |key|
       redis.del key
     end
-    status 200
+    {success: true}.to_json
   end
 
   not_found do
     erb :not_found
-  end
-
-  error 400 do
-    erb :bad_request
   end
 
   helpers do
