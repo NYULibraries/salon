@@ -14,7 +14,11 @@ class Salon < Sinatra::Base
     end
   end
 
-  get '/swagger.json' do
+  get '/api/v1/docs' do
+    erb :swagger_redoc
+  end
+
+  get '/api/v1/swagger.json' do
     YAML.load(File.open('swagger.yml'){|f| f.read }).to_json
   end
 
