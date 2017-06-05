@@ -3,7 +3,7 @@ services:
 
   getit:
     build: .
-    # image: nyulibraries/salon
+    image: nyulibraries/salon
     environment:
       - REDIS_ADDRESS=http://redis_getit:6379
       - APP_NAME=getit
@@ -20,7 +20,7 @@ services:
 
   arch:
     build: .
-    # image: nyulibraries/salon
+    image: nyulibraries/salon
     environment:
       - REDIS_ADDRESS=http://redis_arch:6379
       - APP_NAME=arch
@@ -38,18 +38,20 @@ services:
       replicas: 2
 
   redis_getit:
+    build: ./redis
     image: nyulibraries/salon_redis
     expose:
       - "6379"
 
   redis_arch:
+    build: ./redis
     image: nyulibraries/salon_redis
     expose:
       - "6379"
 
   nginx:
     build: ./nginx
-    # image: nyulibraries/salon_nginx
+    image: nyulibraries/salon_nginx
     ports:
       - "80:80"
     volumes:
