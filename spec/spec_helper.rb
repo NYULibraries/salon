@@ -1,5 +1,7 @@
 require 'rack/test'
 require 'rspec'
+require 'pry'
+require 'rspec/its'
 
 ENV['RACK_ENV'] = 'test'
 
