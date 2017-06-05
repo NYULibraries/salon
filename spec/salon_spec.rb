@@ -32,4 +32,21 @@ describe 'Salon' do
       end
     end
   end
+
+  describe "/api/v1/docs" do
+    before { get "/api/v1/docs" }
+    it { is_expected.to be_ok }
+  end
+
+  describe "/api/v1/swagger.json" do
+    let(:hash){ {version: "1", something: "else"} }
+    let(:yaml){ hash.to_yaml }
+    let(:json){ hash.to_json }
+    before do
+      allow(File).to receive(:open).with('swagger.yml').and_return yaml
+      get "/api/v1/swagger.json"
+    end
+    it { is_expected.to be_ok }
+    its(:body) { is_expected.to eq json }
+  end
 end
