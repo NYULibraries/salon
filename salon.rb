@@ -1,24 +1,37 @@
 require 'sinatra/base'
 require 'redis-store'
 require 'json'
+require 'yaml'
 
 class Salon < Sinatra::Base
   set :cache, Redis::Store::Factory.create("#{ENV.fetch('REDIS_ADDRESS','localhost:6379')}", { marshalling: false })
 
   before do
     next unless request.post?
-    halt 401 unless request.env["HTTP_AUTH"].eql?(ENV['TEST_AUTH'])
+    content_type :json
+    unless request.env["HTTP_AUTH"] && request.env["HTTP_AUTH"].eql?(ENV['TEST_AUTH'])
+      halt 401, {error: "Auth header not found or invalid"}.to_json
+    end
+  end
+
+  get '/api/v1/docs' do
+    erb :swagger_redoc
+  end
+
+  get '/api/v1/swagger.json' do
+    YAML.load(File.open('swagger.yml'){|f| f.read }).to_json
   end
 
   get '/:identifier' do
     redirect_url = redis.get("#{params['identifier']}")
     redirect to(redirect_url) if redirect_url
     status 400
+    erb :bad_request
   end
 
   post '/' do
     export_json_to_redis
-    status 200
+    {success: true}.to_json
   end
 
   post '/reset' do
@@ -26,15 +39,11 @@ class Salon < Sinatra::Base
     omitted_stored_params.each do |key|
       redis.del key
     end
-    status 200
+    {success: true}.to_json
   end
 
   not_found do
     erb :not_found
-  end
-
-  error 400 do
-    erb :bad_request
   end
 
   helpers do
@@ -46,7 +55,7 @@ class Salon < Sinatra::Base
       begin
         @json_params ||= JSON.parse(request.body.read)
       rescue JSON::ParserError => e
-        halt 400, { message: "Invalid JSON #{e.message}" }.to_json #"{\"message\":\"Invalid JSON: #{e.message}\"}" #
+        halt 400, { error: "Invalid JSON #{e.message}" }.to_json #"{\"message\":\"Invalid JSON: #{e.message}\"}" #
       end
     end
 

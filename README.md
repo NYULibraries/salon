@@ -55,6 +55,8 @@ Visit your `http://dockerhost/arch`/`http://{docker-machine ip}/arch` to see the
 
 ### API
 
+Full interactive specification: https://nyulibraries.github.io/salon/
+
 #### `GET /`
 
 To access permalinks with key `KEY`, visit `http://localhost:9292/KEY`
@@ -85,6 +87,26 @@ curl -H "Content-Type: application/json" \
   http://localhost:9292/reset -v
 ```
 
+## Testing
+
+Run all tests:
+
+```
+rake
+```
+
+Run rspec tests, which check HTML functionality:
+
+```
+rake spec
+```
+
+Run [dredd](https://github.com/apiaryio/dredd) tests, which check API JSON functionality against the [Swagger YAML](#swagger):
+
+```
+rake dredd
+```
+
 ## Stack notes
 
 ### Sinatra
@@ -100,3 +122,14 @@ $ bundle exec unicorn -c unicorn.rb -E ENVIRONMENT_NAME
 ```
 
 to start `permalinks`.
+
+### Swagger
+
+Swagger describes the API in a YAML format such that documentation can be automatically generated on the `gh-pages` branch. We can also test against it using dredd.
+
+Since Swagger is picky about specification syntax, edit the YAML within the Swagger Editor – either on its [website](http://editor.swagger.io/) or via docker:
+
+```
+docker pull swaggerapi/swagger-editor
+docker run -p 8080:8080 swaggerapi/swagger-editor
+```
