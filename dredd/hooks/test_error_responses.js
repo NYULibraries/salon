@@ -16,9 +16,3 @@ hooks.beforeEach(function (transaction) {
   }
   transaction.skip = false;
 });
-
-//
-// hooks.afterEach(function(transaction) {
-//   if (transaction.test.status === 'fail')
-//     console.log(transaction);
-// })
