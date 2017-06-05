@@ -1,6 +1,6 @@
 require 'rspec/core/rake_task'
 
-task default: %w[spec dredd]
+task default: %w[spec dredd docs]
 
 RSpec::Core::RakeTask.new(:spec)
 
@@ -13,4 +13,8 @@ task :dredd do
     sh "lsof -t -i tcp:6380 | xargs kill"
     raise e
   end
+end
+
+task :docs do
+  sh "scripts/swagger_to_json.rb"
 end
