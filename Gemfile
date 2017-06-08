@@ -13,6 +13,5 @@ group :test do
   gem 'pry'
   gem 'rspec', '~> 3.5.0'
   gem 'rspec-its'
-  gem "rack-test", '~> 0.6.3', require: "rack/test"
-  gem 'rake'
+  gem 'rack-test', '~> 0.6.3', require: "rack/test"
 end
