@@ -1,13 +1,44 @@
-app:
-  build: .
-  volumes:
-    - .:/app
-  links:
-    - redis:redishost
-  ports:
-    - "9292:9292"
-  command: "bundle exec rackup -o 0.0.0.0"
-redis:
-  image: redis
-  expose:
-    - "6379"
+version: "3"
+services:
+
+  arch:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "9292:9292"
+    environment:
+      - REDIS_ADDRESS=http://redis_arch:6379
+      - APP_NAME=arch
+    env_file:
+      - secrets.env
+    command: ./scripts/start.sh arch
+    depends_on:
+      - redis_arch
+    # http://dockerhost:9292
+
+  getit:
+    build: .
+    volumes:
+      - .:/app
+    links:
+      - redis_getit:redishost
+    environment:
+      - REDIS_ADDRESS=http://redis_getit:6379
+      - APP_NAME=getit
+    env_file:
+      - secrets.env
+    ports:
+      - "9293:9292"
+    command: ./scripts/start.sh getit
+    depends_on:
+      - redis_getit
+    # http://dockerhost:9293
+
+  redis_getit:
+    build: ./redis
+    image: nyulibraries/salon_redis
+
+  redis_arch:
+    build: ./redis
+    image: nyulibraries/salon_redis

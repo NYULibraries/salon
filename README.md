@@ -38,11 +38,12 @@ $ redis-server /path/to/redis.conf -D
 You can also run the application within docker:
 
 ```
+# Start the dev services up
 $ docker-compose up -d
+# Start the production services up
+$ docker-compose -f production.yml up -d
 # Run the tests
 $ docker-compose run app rspec
-# Start the dev server
-$ docker-compose run --service-ports -e REDIS_ADDRESS=http://redishost:6379 app rackup -o 0.0.0.0
 ```
 
 Visit your `http://dockerhost:9292`/`http://{docker-machine ip}:9292` to see the app in development.
