@@ -1,53 +1,47 @@
 version: "3"
 services:
 
-  getit:
-    build: .
-    image: nyulibraries/salon
-    environment:
-      - REDIS_ADDRESS=http://redis_getit:6379
-      - APP_NAME=getit
-    env_file:
-      - secrets.env
-    expose:
-      - "8080"
-    command: "./scripts/start.sh getit production"
-    depends_on:
-      - redis_getit
-    deploy:
-      mode: replicated
-      replicas: 2
-
   arch:
     build: .
     image: nyulibraries/salon
     environment:
-      - REDIS_ADDRESS=http://redis_arch:6379
+      # - REDIS_ADDRESS=http://redis_arch:6379
+      - REDIS_ADDRESS=http://104.196.105.4:6379
       - APP_NAME=arch
     env_file:
       - secrets.env
-    expose:
-      - "8080"
     volumes:
       - public-volume:/app/public
     command: "./scripts/start.sh arch production"
-    depends_on:
-      - redis_arch
     deploy:
       mode: replicated
       replicas: 2
 
-  redis_getit:
-    build: ./redis
-    image: nyulibraries/salon_redis
-    expose:
-      - "6379"
+  getit:
+    build: .
+    image: nyulibraries/salon
+    environment:
+      # - REDIS_ADDRESS=http://redis_getit:6379
+      - REDIS_ADDRESS=http://104.196.105.4:6379
+      - APP_NAME=getit
+    env_file:
+      - secrets.env
+    command: "./scripts/start.sh getit production"
+    deploy:
+      mode: replicated
+      replicas: 2
 
-  redis_arch:
-    build: ./redis
-    image: nyulibraries/salon_redis
-    expose:
-      - "6379"
+  # redis_getit:
+  #   build: ./redis
+  #   image: nyulibraries/salon_redis
+  #   expose:
+  #     - "6379"
+  #
+  # redis_arch:
+  #   build: ./redis
+  #   image: nyulibraries/salon_redis
+  #   expose:
+  #     - "6379"
 
   nginx:
     build: ./nginx
