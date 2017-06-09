@@ -35,6 +35,21 @@ services:
       - redis_getit
     # http://dockerhost:9293
 
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - .:/app
+    environment:
+      - REDIS_ADDRESS=http://redis_test:6379
+    command: "tail -f /dev/null"
+    depends_on:
+      - redis_test
+
+  redis_test:
+    build: ./redis
+
   redis_getit:
     build: ./redis
     image: nyulibraries/salon_redis

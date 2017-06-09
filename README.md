@@ -24,13 +24,14 @@ $ REDIS_ADDRESS=www.redis.com:6000 bundle exec unicorn -c unicorn.rb -E ENVIRONM
 Redis is our preferred key-value store. Without Redis running, the application won't work. To start redis locally run:
 
 ```sh
-$ redis-server -D
+$ docker run -p 6379:6379 redis:3.2.8
 ```
 
-If you have configurations files for redis, you can use them:
+If you have a custom redis Dockerfile, you can use it:
 
 ```sh
-$ redis-server /path/to/redis.conf -D
+$ docker build ./redis -t my_redis
+$ docker run -p 6379:6379 my_redis
 ```
 
 ### Docker
@@ -40,17 +41,11 @@ You can also run the application within docker:
 ```
 # Start the dev services up
 $ docker-compose up -d
-# Start the production services up
-$ docker-compose -f production.yml up -d
 # Run the tests
-$ docker-compose run app rspec
+$ docker-compose run test rake
 ```
 
 Visit your `http://dockerhost:9292`/`http://{docker-machine ip}:9292` to see the app in development.
-
-Or
-
-Visit your `http://dockerhost/arch`/`http://{docker-machine ip}/arch` to see the app with production-ready architecture.
 
 ## Usage
 
