@@ -30,6 +30,10 @@ class Salon < Sinatra::Base
   end
 
   post '/' do
+    if !json_params['url']
+      status 422
+      return {error: "Invalid resource: 'url' required"}.to_json
+    end
     id = json_params['id'] || generate_unique_id
     redis.set(id, json_params['url'])
     {success: true}.to_json
