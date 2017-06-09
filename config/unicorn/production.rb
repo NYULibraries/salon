@@ -1,3 +1,4 @@
+require 'fileutils'
 # set path to app that will be used to configure unicorn,
 # note the trailing slash in this example
 @dir = "#{File.expand_path(File.dirname(__FILE__))}/../../"
@@ -15,18 +16,27 @@ preload_app true
 # listen "/var/run/unicorn-#{ENV['APP_NAME']}.sock", backlog: 64
 listen (ENV['UNICORN_PORT'] || 8080)
 
+# create tmp/pids and logs/ in root
+pids_dir = "#{@dir}tmp/pids/"
+logs_dir = "#{@dir}log/"
+[pids_dir, logs_dir].each do |dirname|
+  unless File.directory?(dirname)
+    FileUtils.mkdir_p(dirname)
+  end
+end
+
 # Set process id path
 if ENV['APP_NAME']
-  @pid_file = "#{@dir}tmp/pids/unicorn-#{ENV['APP_NAME']}.pid"
+  @pid_file = "#{pids_dir}unicorn-#{ENV['APP_NAME']}.pid"
 else
-  @pid_file = "#{@dir}tmp/pids/unicorn.pid"
+  @pid_file = "#{pids_dir}unicorn.pid"
 end
 
 pid @pid_file
 
 # Set log file paths
-stderr_path "#{@dir}log/unicorn.stderr.log"
-stdout_path "#{@dir}log/unicorn.stdout.log"
+stderr_path "#{logs_dir}unicorn.stderr.log"
+stdout_path "#{logs_dir}unicorn.stdout.log"
 
 before_fork do |server, worker|
 
