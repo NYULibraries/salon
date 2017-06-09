@@ -17,12 +17,11 @@ hooks.beforeEach(function (transaction) {
   }
   // replace with resource missing URL for 422
   if (transaction.expected.statusCode === '422') {
-    transaction.skip = true;
-    return;
-    // if (transaction.id === 'POST /') {
-    //   transaction.request.body = "{\"id\":\"abcd\"}";
-    // } else if (transaction.id === 'POST /create_with_array') {
-    //   transaction.request.body = "[{\"id\":\"abcd\"}]";
-    // }
+    // if already an array, replace with array; otherwise use object
+    if (transaction.request.body[0] === '[') {
+      transaction.request.body = "[{\"id\":\"abcd\"}]";
+    } else {
+      transaction.request.body = "{\"id\":\"abcd\"}";
+    }
   }
 });
