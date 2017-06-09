@@ -4,7 +4,7 @@ require 'json'
 require 'yaml'
 
 class Salon < Sinatra::Base
-  set :cache, Redis::Store::Factory.create("#{ENV.fetch('REDIS_ADDRESS','localhost:6379')}", { marshalling: false })
+  set :cache, Redis::Store::Factory.create("#{ENV.fetch('REDIS_HOST','localhost:6379')}", { marshalling: false })
 
   before do
     next unless request.post?

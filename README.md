@@ -12,11 +12,11 @@ $ bundle install
 $ bundle exec unicorn -c unicorn.rb -E ENVIRONMENT_NAME
 ```
 
-If you have your instance of Redis running somewhere else, use the `REDIS_ADDRESS` environment
+If you have your instance of Redis running somewhere else, use the `REDIS_HOST` environment
 variable:
 
 ```sh
-$ REDIS_ADDRESS=www.redis.com:6000 bundle exec unicorn -c unicorn.rb -E ENVIRONMENT_NAME -D
+$ REDIS_HOST=www.redis.com:6000 bundle exec unicorn -c unicorn.rb -E ENVIRONMENT_NAME -D
 ```
 
 ### Redis
