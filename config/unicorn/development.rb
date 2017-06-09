@@ -1,3 +1,4 @@
+require 'fileutils'
 # set path to app that will be used to configure unicorn,
 # note the trailing slash in this example
 @dir = "#{File.expand_path(File.dirname(__FILE__))}/../../"
@@ -13,11 +14,17 @@ preload_app false
 # Dev port
 listen (ENV['UNICORN_PORT'] || 9292)
 
+# create tmp/pids in root
+pids_dir = "#{@dir}tmp/pids/"
+unless File.directory?(pids_dir)
+  FileUtils.mkdir_p(pids_dir)
+end
+
 # Set process id path
 if ENV['APP_NAME']
-  @pid_file = "#{@dir}tmp/pids/unicorn-#{ENV['APP_NAME']}.pid"
+  @pid_file = "#{pids_dir}unicorn-#{ENV['APP_NAME']}.pid"
 else
-  @pid_file = "#{@dir}tmp/pids/unicorn.pid"
+  @pid_file = "#{pids_dir}unicorn.pid"
 end
 
 pid @pid_file
