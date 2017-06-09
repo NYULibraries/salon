@@ -30,8 +30,13 @@ class Salon < Sinatra::Base
   end
 
   post '/' do
-    export_json_to_redis
+    id = json_params['id'] || generate_unique_id
+    redis.set(id, json_params['url'])
     {success: true}.to_json
+  end
+
+  post '/create_empty_resource' do
+    generate_unique_id
   end
 
   post '/reset' do
@@ -57,6 +62,17 @@ class Salon < Sinatra::Base
       rescue JSON::ParserError => e
         halt 400, { error: "Invalid JSON #{e.message}" }.to_json #"{\"message\":\"Invalid JSON: #{e.message}\"}" #
       end
+    end
+
+    def generate_unique_id
+      loop do
+        id = generate_random_id
+        return id unless redis.get id
+      end
+    end
+
+    def generate_random_id
+      SecureRandom.hex(4)
     end
 
     def export_json_to_redis
