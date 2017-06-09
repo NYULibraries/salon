@@ -14,5 +14,9 @@ hooks.beforeEach(function (transaction) {
   if (transaction.expected.statusCode === '400') {
     transaction.request.body = 'bad json';
   }
+  // replace with resource missing URL for 422
+  if (transaction.expected.statusCode === '422') {
+    transaction.request.body = "{\"id\":\"abcd\"}";
+  }
   transaction.skip = false;
 });
