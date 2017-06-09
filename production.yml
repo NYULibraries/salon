@@ -5,8 +5,8 @@ services:
     build: .
     image: nyulibraries/salon
     environment:
-      # - REDIS_ADDRESS=http://redis_arch:6379
-      - REDIS_ADDRESS=http://104.196.105.4:6379
+      # - REDIS_HOST=http://redis_arch:6379
+      - REDIS_HOST=http://104.196.105.4:6379
       - APP_NAME=arch
     env_file:
       - secrets.env
@@ -21,8 +21,8 @@ services:
     build: .
     image: nyulibraries/salon
     environment:
-      # - REDIS_ADDRESS=http://redis_getit:6379
-      - REDIS_ADDRESS=http://104.196.105.4:6379
+      # - REDIS_HOST=http://redis_getit:6379
+      - REDIS_HOST=http://104.196.105.4:6379
       - APP_NAME=getit
     env_file:
       - secrets.env
