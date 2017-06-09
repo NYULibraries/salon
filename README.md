@@ -34,9 +34,9 @@ $ docker build ./redis -t my_redis
 $ docker run -p 6379:6379 my_redis
 ```
 
-### Docker
+### Docker Compose
 
-You can also run the application within docker:
+You can also run the stack within Docker Compose:
 
 ```
 # Start the dev services up

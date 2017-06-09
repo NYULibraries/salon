@@ -18,4 +18,5 @@ jobs:
       - run:
           name: Start container and run tests
           command: |
+            touch secrets.env
             docker-compose run test rake
