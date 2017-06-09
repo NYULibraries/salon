@@ -93,6 +93,24 @@ paths:
                 example: "Invalid resource: 'url' required"
       security:
       - api_key: []
+  /create_empty_resource:
+    post:
+      tags:
+      - "persistent links"
+      summary: "Create empty persistent link – serves ID reserved"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Success - empty persistent link created"
+          schema:
+            type: string
+            example: "abcd"
+      security:
+      - api_key: []
   /reset:
     post:
       tags:

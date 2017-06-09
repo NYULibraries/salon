@@ -40,7 +40,7 @@ class Salon < Sinatra::Base
   end
 
   post '/create_empty_resource' do
-    generate_unique_id
+    generate_unique_id.to_json
   end
 
   post '/reset' do
