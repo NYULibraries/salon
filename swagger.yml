@@ -137,11 +137,14 @@ securityDefinitions:
 definitions:
   PersistentLink:
     type: "object"
-    additionalProperties:
-      type: "string"
+    properties:
+      id:
+        type: string
+      url:
+        type: string
     example:
-      123: "http://example.com"
-      abc: "http://library.nyu.edu"
+      id: "abcd"
+      url: "http://library.nyu.edu"
 externalDocs:
   description: "Find out more about Salon"
   url: "https://github.com/NYULibraries/salon"
