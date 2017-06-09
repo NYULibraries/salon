@@ -45,7 +45,7 @@ paths:
     post:
       tags:
       - "persistent links"
-      summary: "Create persistent link(s)"
+      summary: "Create persistent link"
       description: ""
       consumes:
       - "application/json"
@@ -54,7 +54,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "List of persistent links to be created, represented as a JSON object whose keys are IDs and whose values are their respective URLs"
+        description: "Persistent link to be created, represented as a JSON object with required \"url\" and optional \"id\" properties"
         required: true
         schema:
           $ref: "#/definitions/PersistentLink"
