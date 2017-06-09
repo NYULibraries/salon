@@ -88,7 +88,7 @@ class Salon < Sinatra::Base
       begin
         @json_params ||= JSON.parse(request.body.read)
       rescue JSON::ParserError => e
-        halt 400, { error: "Invalid JSON #{e.message}" }.to_json #"{\"message\":\"Invalid JSON: #{e.message}\"}" #
+        halt 400, { error: "Invalid JSON #{e.message}" }.to_json
       end
     end
 
