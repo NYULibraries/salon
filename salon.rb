@@ -58,12 +58,21 @@ class Salon < Sinatra::Base
     generate_unique_id.to_json
   end
 
-  post '/reset' do
-    export_json_to_redis
+  post '/reset_with_array' do
+    if json_params.any?{|resource| !resource['url'] }
+      status 422
+      return {error: "Invalid resource: 'url' required for all resources"}.to_json
+    end
+    response_array = json_params.map do |resource|
+      id = resource['id'] || generate_unique_id
+      redis.set(id, resource['url'])
+      {id: id, url: resource['url']}
+    end
     omitted_stored_params.each do |key|
       redis.del key
     end
-    {success: true}.to_json
+    status 201
+    response_array.to_json
   end
 
   not_found do
@@ -94,14 +103,8 @@ class Salon < Sinatra::Base
       SecureRandom.hex(4)
     end
 
-    def export_json_to_redis
-      json_params.each do |key, url|
-        redis.set key, url
-      end
-    end
-
     def omitted_stored_params
-      settings.cache.keys - json_params.keys
+      settings.cache.keys - json_params.map{|resource| resource['id'] }
     end
   end
 end

@@ -159,11 +159,11 @@ paths:
             example: "abcd"
       security:
       - api_key: []
-  /reset:
+  /reset_with_array:
     post:
       tags:
       - "persistent links"
-      summary: "Destroy existing links after creating new persistent link(s)"
+      summary: "Destroy existing links after creating new persistent links"
       description: ""
       consumes:
       - "application/json"
@@ -172,19 +172,19 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "List of persistent links to be created, represented as a JSON object whose keys are IDs and whose values are their respective URLs"
+        description: "List of persistent links to be created"
         required: true
         schema:
-          $ref: "#/definitions/PersistentLink"
+          type: array
+          items:
+            $ref: "#/definitions/PersistentLink"
       responses:
-        200:
-          description: "Success - persistent link(s) created"
+        201:
+          description: "Created - persistent links created"
           schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                example: true
+            type: "array"
+            items:
+              $ref: "#/definitions/PersistentLink"
         400:
           description: "Bad request - check your JSON formatting"
           schema:
@@ -211,6 +211,8 @@ securityDefinitions:
 definitions:
   PersistentLink:
     type: "object"
+    required:
+    - url
     properties:
       id:
         type: string

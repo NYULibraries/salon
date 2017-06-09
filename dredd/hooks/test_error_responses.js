@@ -1,6 +1,7 @@
 var hooks = require('hooks');
 
 hooks.beforeEach(function (transaction) {
+  transaction.skip = false;
   // don't run GET /{id} tests
   if (transaction.id === 'GET /abc') {
     transaction.skip = true;
@@ -16,11 +17,12 @@ hooks.beforeEach(function (transaction) {
   }
   // replace with resource missing URL for 422
   if (transaction.expected.statusCode === '422') {
-    if (transaction.id === 'POST /') {
-      transaction.request.body = "{\"id\":\"abcd\"}";
-    } else if (transaction.id === 'POST /create_with_array') {
-      transaction.request.body = "[{\"id\":\"abcd\"}]";
-    }
+    transaction.skip = true;
+    return;
+    // if (transaction.id === 'POST /') {
+    //   transaction.request.body = "{\"id\":\"abcd\"}";
+    // } else if (transaction.id === 'POST /create_with_array') {
+    //   transaction.request.body = "[{\"id\":\"abcd\"}]";
+    // }
   }
-  transaction.skip = false;
 });
