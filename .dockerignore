@@ -1,4 +1,4 @@
-tmp/sockets/*.sock
-tmp/pids/*.pid
+tmp/
+log/
 secrets.env
 libguides.sh
