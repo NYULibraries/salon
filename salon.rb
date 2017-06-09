@@ -36,7 +36,8 @@ class Salon < Sinatra::Base
     end
     id = json_params['id'] || generate_unique_id
     redis.set(id, json_params['url'])
-    {success: true}.to_json
+    status 201
+    {id: id, url: json_params['url']}.to_json
   end
 
   post '/create_empty_resource' do

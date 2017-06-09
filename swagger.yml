@@ -59,14 +59,15 @@ paths:
         schema:
           $ref: "#/definitions/PersistentLink"
       responses:
-        200:
-          description: "Success - persistent link(s) created"
+        201:
+          description: "Created - persistent link created"
           schema:
             type: object
             properties:
-              success:
-                type: boolean
-                example: true
+              id:
+                type: string
+              url:
+                type: string
         400:
           description: "Bad request - check your JSON formatting"
           schema:
