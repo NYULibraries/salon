@@ -157,6 +157,14 @@ paths:
           schema:
             type: string
             example: "abcd"
+        401:
+          description: "Unauthorized - invalid API key"
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Auth header not found or invalid"
       security:
       - api_key: []
   /reset_with_array:
