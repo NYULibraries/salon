@@ -62,12 +62,59 @@ paths:
         201:
           description: "Created - persistent link created"
           schema:
+            $ref: "#/definitions/PersistentLink"
+        400:
+          description: "Bad request - check your JSON formatting"
+          schema:
             type: object
             properties:
-              id:
+              error:
                 type: string
-              url:
+                example: "Invalid JSON"
+        401:
+          description: "Unauthorized - invalid API key"
+          schema:
+            type: object
+            properties:
+              error:
                 type: string
+                example: "Auth header not found or invalid"
+        422:
+          description: "Unprocessable Entity - missing URL"
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Invalid resource: 'url' required"
+      security:
+      - api_key: []
+  /create_with_array:
+    post:
+      tags:
+      - "persistent links"
+      summary: "Create persistent links"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of persistent link objects"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/PersistentLink"
+      responses:
+        201:
+          description: "Created - persistent links created"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/PersistentLink"
         400:
           description: "Bad request - check your JSON formatting"
           schema:

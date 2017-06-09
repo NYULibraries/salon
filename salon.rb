@@ -40,6 +40,20 @@ class Salon < Sinatra::Base
     {id: id, url: json_params['url']}.to_json
   end
 
+  post '/create_with_array' do
+    if json_params.any?{|resource| !resource['url'] }
+      status 422
+      return {error: "Invalid resource: 'url' required for all resources"}.to_json
+    end
+    response_array = json_params.map do |resource|
+      id = resource['id'] || generate_unique_id
+      redis.set(id, resource['url'])
+      {id: id, url: resource['url']}
+    end
+    status 201
+    response_array.to_json
+  end
+
   post '/create_empty_resource' do
     generate_unique_id.to_json
   end
