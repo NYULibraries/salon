@@ -12,7 +12,7 @@ services:
       - APP_NAME=arch
     env_file:
       - secrets.env
-    command: ./scripts/start.sh arch
+    command: rackup -o 0.0.0.0
     depends_on:
       - redis_arch
     # http://dockerhost:9292
@@ -21,8 +21,6 @@ services:
     build: .
     volumes:
       - .:/app
-    links:
-      - redis_getit:redishost
     environment:
       - REDIS_HOST=http://redis_getit:6379
       - APP_NAME=getit
@@ -30,7 +28,7 @@ services:
       - secrets.env
     ports:
       - "9293:9292"
-    command: ./scripts/start.sh getit
+    command: rackup -o 0.0.0.0
     depends_on:
       - redis_getit
     # http://dockerhost:9293
