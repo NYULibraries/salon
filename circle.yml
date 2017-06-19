@@ -19,6 +19,7 @@ dependencies:
   override:
     - docker version
     - docker-compose version
+    - touch secrets.env
     - docker-compose up -d
 
 database:
