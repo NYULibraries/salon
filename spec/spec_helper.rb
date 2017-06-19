@@ -5,11 +5,10 @@ require 'rspec/its'
 
 ENV['RACK_ENV'] = 'test'
 
-require_relative '../salon'
+Dir.glob('./app/{helpers,controllers}/*.rb').each { |file| require file }
 
 module RSpecMixin
   include Rack::Test::Methods
-  def app() Salon end
 end
 
 RSpec.configure { |c| c.include RSpecMixin }

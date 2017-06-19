@@ -1,10 +1,12 @@
-require_relative 'spec_helper'
+require 'spec_helper'
 
-describe 'Salon' do
+describe 'ResourceController' do
+  def app() ResourceController end
+
   subject { last_response }
 
   let(:cache){ double('cache', get: nil) }
-  before { allow(Salon.settings).to receive(:cache).and_return cache }
+  before { allow(ResourceController.settings).to receive(:cache).and_return cache }
 
   describe "GET /" do
     before { get "/" }
@@ -31,23 +33,6 @@ describe 'Salon' do
         it { is_expected.to be_bad_request }
       end
     end
-  end
-
-  describe "GET /api/v1/docs" do
-    before { get "/api/v1/docs" }
-    it { is_expected.to be_ok }
-  end
-
-  describe "GET /api/v1/swagger.json" do
-    let(:hash){ {version: "1", something: "else"} }
-    let(:yaml){ hash.to_yaml }
-    let(:json){ hash.to_json }
-    before do
-      allow(File).to receive(:open).with('swagger.yml').and_return yaml
-      get "/api/v1/swagger.json"
-    end
-    it { is_expected.to be_ok }
-    its(:body) { is_expected.to eq json }
   end
 
   describe "POST /" do
