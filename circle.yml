@@ -1,8 +1,9 @@
 machine:
   pre:
-    - curl -L https://github.com/docker/compose/releases/download/1.10.0/docker-compose-`uname -s`-`uname -m` > /homebin/docker-compose
-    - sudo chmod +x /home/bin/docker-compose
-    - docker-compose version
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+    - pip install docker-compose
+    - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.10.0-circleci'
+    - sudo chmod 0755 /usr/bin/docker
   services:
     - docker
 
