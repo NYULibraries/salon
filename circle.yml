@@ -1,8 +1,7 @@
 machine:
-  ruby:
-    version: 2.4.0
-  node:
-    version: 4.5.0
+  services:
+    - docker
+
 general:
   branches:
     only:
@@ -10,14 +9,17 @@ general:
       - /feature\/.+/
       - /bug\/.+/
       - /chore\/.+/
+
 dependencies:
   override:
-    - gem install bundler
-    - bundle install
-    - npm install -g dredd@3.5.0
-test:
-  override:
-    - bundle exec rake
+    - docker version
+    - docker-compose version
+    - docker-compose up -d
+
 database:
   override:
-    - redis-server --daemonize yes
+    - echo "Do nothing"
+
+test:
+  override:
+    - docker-compose run -e RAILS_ENV=test test rake
