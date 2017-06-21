@@ -3,13 +3,10 @@ require 'rest-client'
 module OAuth2
   class Base
 
-    attr_accessor :status_code, :error_response
-
     @@oauth_token_info_path = "/oauth/token/info"
-    @@token_path = "/oauth/token"
 
     def self.oauth2_server
-      ENV['OAUTH2_SERVER'] || 'http://dockerhost:3000'
+      ENV['OAUTH2_SERVER'] || 'http://192.168.99.100:3000'
     end
 
     def initialize
@@ -18,8 +15,8 @@ module OAuth2
 
   protected
 
-    def set_error(e)
-      { error: { code: JSON.parse(e.http_body)["error"], description: JSON.parse(e.http_body)["error_description"] } }
+    def set_error(error, error_description)
+      { error: { code: error, description: error_description } }
     end
 
   end

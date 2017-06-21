@@ -13,20 +13,12 @@ class ResourceController < ApplicationController
 
   before /^(?!\/reset)/ do
     next unless request.post?
-    token = OAuth2::Token.new(access_token: session[:access_token])
-
-    unless token.valid?
-      halt token.status_code, token.error_response.to_json
-    end
+    authenticate!
   end
 
   before '/reset' do
     next unless request.post?
-    token = OAuth2::Token.new(access_token: session[:access_token], scope: 'admin')
-    # require 'pry';binding.pry
-    unless token.valid?
-      halt token.status_code, token.error_response.to_json
-    end
+    authenticate!(admin: true)
   end
 
   get '/:identifier' do
@@ -47,6 +39,15 @@ class ResourceController < ApplicationController
       redis.del key
     end
     {success: true}.to_json
+  end
+
+  def authenticate!(admin: false)
+    token = OAuth2::Token.new(access_token: session[:access_token])
+    token.scope = 'admin' if admin
+
+    unless token.valid?
+      halt token.status_code, token.error_response.to_json
+    end
   end
 
 end
