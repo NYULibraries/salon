@@ -74,17 +74,17 @@ paths:
             properties:
               error:
                 type: string
-                example: "Invalid JSON"
+                example: "Invalid JSON ###: unexpected token at ''"
         401:
-          description: "Unauthorized - invalid API key"
+          description: "Unauthorized - invalid access token"
           schema:
             type: object
             properties:
               error:
                 type: string
-                example: "Auth header not found or invalid"
+                example: "Unauthorized: The user does not have sufficient privileges to perform this action."
       security:
-      - api_key: []
+      - Bearer: []
   /reset:
     post:
       tags:
@@ -118,21 +118,21 @@ paths:
             properties:
               error:
                 type: string
-                example: "Invalid JSON"
+                example: "Invalid JSON ###: unexpected token at ''"
         401:
-          description: "Unauthorized - invalid API key"
+          description: "Unauthorized - invalid access token"
           schema:
             type: object
             properties:
               error:
                 type: string
-                example: "Auth header not found or invalid"
+                example: "Unauthorized: The user does not have sufficient privileges to perform this action."
       security:
-      - api_key: []
+      - Bearer: []
 securityDefinitions:
-  api_key:
+  Bearer:
     type: "apiKey"
-    name: "Auth"
+    name: "Authorization"
     in: "header"
 definitions:
   PersistentLink:
