@@ -30,7 +30,7 @@ class ResourceController < ApplicationController
 
   post '/' do
     export_json_to_redis
-    {success: true}.to_json
+    { success: true }.to_json
   end
 
   post '/reset' do
@@ -38,7 +38,7 @@ class ResourceController < ApplicationController
     omitted_stored_params.each do |key|
       redis.del key
     end
-    {success: true}.to_json
+    { success: true }.to_json
   end
 
   def authenticate!(admin: false)
@@ -46,7 +46,7 @@ class ResourceController < ApplicationController
     token.scope = 'admin' if admin
 
     unless token.valid?
-      halt token.status_code, token.error_response.to_json
+      halt 401, { error: "Unauthorized: The user does not have sufficient privileges to perform this action." }.to_json
     end
   end
 
