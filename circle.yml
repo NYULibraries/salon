@@ -1,8 +1,12 @@
 machine:
-  ruby:
-    version: 2.4.0
-  node:
-    version: 4.5.0
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+    - pip install docker-compose
+    - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.10.0-circleci'
+    - sudo chmod 0755 /usr/bin/docker
+  services:
+    - docker
+
 general:
   branches:
     only:
@@ -10,14 +14,18 @@ general:
       - /feature\/.+/
       - /bug\/.+/
       - /chore\/.+/
+
 dependencies:
   override:
-    - gem install bundler
-    - bundle install
-    - npm install -g dredd@3.5.0
-test:
-  override:
-    - bundle exec rake
+    - docker version
+    - docker-compose version
+    - touch secrets.env
+    - docker-compose up -d
+
 database:
   override:
-    - redis-server --daemonize yes
+    - echo "Do nothing"
+
+test:
+  override:
+    - docker-compose run -e RAILS_ENV=test test rake
