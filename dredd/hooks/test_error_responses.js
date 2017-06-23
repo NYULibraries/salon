@@ -1,39 +1,47 @@
-var hooks = require('hooks');
-var Client = require('node-rest-client').Client;
-var stash = {};
+const hooks = require('hooks');
+const caseless = require('caseless');
+const request = require('sync-request');
+let stash = {};
 
-hooks.beforeAll(function (transation) {
-  var client = new Client();
-  var url = "https://dev.login.library.nyu.edu/oauth/token";
-  var parameters = {
-    data: {
+// Get a valid test token to pass to API calls
+hooks.beforeAll((transactions, done) => {
+  let res = request('POST', 'https://dev.login.library.nyu.edu/oauth/token', {
+    json: {
       "grant_type": "client_credentials",
-      "client_id": "id",
-      "client_secret": "secreet",
+      "client_id": process.env.TEST_CLIENT_ID,
+      "client_secret": process.env.TEST_CLIENT_SECRET,
       "scope": "admin"
     }
-  };
-  client.post(url, args, function (data, response) {
-    // parsed response body as js object
-    console.log(data);
-    // raw response
-    console.log(response);
   });
+  stash["token"] = JSON.parse(res.getBody('utf8'))["access_token"];
+  done();
 });
 
-hooks.beforeEach(function (transaction) {
+hooks.beforeEach((transaction, done) => {
   // don't run GET /{id} tests
   if (transaction.id === 'GET /abc') {
     transaction.skip = true;
-    return;
+    return done();
   }
+
   // add auth headers unless testing 401
   if (transaction.expected.statusCode !== '401') {
-    transaction.request.headers['Authorization'] = "Bearer " + stash['token']
+    transaction.request.headers['Authorization'] = "Bearer " + stash['token'];
   }
+
   // replace with bad JSON for 400
   if (transaction.expected.statusCode === '400') {
     transaction.request.body = 'bad json';
   }
   transaction.skip = false;
+  done();
+});
+
+// Scrub the access token from the public logs
+hooks.afterEach((transaction, done) => {
+  let headers = transaction.request.headers;
+  let name = caseless(headers).has('Authorization');
+  headers[name] = "Bearer t0ken";
+  transaction.request.headers = headers;
+  done();
 });
