@@ -30,7 +30,7 @@ module OAuth2
     end
 
     def valid_with_scope?(scope)
-      parsed_body["scopes"].include?(scope)
+      valid_no_scope? && parsed_body["scopes"].include?(scope)
     end
 
     def valid_no_scope?
