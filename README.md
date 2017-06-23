@@ -34,6 +34,8 @@ $ docker build ./redis -t my_redis
 $ docker run -p 6379:6379 my_redis
 ```
 
+This will spin up a redis instance at `http://{DOCKERHOST}:6379`
+
 ### Docker Compose
 
 You can also run the stack within Docker Compose:
@@ -45,7 +47,7 @@ $ docker-compose up -d
 $ docker-compose run test rake
 ```
 
-Visit your `http://dockerhost:9292`/`http://{docker-machine ip}:9292` to see the app in development.
+Visit your `http://{DOCKERHOST}:9292`/`http://{docker-machine ip}:9292` to see the app in development.
 
 ## Usage
 
@@ -65,7 +67,7 @@ To create new permalinks:
 
 ```
 curl -H "Content-Type: application/json" \
-  -H "Auth: $SALON_AUTH_TOKEN" \
+  -H "Authentication: Bearer $ACCESS_TOKEN" \
   -X POST \
   -d '{"key":"http://example.com"}' \
   http://localhost:9292 -v
@@ -77,7 +79,7 @@ To reset all permalinks (destroying all existing permalinks except those in the 
 
 ```
 curl -H "Content-Type: application/json" \
-  -H "Auth: $SALON_AUTH_TOKEN" \
+  -H "Authentication: Bearer $ACCESS_TOKEN" \
   -X POST \
   -d @permalinks.json \
   http://localhost:9292/reset -v
@@ -102,6 +104,68 @@ Run [dredd](https://github.com/apiaryio/dredd) tests, which check API JSON funct
 ```
 rake dredd
 ```
+
+### Preparing tests
+
+#### Preparing specs
+
+**Note** You only have to perform this prep work if something has changed. It has already been setup and shouldn't need to be setup anew each time.
+
+To test the OAuth2 authentication method in RSpec we need to setup some dummy OAuth applications in our provider. You could do this in staging or production (i.e. dev.login.library.nyu.edu, login.library.nyu.edu) or run the Login application in a local docker container:
+
+```
+cd ~/login
+docker-compose up -d
+docker-compose exec web rails s -b 0.0.0.0
+```
+
+This should bring up the login application with a logged in admin user at `http://{DOCKERHOST}:3000`.
+
+Edit `config/doorkeeper.rb`:
+
+```
+# Add this line
+force_ssl_in_redirect_uri false
+# Replace existing
+#   admin_authenticator do
+#     ...
+#   end
+# With
+admin_authenticator do
+  current_user
+end
+```
+
+Now you can create two new applications, `/oauth/applications`, one for admin and one for non-admin, and use those client credentials to create access tokens:
+
+```
+curl -X POST \
+  -d grant_type=client_credentials \
+  -d client_id=$CLIENT_ID \
+  -d client_secret=$CLIENT_SECRET \
+  -d scope=admin \
+  http://dockerhost:3000/oauth/token -v
+# Or with httpie
+http POST http://dockerhost:3000/oauth/token grant_type=client_credentials client_id=$CLIENT_ID client_secret=$CLIENT_SECRET scope=$SCOPE
+```
+
+Omit `scope=admin` for non-admin request.
+
+Use the access tokens generated to run your specs:
+
+```
+TOKEN={NONADMINTOKEN} ADMIN_TOKEN={ADMINTOKEN} OAUTH2_SERVER={DOCKERHOST} rspec
+```
+
+#### Preparing dredd
+
+Use client credentials of an existing application in Login Dev called "Salon Test" to run your rake task so dredd can setup a valid OAuth2 session before each test:
+
+```
+TEST_CLIENT_ID={SALON_TEST_CLIENT_ID} TEST_CLIENT_SECRET={SALON_TEST_CLIENT_SECRET} rake      
+```
+
+If you're running these tests in circle or with docker compose there shouldn't be any connectivity issues with redis, but if you're running them locally you may need to set the `REDIS_HOST` variable
 
 ## Stack notes
 

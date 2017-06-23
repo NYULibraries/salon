@@ -42,7 +42,8 @@ services:
       - .:/app
     environment:
       - REDIS_HOST=http://redis_test:6379
-      - OAUTH2_SERVER=http://login.dev
+    env_file:
+      - secrets.env
     command: "tail -f /dev/null"
     depends_on:
       - redis_test
