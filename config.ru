@@ -1,5 +1,9 @@
-require "sinatra"
+# config.ru
+require 'sinatra/base'
 
-require File.expand_path '../salon.rb', __FILE__
+# pull in the helpers and controllers
+Dir.glob('./app/{helpers,controllers}/*.rb').each { |file| require file }
 
-run Salon
+# map the controllers to routes
+map('/')      { run ResourceController }
+map('/api')   { run DocsController }
