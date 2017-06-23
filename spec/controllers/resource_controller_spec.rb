@@ -94,7 +94,7 @@ describe 'ResourceController' do
     context 'when bearer token is NOT sent' do
       before { post "/" }
       its(:status) { is_expected.to eql 401 }
-      its(:body) { is_expected.to eql "{\"error\":\"Unauthorized: The user does not have sufficient privileges to perform this action.\"}" }
+      its(:body) { is_expected.to eql '{"error":"Unauthorized: The user does not have sufficient privileges to perform this action."}' }
     end
   end
 end
