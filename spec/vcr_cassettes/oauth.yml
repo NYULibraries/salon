@@ -1,0 +1,762 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"25ab24d6337e7f0b44c53b8b6dc1484b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 81c46f1e-401e-40bb-8fd7-3c8cb88fa4f1
+      X-Runtime:
+      - '0.110713'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:00 GMT
+      Content-Length:
+      - '184'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":6913,"application":{"uid":"f127d2db8b40c4c74f53f9ce0c90f42fc1875602b099048c4df9a212e0454c89"},"created_at":1498251252}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:58:59 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"25ab24d6337e7f0b44c53b8b6dc1484b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 4d47fe5e-d6a3-4cb9-b230-af84d4bd6e72
+      X-Runtime:
+      - '0.079839'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:00 GMT
+      Content-Length:
+      - '184'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":6913,"application":{"uid":"f127d2db8b40c4c74f53f9ce0c90f42fc1875602b099048c4df9a212e0454c89"},"created_at":1498251252}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:00 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"f339c5ea938f1a9a9e8bfcae46762f10"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c92bef2f-fde4-4b3e-93d6-10c8321e54c4
+      X-Runtime:
+      - '0.100694'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:00 GMT
+      Content-Length:
+      - '177'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":[],"expires_in_seconds":6921,"application":{"uid":"5f02e7a57a8e4e0ecca47a5f3751e12392c224930852c92f3e6e31eb96745519"},"created_at":1498251261}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:00 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"f339c5ea938f1a9a9e8bfcae46762f10"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 5006abff-6f5c-4b45-b2c1-5bc0e71a8065
+      X-Runtime:
+      - '0.100522'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:00 GMT
+      Content-Length:
+      - '177'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":[],"expires_in_seconds":6921,"application":{"uid":"5f02e7a57a8e4e0ecca47a5f3751e12392c224930852c92f3e6e31eb96745519"},"created_at":1498251261}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:00 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"f339c5ea938f1a9a9e8bfcae46762f10"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 144aaf73-98ef-4b55-b148-5fd6f60ca2ba
+      X-Runtime:
+      - '0.079974'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:00 GMT
+      Content-Length:
+      - '177'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":[],"expires_in_seconds":6921,"application":{"uid":"5f02e7a57a8e4e0ecca47a5f3751e12392c224930852c92f3e6e31eb96745519"},"created_at":1498251261}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:00 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"f339c5ea938f1a9a9e8bfcae46762f10"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d2b0f24d-3c68-4889-8c7d-2f5245502387
+      X-Runtime:
+      - '0.075947'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:00 GMT
+      Content-Length:
+      - '177'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":[],"expires_in_seconds":6921,"application":{"uid":"5f02e7a57a8e4e0ecca47a5f3751e12392c224930852c92f3e6e31eb96745519"},"created_at":1498251261}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:00 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 401
+      message: 'Unauthorized '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 7b26ca37-8229-4a98-bf5f-a73c47c481e7
+      X-Runtime:
+      - '0.089051'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:00 GMT
+      Content-Length:
+      - '162'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:00 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 401
+      message: 'Unauthorized '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 11481bfe-8699-4865-b1a4-fc47468b429d
+      X-Runtime:
+      - '0.095587'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:00 GMT
+      Content-Length:
+      - '162'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:00 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"f339c5ea938f1a9a9e8bfcae46762f10"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 0c9b87e3-d1cb-4f80-9326-fbe38bd86d82
+      X-Runtime:
+      - '0.076369'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:00 GMT
+      Content-Length:
+      - '177'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":[],"expires_in_seconds":6921,"application":{"uid":"5f02e7a57a8e4e0ecca47a5f3751e12392c224930852c92f3e6e31eb96745519"},"created_at":1498251261}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:00 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"eef6f03c9067a72b7aa66eeec0fd582d"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 48251ef9-f8ba-4836-b630-eee5059cf346
+      X-Runtime:
+      - '0.108570'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:01 GMT
+      Content-Length:
+      - '184'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":6912,"application":{"uid":"f127d2db8b40c4c74f53f9ce0c90f42fc1875602b099048c4df9a212e0454c89"},"created_at":1498251252}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:00 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"eef6f03c9067a72b7aa66eeec0fd582d"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - ef775d3b-bca3-421e-975c-c9f888019ee8
+      X-Runtime:
+      - '0.070870'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:01 GMT
+      Content-Length:
+      - '184'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":6912,"application":{"uid":"f127d2db8b40c4c74f53f9ce0c90f42fc1875602b099048c4df9a212e0454c89"},"created_at":1498251252}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:01 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"eef6f03c9067a72b7aa66eeec0fd582d"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 362d4593-c79d-4269-b104-d074b6014e11
+      X-Runtime:
+      - '0.092938'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:01 GMT
+      Content-Length:
+      - '184'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":6912,"application":{"uid":"f127d2db8b40c4c74f53f9ce0c90f42fc1875602b099048c4df9a212e0454c89"},"created_at":1498251252}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:01 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"eef6f03c9067a72b7aa66eeec0fd582d"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 3f7b0291-9d43-4220-8872-393f0d8ed63c
+      X-Runtime:
+      - '0.121504'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:01 GMT
+      Content-Length:
+      - '184'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":6912,"application":{"uid":"f127d2db8b40c4c74f53f9ce0c90f42fc1875602b099048c4df9a212e0454c89"},"created_at":1498251252}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:01 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 401
+      message: 'Unauthorized '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 2d3f23f5-3ad0-4f6d-a6b4-c062ef275a2f
+      X-Runtime:
+      - '0.082707'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:01 GMT
+      Content-Length:
+      - '162'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:01 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin15.6.0 x86_64) ruby/2.4.0p0
+      Host:
+      - dockerhost:3000
+  response:
+    status:
+      code: 401
+      message: 'Unauthorized '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - c83cadeb-c040-45ed-ad0c-e9a4336de2ff
+      X-Runtime:
+      - '0.098341'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.3.4/2017-03-30)
+      Date:
+      - Fri, 23 Jun 2017 20:59:01 GMT
+      Content-Length:
+      - '162'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 20:59:01 GMT
+recorded_with: VCR 3.0.3
