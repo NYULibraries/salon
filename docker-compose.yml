@@ -29,7 +29,8 @@ services:
       - secrets.env
     ports:
       - "9293:9292"
-    command: rackup -o 0.0.0.0
+    # command: rackup -o 0.0.0.0
+    command: "tail -f /dev/null"
     depends_on:
       - redis_getit
     # http://dockerhost:9293
@@ -41,7 +42,9 @@ services:
     volumes:
       - .:/app
     environment:
-      - REDIS_HOST=http://redis_test:6379
+      REDIS_HOST: http://redis_test:6379
+      TEST_CLIENT_ID:
+      TEST_CLIENT_SECRET:
     env_file:
       - secrets.env
     command: "tail -f /dev/null"
