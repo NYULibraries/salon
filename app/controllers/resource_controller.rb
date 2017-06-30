@@ -6,6 +6,7 @@ class ResourceController < ApplicationController
   helpers Sinatra::RedisHelper
   helpers Sinatra::JsonHelper
   helpers Sinatra::JsonToRedisHelper
+  helpers Sinatra::IdHelper
 
   before do
     session[:access_token] = env.fetch('HTTP_AUTHORIZATION', '').slice(7..-1)

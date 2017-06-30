@@ -14983,4 +14983,853 @@ http_interactions:
         malformed."}'
     http_version: 
   recorded_at: Fri, 30 Jun 2017 17:56:20 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:28 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 74adfbb8-c252-46d8-a49b-2c9429153736
+      Etag:
+      - W/"f39162ff240490ac0c387454e97241b4"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.029753'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":1961,"application":{"uid":"3a39f037ada9d788363956dacfcaba15b8cfc12f7c0bb8a840f11b8c4bd9e269"},"created_at":1498841470}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:28 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:29 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 1f065c5b-275f-44a7-a472-cdef5fda3688
+      Etag:
+      - W/"f39162ff240490ac0c387454e97241b4"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.029071'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":1961,"application":{"uid":"3a39f037ada9d788363956dacfcaba15b8cfc12f7c0bb8a840f11b8c4bd9e269"},"created_at":1498841470}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:29 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:29 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 2c59a201-c811-48d9-8aea-b7c535234d5e
+      Etag:
+      - W/"b13730e6b6e9701eaf3cec8b6dd5c687"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.029110'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":[],"expires_in_seconds":1654,"application":{"uid":"45dd67e79e1b55660bcb1cfda9559daa0a66cfcc8dbfbf313ab720df8964b3c6"},"created_at":1498841163}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:29 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:30 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 8b779122-2e92-4621-9714-5f1b18ad5caa
+      Etag:
+      - W/"90d72eea976503711962b355c9de1663"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.029426'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":[],"expires_in_seconds":1653,"application":{"uid":"45dd67e79e1b55660bcb1cfda9559daa0a66cfcc8dbfbf313ab720df8964b3c6"},"created_at":1498841163}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:30 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:30 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 391d7157-7b93-4e02-b019-c1b4425a2f04
+      Etag:
+      - W/"90d72eea976503711962b355c9de1663"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.030720'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":[],"expires_in_seconds":1653,"application":{"uid":"45dd67e79e1b55660bcb1cfda9559daa0a66cfcc8dbfbf313ab720df8964b3c6"},"created_at":1498841163}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:31 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:31 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 23925550-cbf8-40d9-ab52-4ed4ba641848
+      Etag:
+      - W/"be367c6c1091b12875d9ab895f039862"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.029025'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":[],"expires_in_seconds":1652,"application":{"uid":"45dd67e79e1b55660bcb1cfda9559daa0a66cfcc8dbfbf313ab720df8964b3c6"},"created_at":1498841163}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:31 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:32 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - fc55ce3d-a8b0-4d1a-b37d-dac84636d61b
+      X-Runtime:
+      - '0.011356'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:32 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:32 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 62b89c68-3592-45cd-8e30-63530e6959ed
+      X-Runtime:
+      - '0.011438'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:32 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:33 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 64783694-185f-4f0a-9224-4e74a22a09ef
+      Etag:
+      - W/"687c0eab83df9ea01181771f7f8dcbde"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.029495'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":[],"expires_in_seconds":1650,"application":{"uid":"45dd67e79e1b55660bcb1cfda9559daa0a66cfcc8dbfbf313ab720df8964b3c6"},"created_at":1498841163}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:33 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:33 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - a07933a7-5f67-4128-9514-e299410d8ced
+      Etag:
+      - W/"ec27e64a6c5dbd98c0177ce159ed2039"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.033322'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":1957,"application":{"uid":"3a39f037ada9d788363956dacfcaba15b8cfc12f7c0bb8a840f11b8c4bd9e269"},"created_at":1498841470}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:33 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:34 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - fd3cb6b4-667e-4388-9a5a-49d85b670da4
+      Etag:
+      - W/"a790b1fe2bd090ba44ad8aa2130e3d2d"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.029487'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":1956,"application":{"uid":"3a39f037ada9d788363956dacfcaba15b8cfc12f7c0bb8a840f11b8c4bd9e269"},"created_at":1498841470}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:34 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:34 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 95204049-6ebc-4546-9fd8-af48994271ea
+      Etag:
+      - W/"a790b1fe2bd090ba44ad8aa2130e3d2d"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.028613'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":1956,"application":{"uid":"3a39f037ada9d788363956dacfcaba15b8cfc12f7c0bb8a840f11b8c4bd9e269"},"created_at":1498841470}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:34 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:35 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 8e8cf3f6-3394-4aec-bcca-20f235af35e6
+      Etag:
+      - W/"d566441c30f983c482cbf15226f07739"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.029805'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"resource_owner_id":null,"scopes":["admin"],"expires_in_seconds":1955,"application":{"uid":"3a39f037ada9d788363956dacfcaba15b8cfc12f7c0bb8a840f11b8c4bd9e269"},"created_at":1498841470}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:35 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:35 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - dcc23445-bd85-4b03-bbd0-ba136357964e
+      X-Runtime:
+      - '0.012325'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:35 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Fri, 30 Jun 2017 18:18:36 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - efd90f36-5ba1-46c3-8f02-71217a4aecbb
+      X-Runtime:
+      - '0.011589'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 18:18:36 GMT
 recorded_with: VCR 3.0.3
