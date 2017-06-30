@@ -44,9 +44,9 @@ describe 'ResourceController' do
 
       context 'and access token is valid for admin' do
         let(:access_token) { ENV['ADMIN_TOKEN'] || 'admin_access_token' }
-        let(:data) { '{ "key":"http://value.com" }' }
-        its(:status) { is_expected.to eql 200 }
-        its(:body) { is_expected.to eql '{"success":true}' }
+        let(:data) { '{"id":"key","url":"http://value.com"}' }
+        its(:status) { is_expected.to eql 201 }
+        its(:body) { is_expected.to eql data }
       end
 
       context 'and access token is valid for non-admin' do
@@ -55,9 +55,9 @@ describe 'ResourceController' do
           its(:body) { is_expected.to include "Invalid JSON" }
         end
         context 'and data is valid' do
-          let(:data) { '{ "key":"http://value.com" }' }
-          its(:status) { is_expected.to eql 200 }
-          its(:body) { is_expected.to eql '{"success":true}' }
+          let(:data) { '{"id":"key","url":"http://value.com"}' }
+          its(:status) { is_expected.to eql 201 }
+          its(:body) { is_expected.to eql data }
         end
       end
     end
@@ -68,11 +68,19 @@ describe 'ResourceController' do
     end
   end
 
-  describe "POST /reset" do
+  describe "POST /create_with_array" do
+    # tested in dredd
+  end
+
+  describe "POST /create_empty_resource" do
+    # tested in dredd
+  end
+
+  describe "POST /reset_with_array" do
     let(:data) { nil }
     let(:access_token) { ENV['TOKEN'] || 'access_token' }
     context 'when bearer token is sent in authorization header' do
-      before { post "/reset", data, {'HTTP_AUTHORIZATION' => "Bearer #{access_token}"} }
+      before { post "/reset_with_array", data, {'HTTP_AUTHORIZATION' => "Bearer #{access_token}"} }
       subject { last_response }
 
       context 'and access token is valid for non-admin' do
@@ -85,9 +93,9 @@ describe 'ResourceController' do
           its(:body) { is_expected.to include "Invalid JSON"}
         end
         context 'and data is valid' do
-          let(:data) { '{ "key":"http://value.com", "key2":"http://value2.org" }' }
-          its(:status) { is_expected.to eql 200 }
-          its(:body) { is_expected.to eql '{"success":true}' }
+          let(:data) { '[{"id":"key","url":"http://value.com"},{"id":"key2","url":"http://value2.org"}]' }
+          its(:status) { is_expected.to eql 201 }
+          its(:body) { is_expected.to eql data }
         end
       end
     end

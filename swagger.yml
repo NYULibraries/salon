@@ -45,7 +45,7 @@ paths:
     post:
       tags:
       - "persistent links"
-      summary: "Create persistent link(s)"
+      summary: "Create persistent link"
       description: ""
       consumes:
       - "application/json"
@@ -54,19 +54,15 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "List of persistent links to be created, represented as a JSON object whose keys are IDs and whose values are their respective URLs"
+        description: "Persistent link to be created, represented as a JSON object with required \"url\" and optional \"id\" properties"
         required: true
         schema:
           $ref: "#/definitions/PersistentLink"
       responses:
-        200:
-          description: "Success - persistent link(s) created"
+        201:
+          description: "Created - persistent link created"
           schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                example: true
+            $ref: "#/definitions/PersistentLink"
         400:
           description: "Bad request - check your JSON formatting"
           schema:
@@ -83,13 +79,21 @@ paths:
               error:
                 type: string
                 example: "Unauthorized: The user does not have sufficient privileges to perform this action."
+        422:
+          description: "Unprocessable Entity - missing URL"
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Invalid resource: 'url' required"
       security:
       - Bearer: []
-  /reset:
+  /create_with_array:
     post:
       tags:
       - "persistent links"
-      summary: "Destroy existing links after creating new persistent link(s)"
+      summary: "Create persistent links"
       description: ""
       consumes:
       - "application/json"
@@ -98,19 +102,97 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "List of persistent links to be created, represented as a JSON object whose keys are IDs and whose values are their respective URLs"
+        description: "List of persistent link objects"
         required: true
         schema:
-          $ref: "#/definitions/PersistentLink"
+          type: "array"
+          items:
+            $ref: "#/definitions/PersistentLink"
       responses:
-        200:
-          description: "Success - persistent link(s) created"
+        201:
+          description: "Created - persistent links created"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/PersistentLink"
+        400:
+          description: "Bad request - check your JSON formatting"
           schema:
             type: object
             properties:
-              success:
-                type: boolean
-                example: true
+              error:
+                type: string
+                example: "Invalid JSON"
+        401:
+          description: "Unauthorized - invalid API key"
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Auth header not found or invalid"
+        422:
+          description: "Unprocessable Entity - missing URL"
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Invalid resource: 'url' required"
+      security:
+      - api_key: []
+  /create_empty_resource:
+    post:
+      tags:
+      - "persistent links"
+      summary: "Create empty persistent link – serves ID reserved"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Success - empty persistent link created"
+          schema:
+            type: string
+            example: "abcd"
+        401:
+          description: "Unauthorized - invalid API key"
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Auth header not found or invalid"
+      security:
+      - api_key: []
+  /reset_with_array:
+    post:
+      tags:
+      - "persistent links"
+      summary: "Destroy existing links after creating new persistent links"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of persistent links to be created"
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: "#/definitions/PersistentLink"
+      responses:
+        201:
+          description: "Created - persistent links created"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/PersistentLink"
         400:
           description: "Bad request - check your JSON formatting"
           schema:
@@ -127,6 +209,14 @@ paths:
               error:
                 type: string
                 example: "Unauthorized: The user does not have sufficient privileges to perform this action."
+        422:
+          description: "Unprocessable Entity - missing URL"
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Invalid resource: 'url' required"
       security:
       - Bearer: []
 securityDefinitions:
@@ -137,11 +227,16 @@ securityDefinitions:
 definitions:
   PersistentLink:
     type: "object"
-    additionalProperties:
-      type: "string"
+    required:
+    - url
+    properties:
+      id:
+        type: string
+      url:
+        type: string
     example:
-      123: "http://example.com"
-      abc: "http://library.nyu.edu"
+      id: "abcd"
+      url: "http://library.nyu.edu"
 externalDocs:
   description: "Find out more about Salon"
   url: "https://github.com/NYULibraries/salon"
