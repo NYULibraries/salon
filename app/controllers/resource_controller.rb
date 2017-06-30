@@ -11,12 +11,12 @@ class ResourceController < ApplicationController
     session[:access_token] = env.fetch('HTTP_AUTHORIZATION', '').slice(7..-1)
   end
 
-  before /^(?!\/reset)/ do
+  before /^(?!\/reset_with_array)/ do
     next unless request.post?
     authenticate!
   end
 
-  before '/reset' do
+  before '/reset_with_array' do
     next unless request.post?
     authenticate!(admin: true)
   end
@@ -29,16 +29,49 @@ class ResourceController < ApplicationController
   end
 
   post '/' do
-    export_json_to_redis
-    { success: true }.to_json
+    if !json_params['url']
+      status 422
+      return {error: "Invalid resource: 'url' required"}.to_json
+    end
+    id = json_params['id'] || generate_unique_id
+    redis.set(id, json_params['url'])
+    status 201
+    {id: id, url: json_params['url']}.to_json
   end
 
-  post '/reset' do
-    export_json_to_redis
+  post '/create_with_array' do
+    if json_params.any?{|resource| !resource['url'] }
+      status 422
+      return {error: "Invalid resource: 'url' required for all resources"}.to_json
+    end
+    response_array = json_params.map do |resource|
+      id = resource['id'] || generate_unique_id
+      redis.set(id, resource['url'])
+      {id: id, url: resource['url']}
+    end
+    status 201
+    response_array.to_json
+  end
+
+  post '/create_empty_resource' do
+    generate_unique_id.to_json
+  end
+
+  post '/reset_with_array' do
+    if json_params.any?{|resource| !resource['url'] }
+      status 422
+      return {error: "Invalid resource: 'url' required for all resources"}.to_json
+    end
+    response_array = json_params.map do |resource|
+      id = resource['id'] || generate_unique_id
+      redis.set(id, resource['url'])
+      {id: id, url: resource['url']}
+    end
     omitted_stored_params.each do |key|
       redis.del key
     end
-    { success: true }.to_json
+    status 201
+    response_array.to_json
   end
 
   def authenticate!(admin: false)

@@ -16,6 +16,17 @@ module Sinatra
         redis.set key, url
       end
     end
+
+    def generate_unique_id
+      loop do
+        id = generate_random_id
+        return id unless redis.get id
+      end
+    end
+
+    def generate_random_id
+      SecureRandom.hex(4)
+    end
   end
 
   helpers JsonHelper
