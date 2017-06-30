@@ -111,32 +111,36 @@ rake dredd
 
 **Note** You only have to perform this prep work if something has changed. It has already been setup and shouldn't need to be setup anew each time.
 
-To test the OAuth2 authentication method in RSpec we need to setup some dummy OAuth applications in our provider. You could do this in staging or production (i.e. dev.login.library.nyu.edu, login.library.nyu.edu) or run the Login application in a local docker container:
+To test the OAuth2 authentication method in RSpec we need to setup some dummy OAuth applications in our provider. You could do this in staging or production (i.e. dev.login.library.nyu.edu, login.library.nyu.edu) or run the Login application in a local docker container.
+
+To run the application locally in docker, first build the docker compose:
 
 ```
 cd ~/login
 docker-compose up -d
-docker-compose exec web rails s -b 0.0.0.0
 ```
 
-This should bring up the login application with a logged in admin user at `http://{DOCKERHOST}:3000`.
-
-Edit `config/doorkeeper.rb`:
+Edit `config/initializers/doorkeeper.rb` to disable forced SSL and replace existing `admin_authenticator` block:
 
 ```
 # Add this line
 force_ssl_in_redirect_uri false
-# Replace existing
-#   admin_authenticator do
-#     ...
-#   end
-# With
+
 admin_authenticator do
+  # Replace existing
   current_user
 end
 ```
 
-Now you can create two new applications, `/oauth/applications`, one for admin and one for non-admin, and use those client credentials to create access tokens:
+Then start the server:
+
+```
+docker-compose exec web rails s -b 0.0.0.0
+```
+
+This brings up the login application with a logged in admin user at or `${DOCKERHOST}:3000`
+
+You can now navigate to `http://dockerhost:3000/oauth/applications` to create two new applications, one for admin and one for non-admin. Those client credentials can then be used to create access tokens:
 
 ```
 curl -X POST \
@@ -157,9 +161,11 @@ Use the access tokens generated to run your specs:
 TOKEN={NONADMINTOKEN} ADMIN_TOKEN={ADMINTOKEN} OAUTH2_SERVER={DOCKERHOST} rspec
 ```
 
+After the first run, VCR generates cassettes to stub the request for subsequent runs until an edit is made to the application.
+
 #### Preparing dredd
 
-Use client credentials of an existing application in Login Dev called "Salon Test" to run your rake task so dredd can setup a valid OAuth2 session before each test:
+Use client credentials of an existing application in Login Dev called "Salon Test Admin" to run your rake task so dredd can setup a valid OAuth2 session before each test:
 
 ```
 TEST_CLIENT_ID={SALON_TEST_CLIENT_ID} TEST_CLIENT_SECRET={SALON_TEST_CLIENT_SECRET} rake      
