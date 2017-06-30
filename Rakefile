@@ -5,7 +5,7 @@ task default: %w[spec dredd docs]
 RSpec::Core::RakeTask.new(:spec)
 
 task :dredd do
-  sh "TEST_AUTH=test_auth_key dredd --config dredd/config.yml"
+  sh "dredd --config dredd/config.yml"
 end
 
 task :docs do

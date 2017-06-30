@@ -70,15 +70,15 @@ paths:
             properties:
               error:
                 type: string
-                example: "Invalid JSON"
+                example: "Invalid JSON ###: unexpected token at ''"
         401:
-          description: "Unauthorized - invalid API key"
+          description: "Unauthorized - invalid access token"
           schema:
             type: object
             properties:
               error:
                 type: string
-                example: "Auth header not found or invalid"
+                example: "Unauthorized: The user does not have sufficient privileges to perform this action."
         422:
           description: "Unprocessable Entity - missing URL"
           schema:
@@ -88,7 +88,7 @@ paths:
                 type: string
                 example: "Invalid resource: 'url' required"
       security:
-      - api_key: []
+      - Bearer: []
   /create_with_array:
     post:
       tags:
@@ -200,15 +200,15 @@ paths:
             properties:
               error:
                 type: string
-                example: "Invalid JSON"
+                example: "Invalid JSON ###: unexpected token at ''"
         401:
-          description: "Unauthorized - invalid API key"
+          description: "Unauthorized - invalid access token"
           schema:
             type: object
             properties:
               error:
                 type: string
-                example: "Auth header not found or invalid"
+                example: "Unauthorized: The user does not have sufficient privileges to perform this action."
         422:
           description: "Unprocessable Entity - missing URL"
           schema:
@@ -218,11 +218,11 @@ paths:
                 type: string
                 example: "Invalid resource: 'url' required"
       security:
-      - api_key: []
+      - Bearer: []
 securityDefinitions:
-  api_key:
+  Bearer:
     type: "apiKey"
-    name: "Auth"
+    name: "Authorization"
     in: "header"
 definitions:
   PersistentLink:

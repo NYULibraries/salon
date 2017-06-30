@@ -5,11 +5,19 @@ require 'rspec/its'
 
 ENV['RACK_ENV'] = 'test'
 
-require_relative '../salon'
+Dir.glob('./app/{helpers,controllers}/*.rb').each { |file| require file }
+Dir.glob('./spec/support/**/*.rb').each { |file| require file }
 
 module RSpecMixin
   include Rack::Test::Methods
-  def app() Salon end
 end
 
-RSpec.configure { |c| c.include RSpecMixin }
+RSpec.configure do |config|
+  config.include RSpecMixin
+
+  config.around(:each) do |example|
+    VCR.use_cassette('oauth') do
+      example.run
+    end
+  end
+end
