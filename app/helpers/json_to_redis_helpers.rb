@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require_relative 'json_helpers'
-require_relative 'redis_helpers'
+# require_relative 'redis_helpers'
 
 module Sinatra
   module JsonToRedisHelper

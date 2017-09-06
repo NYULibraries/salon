@@ -1,10 +1,13 @@
 require 'sinatra/base'
 require 'redis-store'
+require_relative '../../lib/redis_object'
+require_relative '../../lib/persistent_link'
+require_relative '../../lib/persistent_link_collection'
 
 class ApplicationController < Sinatra::Base
   enable :sessions
 
-  set :cache, Redis::Store::Factory.create("#{ENV.fetch('REDIS_HOST','localhost:6379')}", { marshalling: false })
+
   set :root, File.expand_path('../..', __FILE__)
   set :public_folder, File.expand_path('../../../public', __FILE__)
 
