@@ -25,7 +25,7 @@ class ResourceController < ApplicationController
   get '/:identifier' do
     # redirect_url = redis.get("#{params['identifier']}")
     link = PersistentLink.new(id: "#{params['identifier']}")
-    redirect to(link.url) if link.url
+    redirect to(link.url) if link.get_url
     status 400
     erb :bad_request
   end
@@ -50,17 +50,32 @@ class ResourceController < ApplicationController
   end
 
   post '/create_with_array' do
-    if json_params.any?{|resource| !resource['url'] }
+    if !json_params.is_a?(Array)
       status 422
-      return {error: "Invalid resource: 'url' required for all resources"}.to_json
+      return {error: "Invalid resource: must be array"}.to_json
     end
-    response_array = json_params.map do |resource|
-      id = resource['id'] || generate_unique_id
-      redis.set(id, resource['url'])
-      {id: id, url: resource['url']}
+    link_array = json_params.map do |link_attrs|
+      PersistentLink.new(id: link_attrs['id'], url: link_attrs['url'])
     end
-    status 201
-    response_array.to_json
+    link_collection = PersistentLinkCollection.new(link_array)
+    if link_collection.save_all
+      status 201
+      link_collection.to_json
+    else
+      status 422
+      return {error: "Invalid resource: 'url' required"}.to_json
+    end
+    # if json_params.any?{|resource| !resource['url'] }
+    #   status 422
+    #   return {error: "Invalid resource: 'url' required for all resources"}.to_json
+    # end
+    # response_array = json_params.map do |resource|
+    #   id = resource['id'] || generate_unique_id
+    #   redis.set(id, resource['url'])
+    #   {id: id, url: resource['url']}
+    # end
+    # status 201
+    # response_array.to_json
   end
 
   post '/create_empty_resource' do

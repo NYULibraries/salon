@@ -18,12 +18,16 @@ class PersistentLink < RedisObject
     @id ||= generate_unique_id
   end
 
-  def url
+  def get_url
     @url ||= redis.get("#{id}")
   end
 
+  def url
+    @url
+  end
+
   def valid?
-    !!url
+    !!@url
   end
 
   def save
