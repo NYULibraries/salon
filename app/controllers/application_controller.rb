@@ -1,8 +1,8 @@
 require 'sinatra/base'
 require 'redis-store'
-require_relative '../../lib/redis_object'
-require_relative '../../lib/persistent_link'
-require_relative '../../lib/persistent_link_collection'
+require_relative '../lib/redis_object'
+require_relative '../lib/persistent_link'
+require_relative '../lib/persistent_link_collection'
 
 class ApplicationController < Sinatra::Base
   enable :sessions
