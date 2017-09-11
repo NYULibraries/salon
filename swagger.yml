@@ -88,7 +88,7 @@ paths:
                 type: string
                 example: "Invalid resource: 'url' required"
       security:
-      - Bearer: []
+      - oauth: []
   /create_with_array:
     post:
       tags:
@@ -140,7 +140,7 @@ paths:
                 type: string
                 example: "Invalid resource: 'url' required"
       security:
-      - api_key: []
+      - oauth: []
   /create_empty_resource:
     post:
       tags:
@@ -166,7 +166,7 @@ paths:
                 type: string
                 example: "Auth header not found or invalid"
       security:
-      - api_key: []
+      - oauth: []
   /reset_with_array:
     post:
       tags:
@@ -218,12 +218,15 @@ paths:
                 type: string
                 example: "Invalid resource: 'url' required"
       security:
-      - Bearer: []
+      - oauth: []
 securityDefinitions:
-  Bearer:
-    type: "apiKey"
-    name: "Authorization"
-    in: "header"
+  oauth:
+    type: "oauth2"
+    description: "Specify token in header as 'Bearer'"
+    authorizationUrl: "https://dev.login.library.nyu.edu"
+    tokenUrl: "https://dev.login.library.nyu.edu/oauth/token"
+    flow: "accessCode"
+    scopes: {}
 definitions:
   PersistentLink:
     type: "object"
