@@ -5,23 +5,25 @@ Salon is a simple app that redirects from short key `identifier`s to real URLs. 
 
 ## Getting Started
 
-To start, first have a local instance of Redis running at `localhost:6379` (see below), then run:
+You can run the server without a container, but we recommend running tests within [docker](#docker) due to various dependencies.
+
+To start, first have a local instance of [Redis](#redis) running at `localhost:6379`, then run:
 
 ```sh
 $ bundle install
-$ bundle exec unicorn -c unicorn.rb -E ENVIRONMENT_NAME
+$ ./scripts/start.sh
 ```
 
 If you have your instance of Redis running somewhere else, use the `REDIS_HOST` environment
 variable:
 
 ```sh
-$ REDIS_HOST=www.redis.com:6000 bundle exec unicorn -c unicorn.rb -E ENVIRONMENT_NAME -D
+$ REDIS_HOST=www.redis.com:6000 ./scripts/start.sh
 ```
 
 ### Redis
 
-Redis is our preferred key-value store. Without Redis running, the application won't work. To start redis locally run:
+[Redis](https://redis.io/) is our preferred key-value store. Without Redis running, the application won't work. To start redis locally run:
 
 ```sh
 $ docker run -p 6379:6379 redis:3.2.8
@@ -38,16 +40,25 @@ This will spin up a redis instance at `http://{DOCKERHOST}:6379`
 
 ### Docker Compose
 
-You can also run the stack within Docker Compose:
+You can also run the stack within [Docker Compose](https://docs.docker.com/):
 
 ```
-# Start the dev services up
-$ docker-compose up -d
-# Run the tests
-$ docker-compose run test rake
+docker-compose up -d
 ```
 
-Visit your `http://{DOCKERHOST}:9292`/`http://{docker-machine ip}:9292` to see the app in development.
+Start a Salon server for the arch:
+
+```
+docker-compose exec arch ./scripts/start.sh arch
+```
+
+Then visit your `http://{DOCKERHOST}:9292`/`http://{docker-machine ip}:9292` to see the app in development.
+
+Run tests:
+
+```
+docker-compose exec test rake
+```
 
 ## Usage
 
