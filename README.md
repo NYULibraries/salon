@@ -62,13 +62,13 @@ Full interactive specification: https://nyulibraries.github.io/salon/
 
 Salon authenticates used a token-based OAuth at https://login.library.nyu.edu. Include tokens in header as `Bearer`.
 
-Path | Method | Summary | Auth
--------|--------|----------
-/ | POST | Create persistent link | Required
-/create_empty_resource | POST | Create empty persistent link – serves ID reserved | Required
-/create_with_array | POST | Create persistent links | Required
-/reset_with_array | POST | Destroy existing links after creating new persistent links | Admin-Only
-/{id} | GET | Use a persistent link | N/A
+| Path | Method | Summary | Auth |
+| ----|----|----|----|
+| / | POST | Create persistent link | Required |
+| /create_empty_resource | POST | Create empty persistent link – serves ID reserved | Required |
+| /create_with_array | POST | Create persistent links | Required |
+| /reset_with_array | POST | Destroy existing links after creating new persistent links | Admin-Only |
+| /{id} | GET | Use a persistent link | N/A |
 
 ## Testing
 
