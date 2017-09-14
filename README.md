@@ -60,15 +60,15 @@ Then visit your `http://{DOCKERHOST}:9292`/`http://{docker-machine ip}:9292` to 
 
 Full interactive specification: https://nyulibraries.github.io/salon/
 
-Salon authenticates used a token-based OAuth at https://login.library.nyu.edu. Include tokens in header as `Bearer`.
+Salon authenticates using a token-based NYU Libraries OAuth at https://login.library.nyu.edu. Include tokens in header as `Bearer`.
 
-| Path | Method | Summary | Example Payload | Auth |
+| Path | Method | Summary | Example | Auth |
 | ----|----|----|----|----|
 | / | POST | Create persistent link | `{'id':'abc123', 'url':'http://example.com'}` | Required |
 | /create_empty_resource | POST | Create empty persistent link – serves ID reserved | N/A | Required |
 | /create_with_array | POST | Create persistent links | `[{'id':'abc123', 'url':'http://example.com'},{'url':'http://nyu.edu'}]` | Required |
 | /reset_with_array | POST | Destroy existing links after creating new persistent links | `[{'id':'abc123', 'url':'http://example.com'},{'url':'http://nyu.edu'}]` | Admin-Only |
-| /{id} | GET | Use a persistent link | N/A | N/A |
+| /{id} | GET | Follow a persistent link | /abc123 | N/A |
 
 ## Testing
 
