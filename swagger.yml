@@ -88,7 +88,7 @@ paths:
                 type: string
                 example: "Invalid resource: 'url' required"
       security:
-      - oauth: []
+      - nyulibraries_oauth: []
   /create_with_array:
     post:
       tags:
@@ -140,7 +140,7 @@ paths:
                 type: string
                 example: "Invalid resource: 'url' required"
       security:
-      - oauth: []
+      - nyulibraries_oauth: []
   /create_empty_resource:
     post:
       tags:
@@ -166,7 +166,7 @@ paths:
                 type: string
                 example: "Auth header not found or invalid"
       security:
-      - oauth: []
+      - nyulibraries_oauth: []
   /reset_with_array:
     post:
       tags:
@@ -218,9 +218,9 @@ paths:
                 type: string
                 example: "Invalid resource: 'url' required"
       security:
-      - oauth: []
+      - nyulibraries_oauth: []
 securityDefinitions:
-  oauth:
+  nyulibraries_oauth:
     type: "oauth2"
     description: "Specify token in header as 'Bearer'"
     authorizationUrl: "https://dev.login.library.nyu.edu"
