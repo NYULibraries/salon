@@ -19,7 +19,7 @@ hooks.beforeAll((transactions, done) => {
 
 hooks.beforeEach((transaction, done) => {
   // don't run GET /{id} tests
-  if (transaction.id === 'GET /abc') {
+  if (transaction.request.uri === '/abc' && transaction.request.method == 'GET') {
     transaction.skip = true;
     return done();
   }

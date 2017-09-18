@@ -6,7 +6,7 @@ module Sinatra
     def generate_unique_id
       loop do
         id = generate_random_id
-        return id unless redis.get id
+        return id unless RedisObject.exists?(id)
       end
     end
 

@@ -3,10 +3,10 @@ require_relative '../lib/oauth2/token'
 require_relative '../helpers/json_to_redis_helpers'
 
 class ResourceController < ApplicationController
-  helpers Sinatra::RedisHelper
   helpers Sinatra::JsonHelper
   helpers Sinatra::JsonToRedisHelper
   helpers Sinatra::IdHelper
+  helpers Sinatra::LinkHelper
 
   before do
     session[:access_token] = env.fetch('HTTP_AUTHORIZATION', '').slice(7..-1)
@@ -23,56 +23,52 @@ class ResourceController < ApplicationController
   end
 
   get '/:identifier' do
-    redirect_url = redis.get("#{params['identifier']}")
-    redirect to(redirect_url) if redirect_url
+    link = PersistentLink.new(id: "#{params['identifier']}")
+    redirect to(link.url) if link.get_url
     status 400
     erb :bad_request
   end
 
   post '/' do
-    if !json_params['url']
+    link = new_link(json_params)
+    if link.save
+      status 201
+      link.to_json
+    else
       status 422
       return {error: "Invalid resource: 'url' required"}.to_json
     end
-    id = json_params['id'] || generate_unique_id
-    redis.set(id, json_params['url'])
-    status 201
-    {id: id, url: json_params['url']}.to_json
   end
 
   post '/create_with_array' do
-    if json_params.any?{|resource| !resource['url'] }
+    if !json_params.is_a?(Array)
       status 422
-      return {error: "Invalid resource: 'url' required for all resources"}.to_json
+      return {error: "Invalid resource: must be array"}.to_json
     end
-    response_array = json_params.map do |resource|
-      id = resource['id'] || generate_unique_id
-      redis.set(id, resource['url'])
-      {id: id, url: resource['url']}
+    if link_collection.save_all
+      status 201
+      link_collection.to_json
+    else
+      status 422
+      return {error: "Invalid resource: 'url' required"}.to_json
     end
-    status 201
-    response_array.to_json
   end
 
   post '/create_empty_resource' do
-    generate_unique_id.to_json
+    link = PersistentLink.new
+    link.save(validate: false)
+    link.id.to_json
   end
 
   post '/reset_with_array' do
-    if json_params.any?{|resource| !resource['url'] }
+    if link_collection.save_all
+      omitted_stored_links.destroy_all
+      status 201
+      link_collection.to_json
+    else
       status 422
       return {error: "Invalid resource: 'url' required for all resources"}.to_json
     end
-    response_array = json_params.map do |resource|
-      id = resource['id'] || generate_unique_id
-      redis.set(id, resource['url'])
-      {id: id, url: resource['url']}
-    end
-    omitted_stored_params.each do |key|
-      redis.del key
-    end
-    status 201
-    response_array.to_json
   end
 
   def authenticate!(admin: false)

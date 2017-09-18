@@ -5,8 +5,8 @@ describe 'ResourceController' do
 
   subject { last_response }
 
-  let(:cache){ double('cache', get: nil, set: nil, keys: []) }
-  before { allow(ResourceController.settings).to receive(:cache).and_return cache }
+  let(:redis){ double('redis', get: nil, set: nil, keys: []) }
+  before { allow(RedisObject).to receive(:redis).and_return redis }
 
   describe "GET /" do
     before { get "/" }
@@ -16,7 +16,7 @@ describe 'ResourceController' do
   describe "GET /:identifier" do
     let(:example_site) { 'https://www.example.com/' }
     before do
-      allow(cache).to receive(:get).with('good_identifier').and_return example_site
+      allow(redis).to receive(:get).with('good_identifier').and_return example_site
       get "/#{identifier}"
     end
     context 'if an identifier is passed in' do
@@ -39,6 +39,7 @@ describe 'ResourceController' do
     let(:access_token) { ENV['TOKEN'] || 'access_token' }
     let(:data) { nil }
     context 'when bearer token is sent in authorization header' do
+      before { allow(redis).to receive(:set).and_return true }
       before { post "/", data, {'HTTP_AUTHORIZATION' => "Bearer #{access_token}"} }
       subject { last_response }
 

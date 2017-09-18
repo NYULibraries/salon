@@ -15832,4 +15832,1834 @@ http_interactions:
         malformed."}'
     http_version: 
   recorded_at: Fri, 30 Jun 2017 18:18:36 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:07 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 92189c63-9ec3-4abe-acb8-f6d1e9bd301a
+      X-Runtime:
+      - '0.233450'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:07 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:08 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 6c3a86e9-2797-4c09-a16f-e9e6c74f1378
+      X-Runtime:
+      - '0.019579'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:08 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:08 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - f602b693-0d32-4268-adce-9834704b6017
+      X-Runtime:
+      - '0.020129'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:08 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:09 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 6d794dad-a63e-4c7e-8384-f8416ff05b43
+      X-Runtime:
+      - '0.021147'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:09 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:10 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - f596dbe6-b912-4a56-9453-2477f6f0b316
+      X-Runtime:
+      - '0.019189'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:10 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:10 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 9318d0ba-59e5-4932-8bc0-dab9e6e4950e
+      X-Runtime:
+      - '0.037775'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:10 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:11 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 67067523-0bdd-4fb9-998b-5e002b450e6e
+      X-Runtime:
+      - '0.010791'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:11 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:11 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 626019d9-20e4-47c7-8bbe-4ac7653da037
+      X-Runtime:
+      - '0.012834'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:11 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:12 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 57f6eb16-cde0-493c-9081-ed0c01c7001e
+      X-Runtime:
+      - '0.019679'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:12 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:12 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 995baa69-402a-4ff7-a825-8d87175c76d4
+      X-Runtime:
+      - '0.019282'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:12 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:13 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - e7158c25-41f5-45b1-9d6b-7a622b0685e4
+      X-Runtime:
+      - '0.019788'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:13 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:14 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - d26d72fb-d0cb-42a2-810c-42c0c51654fb
+      X-Runtime:
+      - '0.019430'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:14 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:14 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 54e8f3bc-a85c-47ec-b98b-64f4fb53cd07
+      X-Runtime:
+      - '0.019818'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:14 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:15 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - bfbbc7e3-644f-4558-a14f-4bea0507c1d6
+      X-Runtime:
+      - '0.011016'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:15 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 19:26:15 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 041e86f6-9fdc-4744-80e8-3224c2cd1bfe
+      X-Runtime:
+      - '0.011009'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 19:26:15 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:04 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 9baac32e-2e4b-4d6a-af29-e7cf7665253b
+      X-Runtime:
+      - '0.020598'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:04 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:05 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 0ef9c107-0911-47d7-b5e5-a7cafd6d55f6
+      X-Runtime:
+      - '0.019258'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:05 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:06 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - abd529dd-dcc1-4d89-a6c5-f06309fd8845
+      X-Runtime:
+      - '0.020357'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:06 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:06 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 24ec9ace-94f5-49e8-8de5-276d12b3c623
+      X-Runtime:
+      - '0.019809'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:06 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:07 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - d134f377-5396-41a1-b2da-271fab157025
+      X-Runtime:
+      - '0.019553'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:07 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:07 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 70c28284-564c-42f5-8d8a-93c74f906fed
+      X-Runtime:
+      - '0.019580'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:07 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:08 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 7f61dc86-f9fd-42d7-b69d-bc7eaae91f77
+      X-Runtime:
+      - '0.010805'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:08 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:08 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - fefcd6ea-39aa-422b-8243-1c2a44c127f7
+      X-Runtime:
+      - '0.010600'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:08 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:09 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - b7a40264-7a37-4470-8b47-d57cd55686e4
+      X-Runtime:
+      - '0.025004'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:09 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:09 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - c09cb0cd-8a1f-4a2f-b24b-b401fcb181b6
+      X-Runtime:
+      - '0.019426'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:09 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:10 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - cf51b7cc-d0a4-4d2a-ad44-36c51f023261
+      X-Runtime:
+      - '0.019568'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:10 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:11 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - e6b10971-7eaa-4eda-ab48-49e29786332c
+      X-Runtime:
+      - '0.020221'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:11 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token=admin_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:11 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 32f0ea2f-eaf5-4ef1-b466-6969ab11d3e4
+      X-Runtime:
+      - '0.019279'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:11 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:12 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - 691cb2cb-de1b-47fb-be75-c391f5d0c759
+      X-Runtime:
+      - '0.011248'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:12 GMT
+- request:
+    method: get
+    uri: https://dev.login.library.nyu.edu/oauth/token/info?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.4.1p111
+      Host:
+      - dev.login.library.nyu.edu
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 06 Sep 2017 20:03:12 GMT
+      Server:
+      - Apache/2.2.15 (Red Hat)
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      Pragma:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Www-Authenticate:
+      - Bearer realm="Doorkeeper", error="invalid_request", error_description="The
+        request is missing a required parameter, includes an unsupported parameter
+        value, or is otherwise malformed."
+      X-Request-Id:
+      - aa4b0a05-aa71-4dc3-bee0-c9367749897d
+      X-Runtime:
+      - '0.010672'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_request","error_description":"The request is missing
+        a required parameter, includes an unsupported parameter value, or is otherwise
+        malformed."}'
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 20:03:12 GMT
 recorded_with: VCR 3.0.3
