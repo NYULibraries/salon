@@ -3,7 +3,6 @@ require_relative '../lib/oauth2/token'
 require_relative '../helpers/json_to_redis_helpers'
 
 class ResourceController < ApplicationController
-  # helpers Sinatra::RedisHelper
   helpers Sinatra::JsonHelper
   helpers Sinatra::JsonToRedisHelper
   helpers Sinatra::IdHelper
