@@ -55,7 +55,9 @@ class ResourceController < ApplicationController
   end
 
   post '/create_empty_resource' do
-    generate_unique_id.to_json
+    link = PersistentLink.new
+    link.save(validate: false)
+    link.id.to_json
   end
 
   post '/reset_with_array' do

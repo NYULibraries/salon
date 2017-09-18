@@ -30,8 +30,8 @@ class PersistentLink < RedisObject
     !!@url
   end
 
-  def save
-    return false unless valid?
+  def save(validate: true)
+    return false if validate && !valid?
     redis.set(id, url)
   end
 
