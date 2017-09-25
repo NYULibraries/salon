@@ -45,6 +45,7 @@ services:
       REDIS_HOST: http://redis_test:6379
       TEST_CLIENT_ID:
       TEST_CLIENT_SECRET:
+      COVERALLS_REPO_TOKEN:
     env_file:
       - secrets.env
     command: "tail -f /dev/null"
