@@ -17,4 +17,5 @@ group :test do
   gem 'rack-test', '~> 0.6.3', require: "rack/test"
   gem 'vcr'
   gem 'webmock'
+  gem 'coveralls', require: false
 end

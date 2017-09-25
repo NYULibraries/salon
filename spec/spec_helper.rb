@@ -1,3 +1,5 @@
+require 'coveralls'
+Coveralls.wear!
 require 'rack/test'
 require 'rspec'
 require 'pry'
