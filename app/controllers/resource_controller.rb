@@ -12,7 +12,7 @@ class ResourceController < ApplicationController
     session[:access_token] = env.fetch('HTTP_AUTHORIZATION', '').slice(7..-1)
   end
 
-  before /^(?!\/reset_with_array)/ do
+  before(/^(?!\/reset_with_array)/) do
     next unless request.post?
     authenticate!
   end

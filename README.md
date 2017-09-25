@@ -1,5 +1,6 @@
 # Salon
 [![CircleCI](https://circleci.com/gh/NYULibraries/salon.svg?style=svg)](https://circleci.com/gh/NYULibraries/salon)
+[![Code Climate](https://codeclimate.com/github/NYULibraries/salon/badges/gpa.svg)](https://codeclimate.com/github/NYULibraries/salon)
 
 Salon is a simple app that redirects from short key `identifier`s to real URLs. It makes your links permed.
 

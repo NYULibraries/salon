@@ -15,7 +15,7 @@ module OAuth2
       else
         valid_no_scope?
       end
-    rescue RestClient::Exception => e
+    rescue RestClient::Exception
       false
     end
 
