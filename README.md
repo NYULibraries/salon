@@ -1,5 +1,6 @@
 # Salon
 [![CircleCI](https://circleci.com/gh/NYULibraries/salon.svg?style=svg)](https://circleci.com/gh/NYULibraries/salon)
+[![Coverage Status](https://coveralls.io/repos/github/NYULibraries/salon/badge.svg?branch=master)](https://coveralls.io/github/NYULibraries/salon?branch=master)
 [![Code Climate](https://codeclimate.com/github/NYULibraries/salon/badges/gpa.svg)](https://codeclimate.com/github/NYULibraries/salon)
 [![Dependency Status](https://gemnasium.com/badges/github.com/NYULibraries/salon.svg)](https://gemnasium.com/github.com/NYULibraries/salon)
 
