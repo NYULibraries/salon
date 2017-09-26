@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rake', '~> 12.0'
 gem 'sinatra', '~> 1.4.8'
-gem 'redis-store', '~> 1.3.0'
-gem 'unicorn', '~> 5.2.0'
+gem 'redis-store', '~> 1.4.0'
+gem 'unicorn', '~> 5.3.0'
 gem 'json', '~> 2.1'
 gem 'rest-client'
 
