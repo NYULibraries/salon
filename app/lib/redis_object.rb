@@ -1,6 +1,6 @@
 class RedisObject
   def self.redis
-    @connection ||= Redis::Store::Factory.create("#{ENV.fetch('REDIS_HOST','localhost:6379')}", { marshalling: false })
+    @connection ||= Redis::Store::Factory.create("#{ENV.fetch('REDIS_HOST','localhost:6379')}", { serializer: nil })
   end
 
   def self.exists?(id)
