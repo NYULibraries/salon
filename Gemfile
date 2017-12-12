@@ -14,7 +14,7 @@ group :test do
   gem 'pry'
   gem 'rspec', '~> 3.7.0'
   gem 'rspec-its'
-  gem 'rack-test', '~> 0.6.3', require: "rack/test"
+  gem 'rack-test', '~> 0.8.2', require: "rack/test"
   gem 'vcr'
   gem 'webmock'
   gem 'coveralls', require: false
