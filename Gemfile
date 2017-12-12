@@ -12,7 +12,7 @@ gem 'salon_loaders', github: 'NYULibraries/salon_loaders'
 
 group :test do
   gem 'pry'
-  gem 'rspec', '~> 3.5.0'
+  gem 'rspec', '~> 3.7.0'
   gem 'rspec-its'
   gem 'rack-test', '~> 0.6.3', require: "rack/test"
   gem 'vcr'
