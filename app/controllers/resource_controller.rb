@@ -62,7 +62,10 @@ class ResourceController < ApplicationController
 
   post '/reset_with_array' do
     if link_collection.save_all
-      omitted_stored_links.destroy_all
+      omitted_stored_links.each do |link|
+        link.url = ""
+        link.save
+      end
       status 201
       link_collection.to_json
     else
