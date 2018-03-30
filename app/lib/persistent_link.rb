@@ -30,6 +30,10 @@ class PersistentLink < RedisObject
     !!@url
   end
 
+  def to_s
+    to_json
+  end
+
   def save(validate: true)
     return false if validate && !valid?
     redis.set(id, url)

@@ -1,7 +1,7 @@
 class PersistentLinkCollection < RedisObject
   include Enumerable
   extend Forwardable
-  delegate [:each, :all?, :[]] => :@members
+  delegate [:each, :all?, :[], :map, :empty?, :length] => :@members
 
   def self.all
     new(stored_keys.map{|key| PersistentLink.new(id: key) })
@@ -20,13 +20,17 @@ class PersistentLinkCollection < RedisObject
     each(&:save)
   end
 
+  def to_s
+    "[#{map(&:to_s).join(',')}]"
+  end
+
   def destroy_all
     each(&:destroy)
   end
 
   def -(other_collection)
     other_collection_ids = other_collection.map(&:id)
-    self.class.new(@members.select{|id| !other_collection_ids.include?(id) })
+    self.class.new(@members.select{|link| !other_collection_ids.include?(link.id) })
   end
 
   def to_json

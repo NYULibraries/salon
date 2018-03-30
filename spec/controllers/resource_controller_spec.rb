@@ -5,7 +5,7 @@ describe 'ResourceController' do
 
   subject { last_response }
 
-  let(:redis){ double('redis', get: nil, set: nil, keys: []) }
+  let(:redis){ spy('redis', get: nil, set: nil, keys: []) }
   before { allow(RedisObject).to receive(:redis).and_return redis }
 
   describe "GET /" do
@@ -59,6 +59,9 @@ describe 'ResourceController' do
           let(:data) { '{"id":"key","url":"http://value.com"}' }
           its(:status) { is_expected.to eql 201 }
           its(:body) { is_expected.to eql data }
+          it "should save data" do
+            expect(redis).to have_received(:set).with("key", "http://value.com")
+          end
         end
       end
     end
@@ -97,6 +100,20 @@ describe 'ResourceController' do
           let(:data) { '[{"id":"key","url":"http://value.com"},{"id":"key2","url":"http://value2.org"}]' }
           its(:status) { is_expected.to eql 201 }
           its(:body) { is_expected.to eql data }
+          it "should save data" do
+            expect(redis).to have_received(:set).with("key", "http://value.com").ordered
+            expect(redis).to have_received(:set).with("key2", "http://value2.org").ordered
+            expect(redis).to_not have_received(:del)
+          end
+        end
+        context 'and data is more' do
+          let(:data) { '[{"id":"11155155","url":"http://ezproxy.library.nyu.edu:2048/login?url=http://edu.adspender.kantarmediana.com"},{"id":"NYU04389","url":"http://ezproxy.library.nyu.edu:2048/login?url=http://edu.adspender.kantarmediana.com"},{"id":"11156258","url":"http://ezproxy.library.nyu.edu:2048/login/obe"},{"id":"NYU04290","url":"http://ezproxy.library.nyu.edu:2048/login/obe"},{"id":"27509525","url":"http://search.alexanderstreet.com/cjiv"},{"id":"NYU05663","url":"http://search.alexanderstreet.com/cjiv"}]' }
+          it "should save data" do
+            expect(redis).to have_received(:set).with("11155155", "http://ezproxy.library.nyu.edu:2048/login?url=http://edu.adspender.kantarmediana.com").ordered
+            expect(redis).to have_received(:set).with("NYU04389", "http://ezproxy.library.nyu.edu:2048/login?url=http://edu.adspender.kantarmediana.com").ordered
+            # expect(redis).to have_received(:set).with("key2", "http://value2.org").ordered
+            expect(redis).to_not have_received(:del)
+          end
         end
       end
     end
