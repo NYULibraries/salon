@@ -106,15 +106,6 @@ describe 'ResourceController' do
             expect(redis).to_not have_received(:del)
           end
         end
-        context 'and data is more' do
-          let(:data) { '[{"id":"11155155","url":"http://ezproxy.library.nyu.edu:2048/login?url=http://edu.adspender.kantarmediana.com"},{"id":"NYU04389","url":"http://ezproxy.library.nyu.edu:2048/login?url=http://edu.adspender.kantarmediana.com"},{"id":"11156258","url":"http://ezproxy.library.nyu.edu:2048/login/obe"},{"id":"NYU04290","url":"http://ezproxy.library.nyu.edu:2048/login/obe"},{"id":"27509525","url":"http://search.alexanderstreet.com/cjiv"},{"id":"NYU05663","url":"http://search.alexanderstreet.com/cjiv"}]' }
-          it "should save data" do
-            expect(redis).to have_received(:set).with("11155155", "http://ezproxy.library.nyu.edu:2048/login?url=http://edu.adspender.kantarmediana.com").ordered
-            expect(redis).to have_received(:set).with("NYU04389", "http://ezproxy.library.nyu.edu:2048/login?url=http://edu.adspender.kantarmediana.com").ordered
-            # expect(redis).to have_received(:set).with("key2", "http://value2.org").ordered
-            expect(redis).to_not have_received(:del)
-          end
-        end
       end
     end
     context 'when bearer token is NOT sent' do
