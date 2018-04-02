@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker:stable-git
+    working_directory: ~/app
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run:
+          name: Run tests
+          command: |
+            docker-compose run test rake
