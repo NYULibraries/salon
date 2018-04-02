@@ -1,9 +1,14 @@
 .git
 tmp/
 log/
+
 coverage/
 *.env
 wiki
 libguides.sh
 nginx/
 *.md
+
+*.local.sh
+libguides.json
+libguides.txt
