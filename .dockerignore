@@ -1,4 +1,9 @@
+.git
 tmp/
 log/
-secrets.env
+coverage/
+*.env
+wiki
 libguides.sh
+nginx/
+*.md
