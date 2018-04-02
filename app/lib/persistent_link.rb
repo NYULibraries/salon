@@ -1,13 +1,7 @@
 class PersistentLink < RedisObject
-  attr_reader :id, :url
+  attr_reader :id
+  attr_accessor :url
   include Sinatra::IdHelper
-  # include Sinatra::RedisHelper
-
-  # set :cache,
-
-  # def self.new_from_params(params)
-  #   new(params.map{|k,v| [k.to_sym, v] }.to_h)
-  # end
 
   def initialize(id: nil, url: nil)
     @id = id
