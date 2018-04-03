@@ -5,7 +5,7 @@ describe 'ResourceController' do
 
   subject { last_response }
 
-  let(:redis){ double('redis', get: nil, set: nil, keys: []) }
+  let(:redis){ spy('redis', get: nil, set: nil, keys: []) }
   before { allow(RedisObject).to receive(:redis).and_return redis }
 
   describe "GET /" do
@@ -59,6 +59,9 @@ describe 'ResourceController' do
           let(:data) { '{"id":"key","url":"http://value.com"}' }
           its(:status) { is_expected.to eql 201 }
           its(:body) { is_expected.to eql data }
+          it "should save data" do
+            expect(redis).to have_received(:set).with("key", "http://value.com")
+          end
         end
       end
     end
@@ -97,6 +100,11 @@ describe 'ResourceController' do
           let(:data) { '[{"id":"key","url":"http://value.com"},{"id":"key2","url":"http://value2.org"}]' }
           its(:status) { is_expected.to eql 201 }
           its(:body) { is_expected.to eql data }
+          it "should save data" do
+            expect(redis).to have_received(:set).with("key", "http://value.com").ordered
+            expect(redis).to have_received(:set).with("key2", "http://value2.org").ordered
+            expect(redis).to_not have_received(:del)
+          end
         end
       end
     end
