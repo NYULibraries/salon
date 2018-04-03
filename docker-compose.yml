@@ -16,31 +16,11 @@ services:
     command: "tail -f /dev/null"
     depends_on:
       - redis_arch
-    # http://dockerhost:9292
-
-  getit:
-    build: .
-    volumes:
-      - .:/app
-    environment:
-      - REDIS_HOST=http://redis_getit:6379
-      - APP_NAME=getit
-    env_file:
-      - secrets.env
-    ports:
-      - "9293:9292"
-    # command: rackup -o 0.0.0.0
-    command: "tail -f /dev/null"
-    depends_on:
-      - redis_getit
-    # http://dockerhost:9293
 
   test:
     build:
       context: .
       dockerfile: Dockerfile.test
-    volumes:
-      - .:/app
     environment:
       REDIS_HOST: http://redis_test:6379
       TEST_CLIENT_ID:
@@ -55,10 +35,6 @@ services:
 
   redis_test:
     build: ./redis
-
-  redis_getit:
-    build: ./redis
-    image: nyulibraries/salon_redis
 
   redis_arch:
     build: ./redis

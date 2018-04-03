@@ -1,0 +1,22 @@
+# https://circleci.com/blog/how-to-build-a-docker-image-on-circleci-2-0/
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker:stable-git
+    working_directory: ~/app
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              py-pip
+            pip install \
+              docker-compose
+      - run:
+          name: Run tests
+          command: |
+            touch secrets.env
+            docker-compose run test rake

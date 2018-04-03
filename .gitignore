@@ -3,3 +3,7 @@ log/
 coverage/
 *.env
 wiki
+libguides.sh
+*.local.sh
+libguides.json
+libguides.txt
