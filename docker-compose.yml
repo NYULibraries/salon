@@ -21,8 +21,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.test
-    volumes:
-      - .:/app
     environment:
       REDIS_HOST: http://redis_test:6379
       TEST_CLIENT_ID:
