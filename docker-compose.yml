@@ -16,7 +16,6 @@ services:
     command: "tail -f /dev/null"
     depends_on:
       - redis_arch
-    # http://dockerhost:9292
 
   test:
     build:
