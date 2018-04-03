@@ -20,3 +20,7 @@ jobs:
           command: |
             touch secrets.env
             docker-compose run test rake
+      - run:
+          name: Deploy docker image
+          command: |
+            docker push nyulibraries/salon:$CIRCLE_BRANCH
