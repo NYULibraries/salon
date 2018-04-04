@@ -23,4 +23,4 @@ jobs:
       - run:
           name: Deploy docker image
           command: |
-            docker push nyulibraries/salon:$CIRCLE_BRANCH
+            docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}
