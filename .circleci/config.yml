@@ -23,4 +23,5 @@ jobs:
       - run:
           name: Deploy docker image
           command: |
+            docker login -e $DOCKER_EMAIL -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
             docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}
