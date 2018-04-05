@@ -15,38 +15,11 @@ jobs:
               py-pip
             pip install \
               docker-compose
-      - restore_cache:
-          keys:
-            - v1-{{ .Branch }}
-          paths:
-            - /caches/salon.tar
-            - /caches/salon_test.tar
-      - run:
-          name: Load Docker image layer caches
-          command: |
-            set +o pipefail
-            docker load -i /caches/salon.tar | true
-            docker load -i /caches/salon_test.tar | true
-      - run:
-          name: Build application Docker images
-          command: |
-            docker build --cache-from=salon -t nyulibraries/salon .
-            docker build --cache-from=salon_test -t nyulibraries/salon_test -f Dockerfile.test .
-      - run:
-          name: Save Docker image layer caches
-          command: |
-            mkdir -p /caches
-            docker save -o /caches/salon.tar nyulibraries/salon
-            docker save -o /caches/salon_test.tar nyulibraries/salon_test
-      - save_cache:
-          key: v1-{{ .Branch }}-{{ epoch }}
-          paths:
-            - /caches/salon.tar
-            - /caches/salon_test.tar
       - run:
           name: Run tests
           command: |
             touch secrets.env
+            docker-compose build
             docker-compose run test rake
       - run:
           name: Deploy docker image
