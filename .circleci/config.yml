@@ -18,8 +18,8 @@ jobs:
       - run:
           name: Run tests
           command: |
-            docker-compose build
             touch secrets.env
+            docker-compose build
             docker-compose run test rake
       - run:
           name: Deploy docker image
