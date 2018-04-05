@@ -4,7 +4,7 @@ require 'fileutils'
 @dir = "#{File.expand_path(File.dirname(__FILE__))}/../../"
 
 # Let X be your average memory usage, let B be your box's memory, and let C be your workers.
-# C = (B/X).floor # e.g. (512MB/200MB).floor = 2 workers
+# C = (B/X).floor # e.g. (512MB/20MB).floor = 2 workers
 worker_processes 2
 working_directory @dir
 
