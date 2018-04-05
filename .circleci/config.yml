@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: docker:stable-git
+      - image: docker:17.09.0-ce-git
     working_directory: ~/app
     steps:
       - checkout
@@ -14,9 +14,16 @@ jobs:
             apk add --no-cache \
               py-pip
             pip install \
-              docker-compose
+              docker-compose==1.16.1
       - run:
           name: Run tests
           command: |
             touch secrets.env
+            docker-compose build
             docker-compose run test rake
+      - run:
+          name: Deploy docker image
+          command: |
+            docker tag nyulibraries/salon nyulibraries/salon:${CIRCLE_BRANCH//\//_}
+            docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
+            docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}

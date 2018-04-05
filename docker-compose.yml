@@ -3,6 +3,7 @@ services:
 
   arch:
     build: .
+    image: nyulibraries/salon
     volumes:
       - .:/app
     ports:
