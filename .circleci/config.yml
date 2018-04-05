@@ -22,18 +22,18 @@ jobs:
             - /caches/salon.tar
             - /caches/salon_test.tar
       - run:
-          name: Load Docker image layer cache
+          name: Load Docker image layer caches
           command: |
             set +o pipefail
             docker load -i /caches/salon.tar | true
             docker load -i /caches/salon_test.tar | true
       - run:
-          name: Build application Docker image
+          name: Build application Docker images
           command: |
             docker build --cache-from=salon -t nyulibraries/salon .
             docker build --cache-from=salon_test -t nyulibraries/salon_test -f Dockerfile.test .
       - run:
-          name: Save Docker image layer cache
+          name: Save Docker image layer caches
           command: |
             mkdir -p /caches
             docker save -o /caches/salon.tar nyulibraries/salon
