@@ -3,6 +3,8 @@ require "spec_helper"
 RSpec.describe "Resource management", type: :request do
   def app() ResourceController end
 
+  subject { last_response }
+
   let(:access_token) { ENV['TOKEN'] || 'access_token' }
   let(:json_headers) do
     {
@@ -27,22 +29,23 @@ RSpec.describe "Resource management", type: :request do
   describe "create persistent link" do
     let(:link_hash){ { id: "abc", url: "http://example.com" } }
     let(:link_json){ link_hash.to_json }
-    it "doesn't create a resource without authorization" do
-      post "/", link_json, json_headers
 
-      expect(last_response.content_type).to eq("application/json")
-      expect(last_response.status).to eq 401
+    context "without authorization" do
+      before { post "/", link_json, json_headers }
 
-      expect(PersistentLink.new(id: "abc").get_url).to eq nil
+      its(:status) { is_expected.to eq 401 }
+      it "should not create new link" do
+        expect(PersistentLink.new(id: "abc").get_url).to eq nil
+      end
     end
 
-    it "creates a new resource" do
-      post "/", link_json, json_headers.merge(auth_headers)
+    context "with authorization" do
+      before { post "/", link_json, json_headers.merge(auth_headers) }
 
-      expect(last_response.content_type).to eq("application/json")
-      expect(last_response.status).to eq 201
-
-      expect(PersistentLink.new(id: "abc").get_url).to eq "http://example.com"
+      its(:status) { is_expected.to eq 201 }
+      it "should create new link" do
+        expect(PersistentLink.new(id: "abc").get_url).to eq "http://example.com"
+      end
     end
   end
 
