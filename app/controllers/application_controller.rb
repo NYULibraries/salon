@@ -7,6 +7,8 @@ require_relative '../lib/persistent_link_collection'
 class ApplicationController < Sinatra::Base
   enable :sessions
 
+  set :root, File.expand_path('../..', __FILE__)
+
   before do
     next unless request.post?
     content_type :json
