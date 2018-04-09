@@ -6,4 +6,4 @@ Dir.glob('./app/{helpers,controllers}/*.rb').each { |file| require file }
 
 # map the controllers to routes
 map('/')      { run ResourceController }
-map('/docs')   { run DocsController } if ENV['RACK_ENV'] == 'development'
+map('/docs')   { run DocsController } if ENV['RACK_ENV'] == 'development' || ENV['RACK_ENV'] == 'test'
