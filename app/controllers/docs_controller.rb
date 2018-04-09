@@ -1,14 +1,16 @@
 require_relative 'application_controller'
 require 'yaml'
 
+# Only for dev use, in production this should be handled by ghpages
+# nyulibraries.github.io/salon
 class DocsController < ApplicationController
 
-  get '/v1/docs' do
+  get '/' do
     erb :swagger_redoc
   end
 
-  get '/v1/swagger.json' do
-    YAML.load(File.open("#{File.expand_path('../../..', __FILE__)}/swagger.yml"){|f| f.read }).to_json
+  get '/swagger.json' do
+    send_file(File.join(File.expand_path('../../../docs', __FILE__), 'swagger.json'))
   end
 
 end

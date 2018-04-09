@@ -5,20 +5,14 @@ describe 'DocsController' do
 
   subject { last_response }
 
-  describe "GET /v1/docs" do
-    before { get "/v1/docs" }
+  describe "GET /" do
+    before { get "/" }
     it { is_expected.to be_ok }
   end
 
-  describe "GET /v1/swagger.json" do
-    let(:hash){ { version: "1", something: "else" } }
-    let(:yaml){ hash.to_yaml }
-    let(:json){ hash.to_json }
-    before do
-      allow(File).to receive(:open).and_return yaml
-      get "/v1/swagger.json"
-    end
+  describe "GET /swagger.json" do
+    before { get "/swagger.json" }
     it { is_expected.to be_ok }
-    its(:body) { is_expected.to eq json }
+    its(:body) { is_expected.to include '"swagger":"2.0"' }
   end
 end
