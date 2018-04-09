@@ -117,4 +117,25 @@ RSpec.describe "Resource management", type: :request do
       end
     end
   end
+
+  describe "create empty resource" do
+    context "without authorization" do
+      before { post "/create_empty_resource", "", json_headers }
+
+      its(:status) { is_expected.to eq 401 }
+      it "should not create new link" do
+        expect(RedisObject.redis.keys).to be_empty
+      end
+    end
+
+    context "with authorization" do
+      before { post "/create_empty_resource", "", json_headers.merge(auth_headers) }
+
+      its(:status) { is_expected.to eq 200 }
+      it "should create new link" do
+        id = json_response
+        expect(PersistentLink.new(id: id).get_url).to eq ""
+      end
+    end
+  end
 end
