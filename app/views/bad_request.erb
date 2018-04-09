@@ -1,4 +1,4 @@
-<% error_title = 'Sorry, there was an error' %>
+<% error_title = 'Resource Not Found' %>
 <%= erb 'partials/_header'.to_sym, locals: { error_title: error_title } %>
 <%= erb 'partials/_breadcrumbs'.to_sym, locals: { error_title: error_title } %>
 
@@ -6,7 +6,21 @@
       <div class="col-sm-12">
         <h1><%= error_title %></h1>
 
-        <p>Couldn't find link with this id</p>
+        <p>Unfortunately, the resource that you've attempted to access is not available. The resource may have been deactivated or renamed.</p>
+
+        <h3>Find it on your own</h3>
+
+        <ul>
+          <li>Search for your resource in the catalog, <a href="http://bobcat.library.nyu.edu/">BobCat</a></li>
+          <li>Check our list of <a href="https://guides.nyu.edu/arch">databases by subject</a></li>
+          <li><a href="https://guides.nyu.edu/az.php">Browse the complete A-Z list of our databases and electronic resources</a></li>
+        </ul>
+
+        <h3>Get help from our librarians</h3>
+
+        <ul>
+          <li>Use our <a href="https://library.nyu.edu/ask/">Ask a Librarian</a> service via chat or email</li>
+        </ul>
       </div>
     </div>
 
