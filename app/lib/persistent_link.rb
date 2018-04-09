@@ -13,7 +13,7 @@ class PersistentLink < RedisObject
   end
 
   def get_url
-    @url ||= redis.get("#{id}")
+    @url = redis.get("#{id}")
   end
 
   def url

@@ -155,7 +155,6 @@ RSpec.describe "Resource management", type: :request do
         expect(RedisObject.redis.keys).to match_array ["existing"]
       end
       it "should preserve existing link" do
-        existing_link.url = nil
         expect(existing_link.get_url).to eq "http://library.nyu.edu"
       end
     end
@@ -168,7 +167,6 @@ RSpec.describe "Resource management", type: :request do
         expect(RedisObject.redis.keys).to match_array ["existing"]
       end
       it "should preserve existing link" do
-        existing_link.url = nil
         expect(existing_link.get_url).to eq "http://library.nyu.edu"
       end
     end
@@ -185,7 +183,6 @@ RSpec.describe "Resource management", type: :request do
           expect(PersistentLink.new(id: "123").get_url).to eq "https://example.org"
         end
         it "should set existing link to blank strink" do
-          existing_link.url = nil
           expect(existing_link.get_url).to eq ""
         end
       end
@@ -202,7 +199,6 @@ RSpec.describe "Resource management", type: :request do
           expect(PersistentLink.new(id: id_for_org).get_url).to eq "https://example.org"
         end
         it "should set existing link to blank strink" do
-          existing_link.url = nil
           expect(existing_link.get_url).to eq ""
         end
       end
@@ -215,7 +211,6 @@ RSpec.describe "Resource management", type: :request do
           expect(RedisObject.redis.keys).to match_array ["existing"]
         end
         it "should preserve existing link" do
-          existing_link.url = nil
           expect(existing_link.get_url).to eq "http://library.nyu.edu"
         end
       end
