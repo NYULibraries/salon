@@ -23,6 +23,7 @@ class ResourceController < ApplicationController
   end
 
   get '/healthcheck' do
+    content_type :json
     return {success: true}.to_json
   end
 

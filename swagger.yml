@@ -19,6 +19,24 @@ tags:
 schemes:
 - "http"
 paths:
+  /healthcheck:
+    get:
+      summary: "Check if service live"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "object"
+            properties:
+              success:
+                type: boolean
+            example:
+              success: true
   /{id}:
     get:
       tags:
