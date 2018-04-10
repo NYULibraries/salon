@@ -22,6 +22,10 @@ class ResourceController < ApplicationController
     authenticate!(admin: true)
   end
 
+  get '/healthcheck' do
+    return {success: true}.to_json
+  end
+
   get '/:identifier' do
     link = PersistentLink.new(id: "#{params['identifier']}")
     redirect to(link.url) if link.get_url

@@ -35,6 +35,12 @@ describe 'ResourceController' do
     end
   end
 
+  describe "GET /healthcheck" do
+    before { get "/healthcheck" }
+    its(:status) { is_expected.to eq 200 }
+    its(:body) { is_expected.to eq "{\"success\":true}" }
+  end
+
   describe "POST /" do
     let(:access_token) { ENV['TOKEN'] || 'access_token' }
     let(:data) { nil }
