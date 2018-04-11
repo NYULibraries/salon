@@ -19,11 +19,10 @@ jobs:
           name: Run tests
           command: |
             touch secrets.env
-            docker-compose build
             docker-compose run test rake
       - run:
           name: Deploy docker image
           command: |
-            docker tag nyulibraries/salon nyulibraries/salon:${CIRCLE_BRANCH//\//_}
+            docker build . -t nyulibraries/salon:${CIRCLE_BRANCH//\//_}
             docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
             docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}
