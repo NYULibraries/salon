@@ -6,9 +6,8 @@ RUN apt-get update -qq && apt-get install -y \
   vim
 
 ENV INSTALL_PATH /app
-RUN mkdir -p $INSTALL_PATH
 
-RUN groupadd -g 2000 docker -r && useradd -u 1000 -r --no-log-init -b $INSTALL_PATH -g docker docker
+RUN groupadd -g 2000 docker -r && useradd -u 1000 -r --no-log-init -m -d $INSTALL_PATH -g docker docker
 USER 1000
 
 WORKDIR $INSTALL_PATH

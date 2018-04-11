@@ -5,14 +5,16 @@ RUN apt-get update -qq && apt-get install -y \
   git \
   vim
 
+ENV INSTALL_PATH /app
+
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install -g dredd@4.5.0
 RUN npm install -g swagger-to-md
 RUN npm install sync-request caseless
 
-ENV INSTALL_PATH /app
-RUN mkdir -p $INSTALL_PATH
+RUN groupadd -g 2000 docker -r && useradd -u 1000 -r --no-log-init -m -d $INSTALL_PATH -g docker docker
+USER 1000
 
 WORKDIR $INSTALL_PATH
 
