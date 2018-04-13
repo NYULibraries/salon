@@ -35,8 +35,8 @@ end
 pid @pid_file
 
 # Set log file paths
-stderr_path "#{logs_dir}unicorn.stderr.log"
-stdout_path "#{logs_dir}unicorn.stdout.log"
+stderr_path "/dev/stderr"#"#{logs_dir}unicorn.stderr.log"
+stdout_path "/dev/stdout"#"#{logs_dir}unicorn.stdout.log"
 
 before_fork do |server, worker|
 
