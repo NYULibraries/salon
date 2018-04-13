@@ -1,12 +1,12 @@
 <%
-error_title = ((defined? error_title).nil?) ? error_title : "Sorry, there was an error"
+error_title = (!(defined? error_title).nil?) ? error_title : "Sorry, there was an error"
 %>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>NYU Libraries | <%= error_title %></title>
+    <title><%= error_title %> | New York University Division of Libraries</title>
     <style>
       header {
         margin: auto;
@@ -25,5 +25,5 @@ error_title = ((defined? error_title).nil?) ? error_title : "Sorry, there was an
   </head>
   <body>
     <header>
-      <span><a href="https://library.nyu.edu" target="_blank"><img src="https://cdn.library.nyu.edu/images/nyulibraries-logo.svg" alt="NYU Libraries" width="233" height="30"></a></span>
+      <span><a href="https://library.nyu.edu" target="_blank"><img src="https://cdn.library.nyu.edu/images/nyulibraries-logo.svg" alt="NYU Libraries logo" width="233" height="30"></a></span>
     </header>

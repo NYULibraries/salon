@@ -6,6 +6,8 @@ require_relative '../lib/persistent_link_collection'
 
 class ApplicationController < Sinatra::Base
   enable :sessions
+  set :raise_errors, false
+  set :show_exceptions, false
 
   set :root, File.expand_path('../..', __FILE__)
 
@@ -16,6 +18,10 @@ class ApplicationController < Sinatra::Base
 
   not_found do
     erb :not_found
+  end
+
+  error 500 do
+    erb :internal_server_error
   end
 
 end
