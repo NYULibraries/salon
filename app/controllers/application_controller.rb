@@ -6,8 +6,6 @@ require_relative '../lib/persistent_link_collection'
 
 class ApplicationController < Sinatra::Base
   enable :sessions
-  set :raise_errors, false
-  set :show_exceptions, false
 
   set :root, File.expand_path('../..', __FILE__)
 
