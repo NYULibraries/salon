@@ -13,8 +13,9 @@ RUN npm install -g dredd@4.5.0
 RUN npm install -g swagger-to-md
 RUN npm install sync-request caseless
 
-RUN groupadd -g 2000 docker -r && useradd -u 1000 -r --no-log-init -m -d $INSTALL_PATH -g docker docker
-USER 1000
+RUN groupadd -g 2000 docker -r && \
+    useradd -u 1000 -r --no-log-init -m -d $INSTALL_PATH -g docker docker
+USER docker
 
 WORKDIR $INSTALL_PATH
 
@@ -22,4 +23,4 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle config --global github.https true
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 
-COPY . .
+COPY --chown=docker:docker . .
