@@ -1,0 +1,20 @@
+<% error_title = "We're sorry, there may be an issue with the index" %>
+<%= erb 'partials/_header'.to_sym, locals: { error_title: error_title } %>
+<%= erb 'partials/_breadcrumbs'.to_sym, locals: { error_title: error_title } %>
+
+  <main>
+    <div class="nyu-container">
+      <div class="col-sm-12">
+        <h1><%= error_title %></h1>
+
+        <h2>Here's what you can do:</h2>
+        <ul>
+         <li><a href="https://nyu.qualtrics.com/jfe/form/SV_3wlcAeDm6EUsPDn">Submit a report to our web team</a> so we know something went wrong</li>
+         <li><a href="https://nyulibraries.statuspage.io/">Check the current availability status of the Arch</a> (Articles &amp; Databases service)</li>
+         <li><a href="https://library.nyu.edu/ask">Ask a Librarian</a> to help you find alternative resources</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+<%= erb 'partials/_footer'.to_sym %>

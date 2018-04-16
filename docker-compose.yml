@@ -1,9 +1,8 @@
-version: "2"
+version: "3.2"
 services:
 
   arch:
     build: .
-    image: nyulibraries/salon
     volumes:
       - .:/app
     ports:
@@ -35,8 +34,7 @@ services:
       - redis_test
 
   redis_test:
-    build: ./redis
+    image: redis:3-alpine
 
   redis_arch:
-    build: ./redis
-    image: nyulibraries/salon_redis
+    image: redis:3-alpine

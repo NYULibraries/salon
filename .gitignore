@@ -7,3 +7,4 @@ libguides.sh
 *.local.sh
 libguides.json
 libguides.txt
+yarn-error.log
