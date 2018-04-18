@@ -29,7 +29,7 @@ class ResourceController < ApplicationController
 
   get '/:identifier' do
     link = PersistentLink.new(id: "#{params['identifier']}")
-    redirect to(link.url) if link.get_url
+    redirect to(link.url) if link.get_url && link.get_url != ''
     status 400
     erb :bad_request
   end

@@ -22,10 +22,16 @@ describe 'ResourceController' do
     context 'if an identifier is passed in' do
       context 'and the identifier is a key in the cache' do
         let(:identifier) {'good_identifier'}
-        it 'should be a redirect to the cache value' do
-          expect(last_response).to be_redirect
-          follow_redirect!
-          expect(last_request.url).to eql example_site
+        context 'and the identifier has a non-blank url value' do
+          it 'should be a redirect to the cache value' do
+            expect(last_response).to be_redirect
+            follow_redirect!
+            expect(last_request.url).to eql example_site
+          end
+        end
+        context 'but the identifier has a blank url value' do
+          let(:example_site) { '' }
+          it { is_expected.to be_bad_request }
         end
       end
       context 'and the identifier is not a key in the cache' do
