@@ -2,7 +2,7 @@
 error_title = (!(defined? error_title).nil?) ? error_title : "Sorry, there was an error"
 %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -19,11 +19,17 @@ error_title = (!(defined? error_title).nil?) ? error_title : "Sorry, there was a
       .breadcrumb {
         padding-left: 30px !important;
       }
+      a {
+        color: #2200CC !important;
+      }
+      .breadcrumb > .active {
+        color: #535353 !important;
+      }
     </style>
     <link rel="SHORTCUT ICON" href="https://cdn.library.nyu.edu/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
   <body>
     <header>
-      <span><a href="https://library.nyu.edu" target="_blank"><img src="https://cdn.library.nyu.edu/images/nyulibraries-logo.svg" alt="NYU Libraries logo" width="233" height="30"></a></span>
+      <span><a href="https://library.nyu.edu" target="_blank" aria-label="NYU Libraries homepage"><img src="https://cdn.library.nyu.edu/images/nyulibraries-logo.svg" alt="NYU Libraries logo" width="233" height="30"></a></span>
     </header>
