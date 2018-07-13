@@ -24,5 +24,7 @@ jobs:
           name: Deploy docker image
           command: |
             docker build . -t nyulibraries/salon:${CIRCLE_BRANCH//\//_}
+            docker tag nyulibraries/salon:${CIRCLE_BRANCH//\//_} nyulibraries/salon:${CIRCLE_BRANCH//\//_}-${CIRCLE_BUILD_NUM}
             docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
             docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}
+            docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}-${CIRCLE_BUILD_NUM}
