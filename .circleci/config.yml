@@ -39,7 +39,8 @@ jobs:
       - run:
           name: Deploy into staging via Jenkins
           command: |
-            docker run --rm appropriate/curl -u $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY -X POST $JENKINS_STAGE_HOST/job/Salon%20Development%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH//\//_}-${CIRCLE_BUILD_NUM}\"}]}"
+            export CIRCLE_BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+            docker run --rm appropriate/curl -u $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY -X POST $JENKINS_STAGE_HOST/job/Salon%20Development%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_BUILD_NUM}\"}]}"
 
   deploy-prod:
     <<: *docker-defaults
@@ -48,7 +49,8 @@ jobs:
       - run:
           name: Deploy into production via Jenkins
           command: |
-            docker run --rm appropriate/curl -u $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY -X POST $JENKINS_PROD_HOST/job/Salon%20Production%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH//\//_}-${CIRCLE_BUILD_NUM}\"}]}"
+            export CIRCLE_BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+            docker run --rm appropriate/curl -u $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY -X POST $JENKINS_PROD_HOST/job/Salon%20Production%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_BUILD_NUM}\"}]}"
 
 workflows:
   version: 2
