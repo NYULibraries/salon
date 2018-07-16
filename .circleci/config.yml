@@ -1,10 +1,13 @@
+docker-defaults: &docker-defaults
+  docker:
+    - image: docker:18.03.0-ce-git
+  working_directory: ~/app
+
 # https://circleci.com/blog/how-to-build-a-docker-image-on-circleci-2-0/
 version: 2
 jobs:
-  build:
-    docker:
-      - image: docker:17.09.0-ce-git
-    working_directory: ~/app
+  test:
+    <<: *docker-defaults
     steps:
       - checkout
       - setup_remote_docker
@@ -21,10 +24,47 @@ jobs:
             touch secrets.env
             docker-compose run test rake
       - run:
-          name: Deploy docker image
+          name: Push docker image
           command: |
             docker build . -t nyulibraries/salon:${CIRCLE_BRANCH//\//_}
             docker tag nyulibraries/salon:${CIRCLE_BRANCH//\//_} nyulibraries/salon:${CIRCLE_BRANCH//\//_}-${CIRCLE_BUILD_NUM}
             docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
             docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}
             docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}-${CIRCLE_BUILD_NUM}
+
+  deploy-dev:
+    <<: *docker-defaults
+    steps:
+      - setup_remote_docker
+      - run:
+          name: Deploy into staging via Jenkins
+          command: |
+            docker run --rm appropriate/curl -u $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY -X POST $JENKINS_STAGE_HOST/job/Salon%20Development%20Deploy/build/api --data-urlencode json='{"parameter": [{"name":"TAG", "value":"${CIRCLE_BRANCH//\//_}-${CIRCLE_BUILD_NUM}"}]}'
+
+  deploy-prod:
+    <<: *docker-defaults
+    steps:
+      - setup_remote_docker
+      - run:
+          name: Deploy into production via Jenkins
+          command: |
+            docker run --rm appropriate/curl -u $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY -X POST $JENKINS_PROD_HOST/job/Salon%20Production%20Deploy/build/api --data-urlencode json='{"parameter": [{"name":"TAG", "value":"${CIRCLE_BRANCH//\//_}-${CIRCLE_BUILD_NUM}"}]}'
+
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - test
+      - deploy-dev:
+          requires:
+              - test
+          filters:
+            branches:
+              ignore:
+                - master
+      - deploy-prod:
+          requires:
+              - test
+          filters:
+            branches:
+              only: master
