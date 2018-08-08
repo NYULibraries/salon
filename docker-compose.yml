@@ -13,7 +13,7 @@ services:
     env_file:
       - secrets.env
     # command: rackup -o 0.0.0.0
-    command: "tail -f /dev/null"
+    command: "./scripts/start.sh arch"
     depends_on:
       - redis_arch
 
@@ -29,7 +29,7 @@ services:
       CI:
     env_file:
       - secrets.env
-    command: "tail -f /dev/null"
+    command: "bundle exec rake"
     depends_on:
       - redis_test
 
