@@ -20,4 +20,6 @@ COPY --chown=docker:docker . .
 
 USER docker
 
+EXPOSE 9292
+
 CMD ./scripts/start.sh arch
