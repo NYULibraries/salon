@@ -30,7 +30,7 @@ services:
         - ruby:2.5.1-alpine
         - salon_test
     environment:
-      REDIS_HOST: http://redis_test:6379
+      REDIS_HOST: http://test_redis:6379
       TEST_CLIENT_ID:
       TEST_CLIENT_SECRET:
       COVERALLS_REPO_TOKEN:
