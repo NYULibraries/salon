@@ -13,7 +13,7 @@ services:
     ports:
       - "9292:9292"
     environment:
-      - REDIS_HOST=http://redis_arch:6379
+      - REDIS_HOST=http://redis:6379
       - APP_NAME=arch
     env_file:
       - secrets.env
