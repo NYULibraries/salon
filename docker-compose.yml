@@ -2,7 +2,12 @@ version: "3.2"
 services:
 
   arch:
-    build: .
+    image: salon_arch
+    build:
+      context: .
+      cache_from:
+        - ruby:2.5.1-alpine
+        - salon_arch
     volumes:
       - .:/app
     ports:
@@ -12,15 +17,18 @@ services:
       - APP_NAME=arch
     env_file:
       - secrets.env
-    # command: rackup -o 0.0.0.0
     command: "./scripts/start.sh arch"
     depends_on:
-      - redis_arch
+      - redis
 
   test:
+    image: salon_test
     build:
       context: .
       dockerfile: Dockerfile.test
+      cache_from:
+        - ruby:2.5.1-alpine
+        - salon_test
     environment:
       REDIS_HOST: http://redis_test:6379
       TEST_CLIENT_ID:
@@ -31,10 +39,10 @@ services:
       - secrets.env
     command: "bundle exec rake"
     depends_on:
-      - redis_test
+      - test_redis
 
-  redis_test:
+  test_redis:
     image: redis:3-alpine
 
-  redis_arch:
+  redis:
     image: redis:3-alpine

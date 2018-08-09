@@ -1,26 +1,33 @@
-FROM ruby:2.4
-
-RUN apt-get update -qq && apt-get install -y \
-  curl \
-  git \
-  vim
+FROM ruby:2.5.1-alpine
 
 ENV INSTALL_PATH /app
 
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
-RUN apt-get install -y nodejs
-RUN npm install -g dredd@4.5.0
-RUN npm install -g swagger-to-md
-RUN npm install sync-request caseless
+ENV NODE_VERSION 9.11.2
+RUN apk add --update nodejs nodejs-npm
+ENV NODE_BUILD_PACKAGES git
+RUN apk add --update $NODE_BUILD_PACKAGES \
+  && npm install -g dredd@4.5.0 \
+  && npm install -g swagger-to-md \
+  && npm install sync-request caseless \
+  && npm cache clean --force \
+  && apk del $NODE_BUILD_PACKAGES
 
-RUN groupadd -g 2000 docker -r && \
-    useradd -u 1000 -r --no-log-init -m -d $INSTALL_PATH -g docker docker
-USER docker
+RUN addgroup -g 1000 -S docker \
+  && adduser -u 1000 -S -G docker docker
 
 WORKDIR $INSTALL_PATH
 
-COPY Gemfile Gemfile.lock ./
+COPY --chown=docker:docker Gemfile Gemfile.lock ./
 RUN bundle config --global github.https true
-RUN gem install bundler && bundle install --jobs 20 --retry 5
+ENV RUBY_BUILD_PACKAGES ruby-dev build-base linux-headers
+RUN apk add --no-cache $RUBY_BUILD_PACKAGES \
+  && gem install bundler && bundle install --jobs 20 --retry 5 \
+  && apk del $RUBY_BUILD_PACKAGES \
+  && chown -R docker:docker /usr/local/bundle
 
+RUN mkdir coverage && chown docker:docker coverage
+
+USER docker
 COPY --chown=docker:docker . .
+
+CMD bundle exec rake
