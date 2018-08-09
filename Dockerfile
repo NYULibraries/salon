@@ -4,7 +4,7 @@ ENV INSTALL_PATH /app
 ENV BUILD_PACKAGES ruby-dev build-base linux-headers
 
 RUN addgroup -g 1000 -S docker && \
-  adduser  -u 1000 -S -G docker docker
+  adduser -u 1000 -S -G docker docker
 
 WORKDIR $INSTALL_PATH
 
