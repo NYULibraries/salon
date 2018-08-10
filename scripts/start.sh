@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # USAGE:
 # ./start.sh {APP_NAME} {ENVIRONMENT}
