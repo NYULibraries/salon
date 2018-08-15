@@ -2,10 +2,9 @@ FROM ruby:2.5.1-alpine
 
 ENV INSTALL_PATH /app
 
-ENV NODE_VERSION 9.11.2
-RUN apk add --update nodejs nodejs-npm
+ENV NODE_PACKAGES nodejs nodejs-npm
 ENV NODE_BUILD_PACKAGES git
-RUN apk add --update $NODE_BUILD_PACKAGES \
+RUN apk add --update --no-cache $NODE_PACKAGES $NODE_BUILD_PACKAGES \
   && npm install -g dredd@4.5.0 \
   && npm install -g swagger-to-md \
   && npm install sync-request caseless \
