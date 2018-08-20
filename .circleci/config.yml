@@ -24,33 +24,37 @@ jobs:
             touch secrets.env
             docker-compose run test rake
       - run:
+          name: Scan image
+          command: |
+            docker-compose build arch && docker-compose build --no-cache scan
+      - run:
           name: Push docker image
           command: |
-            docker build . -t nyulibraries/salon:${CIRCLE_BRANCH//\//_}
+            docker tag salon_arch nyulibraries/salon:${CIRCLE_BRANCH//\//_}
             docker tag nyulibraries/salon:${CIRCLE_BRANCH//\//_} nyulibraries/salon:${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}
             docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
             docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}
             docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}
 
   deploy-dev:
-    <<: *docker-defaults
+    docker:
+      - image: appropriate/curl
     steps:
-      - setup_remote_docker
       - run:
           name: Deploy into staging via Jenkins
           command: |
             export CIRCLE_BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            docker run --rm appropriate/curl -u $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY -X POST https://jenkinsapi-dev.library.nyu.edu/job/Salon%20Development%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
+            curl -u $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY -X POST https://jenkinsapi-dev.library.nyu.edu/job/Salon%20Development%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
 
   deploy-prod:
-    <<: *docker-defaults
+    docker:
+      - image: appropriate/curl
     steps:
-      - setup_remote_docker
       - run:
           name: Deploy into production via Jenkins
           command: |
             export CIRCLE_BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            docker run --rm appropriate/curl -u $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY -X POST https://jenkinsapi.library.nyu.edu/job/Salon%20Production%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
+            curl -u $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY -X POST https://jenkinsapi.library.nyu.edu/job/Salon%20Production%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
 
 workflows:
   version: 2

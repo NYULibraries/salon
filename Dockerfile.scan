@@ -1,0 +1,10 @@
+FROM salon_arch
+
+ARG TOKEN
+
+USER root
+RUN apk add --no-cache ca-certificates && update-ca-certificates && \
+  wget -O /microscanner https://get.aquasec.com/microscanner && \
+  chmod +x /microscanner && \
+  /microscanner ${TOKEN} && \
+rm -rf /microscanner
