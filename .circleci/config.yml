@@ -37,24 +37,24 @@ jobs:
             docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}
 
   deploy-dev:
-    <<: *docker-defaults
+    docker:
+      - image: appropriate/curl
     steps:
-      - setup_remote_docker
       - run:
           name: Deploy into staging via Jenkins
           command: |
             export CIRCLE_BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            docker run --rm appropriate/curl -u $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY -X POST https://jenkinsapi-dev.library.nyu.edu/job/Salon%20Development%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
+            curl -u $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY -X POST https://jenkinsapi-dev.library.nyu.edu/job/Salon%20Development%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
 
   deploy-prod:
-    <<: *docker-defaults
+    docker:
+      - image: appropriate/curl
     steps:
-      - setup_remote_docker
       - run:
           name: Deploy into production via Jenkins
           command: |
             export CIRCLE_BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            docker run --rm appropriate/curl -u $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY -X POST https://jenkinsapi.library.nyu.edu/job/Salon%20Production%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
+            curl -u $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY -X POST https://jenkinsapi.library.nyu.edu/job/Salon%20Production%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
 
 workflows:
   version: 2
