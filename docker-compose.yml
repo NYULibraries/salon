@@ -41,6 +41,14 @@ services:
     depends_on:
       - test_redis
 
+  scan:
+    image: librarynyuedu_scan
+    build:
+      context: .
+      dockerfile: Dockerfile.scan
+      args:
+        TOKEN: $AQUA_MICROSCANNER_TOKEN
+
   test_redis:
     image: redis:3-alpine
 
