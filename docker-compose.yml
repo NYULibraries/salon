@@ -17,7 +17,6 @@ services:
       - APP_NAME=arch
     env_file:
       - secrets.env
-    command: "./scripts/start.sh arch"
     depends_on:
       - redis
 
