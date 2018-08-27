@@ -6,6 +6,7 @@ RUN addgroup -g 1000 -S docker && \
   adduser -u 1000 -S -G docker docker
 
 WORKDIR $INSTALL_PATH
+RUN chown docker:docker .
 
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 ENV RUBY_BUILD_PACKAGES ruby-dev build-base linux-headers
