@@ -1,20 +1,26 @@
 FROM ruby:2.5.1-alpine
 
 ENV INSTALL_PATH /app
-ENV BUILD_PACKAGES ruby-dev build-base linux-headers
 
 RUN addgroup -g 1000 -S docker && \
   adduser -u 1000 -S -G docker docker
 
 WORKDIR $INSTALL_PATH
+RUN chown docker:docker .
 
-COPY Gemfile Gemfile.lock ./
-RUN bundle config --global github.https true
-RUN apk add --no-cache $BUILD_PACKAGES \
+COPY --chown=docker:docker Gemfile Gemfile.lock ./
+ENV RUBY_BUILD_PACKAGES ruby-dev build-base linux-headers
+RUN apk add --no-cache $RUBY_BUILD_PACKAGES \
+  && bundle config --local github.https true \
   && gem install bundler && bundle install --jobs 20 --retry 5 \
-  && apk del $BUILD_PACKAGES \
-  && chown -R docker:docker ./ \
+  && rm -rf /root/.bundle && rm -rf /root/.gem \
+  && rm -rf /usr/local/bundle/cache \
+  && apk del $RUBY_BUILD_PACKAGES \
   && chown -R docker:docker /usr/local/bundle
+
+RUN mkdir coverage && chown docker:docker coverage
+
+USER docker
 
 COPY --chown=docker:docker . .
 
