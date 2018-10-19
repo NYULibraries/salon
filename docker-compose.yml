@@ -1,15 +1,28 @@
-version: "3.2"
+version: '3.7'
+
+x-build_default: &build_default
+  image: salon_arch
+  build:
+    context: .
+    args:
+      - AQUA_MICROSCANNER_TOKEN
+    cache_from:
+      - ruby:2.5.1-alpine
+      - salon_arch
+
+x-build_test: &build_test
+  image: salon_test
+  build:
+    context: .
+    dockerfile: Dockerfile.test
+    cache_from:
+      - ruby:2.5.1-alpine
+      - salon_test
+
 services:
 
   arch:
-    image: salon_arch
-    build:
-      context: .
-      cache_from:
-        - ruby:2.5.1-alpine
-        - salon_arch
-    volumes:
-      - .:/app
+    <<: *build_default
     ports:
       - "9292:9292"
     environment:
@@ -19,15 +32,11 @@ services:
       - secrets.env
     depends_on:
       - redis
+    volumes:
+      - .:/app
 
   test:
-    image: salon_test
-    build:
-      context: .
-      dockerfile: Dockerfile.test
-      cache_from:
-        - ruby:2.5.1-alpine
-        - salon_test
+    <<: *build_test
     environment:
       REDIS_HOST: http://test_redis:6379
       TEST_CLIENT_ID:
@@ -36,17 +45,9 @@ services:
       CI:
     env_file:
       - secrets.env
-    command: "bundle exec rake"
+    command: ["bundle", "exec", "rake"]
     depends_on:
       - test_redis
-
-  scan:
-    image: librarynyuedu_scan
-    build:
-      context: .
-      dockerfile: Dockerfile.scan
-      args:
-        TOKEN: $AQUA_MICROSCANNER_TOKEN
 
   test_redis:
     image: redis:3-alpine

@@ -1,39 +1,43 @@
 docker-defaults: &docker-defaults
   docker:
-    - image: docker:18.03.0-ce-git
+    - image: nyulibraries/circleci_docker:18.06.1-ce-git-compose-1.22.0
   working_directory: ~/app
+
+build_docker: &build_docker
+  run:
+    name: Build Docker
+    command: |
+      export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+      docker-compose build
+
+test: &test
+  run:
+    name: Test
+    command: |
+      touch secrets.env
+      docker-compose run test rake
+
+push_docker: &push_docker
+  run:
+    name: Push Docker
+    command: |
+      export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+      docker tag salon_arch nyulibraries/salon:${BRANCH_NO_SLASH}
+      docker tag nyulibraries/salon:${BRANCH_NO_SLASH} nyulibraries/salon:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}
+      docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
+      docker push nyulibraries/salon:${BRANCH_NO_SLASH}
+      docker push nyulibraries/salon:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}
 
 version: 2
 jobs:
-  test:
+  test-and-build-image:
     <<: *docker-defaults
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-          name: Install dependencies
-          command: |
-            apk add --no-cache \
-              py-pip
-            pip install \
-              docker-compose==1.16.1
-      - run:
-          name: Run tests
-          command: |
-            touch secrets.env
-            docker-compose run test rake
-      - run:
-          name: Scan image
-          command: |
-            docker-compose build arch && docker-compose build --no-cache scan
-      - run:
-          name: Push docker image
-          command: |
-            docker tag salon_arch nyulibraries/salon:${CIRCLE_BRANCH//\//_}
-            docker tag nyulibraries/salon:${CIRCLE_BRANCH//\//_} nyulibraries/salon:${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}
-            docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
-            docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}
-            docker push nyulibraries/salon:${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}
+      - <<: *build_docker
+      - <<: *test
+      - <<: *push_docker
 
   deploy-dev:
     docker:
@@ -42,8 +46,8 @@ jobs:
       - run:
           name: Deploy into staging via Jenkins
           command: |
-            export CIRCLE_BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            curl -u $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY -X POST https://jenkinsapi-dev.library.nyu.edu/job/Salon%20Development%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
+            export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+            curl -u $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY -X POST https://jenkinsapi-dev.library.nyu.edu/job/Salon%20Development%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
 
   deploy-prod:
     docker:
@@ -52,24 +56,24 @@ jobs:
       - run:
           name: Deploy into production via Jenkins
           command: |
-            export CIRCLE_BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            curl -u $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY -X POST https://jenkinsapi.library.nyu.edu/job/Salon%20Production%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${CIRCLE_BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
+            export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+            curl -u $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY -X POST https://jenkinsapi.library.nyu.edu/job/Salon%20Production%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
 
 workflows:
   version: 2
   build-test-and-deploy:
     jobs:
-      - test
+      - test-and-build-image
       - deploy-dev:
           requires:
-              - test
+              - test-and-build-image
           filters:
             branches:
               ignore:
                 - master
       - deploy-prod:
           requires:
-              - test
+              - test-and-build-image
           filters:
             branches:
               only: master

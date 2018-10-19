@@ -20,9 +20,15 @@ RUN apk add --no-cache $RUBY_BUILD_PACKAGES \
 
 RUN mkdir coverage && chown docker:docker coverage
 
-USER docker
-
 COPY --chown=docker:docker . .
+
+# run microscanner
+USER root
+ARG AQUA_MICROSCANNER_TOKEN
+RUN wget -O /microscanner https://get.aquasec.com/microscanner && \
+  chmod +x /microscanner && \
+  /microscanner ${AQUA_MICROSCANNER_TOKEN} && \
+rm -rf /microscanner
 
 USER docker
 
