@@ -8,6 +8,7 @@ build_docker: &build_docker
     name: Build Docker
     command: |
       export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
+      touch secrets.env
       docker-compose build
 
 test: &test
