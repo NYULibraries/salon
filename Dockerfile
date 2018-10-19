@@ -23,7 +23,6 @@ RUN mkdir coverage && chown docker:docker coverage
 COPY --chown=docker:docker . .
 
 # run microscanner
-USER root
 ARG AQUA_MICROSCANNER_TOKEN
 RUN wget -O /microscanner https://get.aquasec.com/microscanner && \
   chmod +x /microscanner && \
