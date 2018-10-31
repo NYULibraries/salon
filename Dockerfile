@@ -12,7 +12,7 @@ COPY --chown=docker:docker Gemfile Gemfile.lock ./
 ENV RUBY_BUILD_PACKAGES ruby-dev build-base linux-headers
 RUN apk add --no-cache $RUBY_BUILD_PACKAGES \
   && bundle config --local github.https true \
-  && gem install bundler && bundle install --jobs 20 --retry 5 \
+  && gem install bundler -v "1.17.1" && bundle install --jobs 20 --retry 5 \
   && rm -rf /root/.bundle && rm -rf /root/.gem \
   && rm -rf /usr/local/bundle/cache \
   && apk del $RUBY_BUILD_PACKAGES \
