@@ -27,7 +27,7 @@ use Prometheus::Middleware::Collector, metrics_prefix: ENV['PROMETHEUS_METRICS_P
     path:         env['PATH_INFO'],
     querystring:  env['QUERY_STRING']
   }
-}, duration_label_builder: -> (env, code)
+}, duration_label_builder: -> (env, code) {
   {
     code:         code,
     method:       env['REQUEST_METHOD'].downcase,
