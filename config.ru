@@ -27,6 +27,14 @@ use Prometheus::Middleware::Collector, metrics_prefix: ENV['PROMETHEUS_METRICS_P
     path:         env['PATH_INFO'],
     querystring:  env['QUERY_STRING']
   }
+}, duration_label_builder: -> (env, code)
+  {
+    code:         code,
+    method:       env['REQUEST_METHOD'].downcase,
+    host:         env['HTTP_HOST'].to_s,
+    path:         env['PATH_INFO'],
+    querystring:  env['QUERY_STRING']
+  }
 }
 # Run prometheus exporter to have a /metrics endpoint that can be scraped
 # The endpoint will only be available to prometheus
