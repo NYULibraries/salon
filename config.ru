@@ -25,7 +25,8 @@ use Prometheus::Middleware::Collector, metrics_prefix: ENV['PROMETHEUS_METRICS_P
     method:       env['REQUEST_METHOD'].downcase,
     host:         env['HTTP_HOST'].to_s,
     path:         env['PATH_INFO'],
-    querystring:  env['QUERY_STRING']
+    querystring:  env['QUERY_STRING'],
+    route:        env['sinatra.route']
   }
 }, duration_label_builder: -> (env, code) {
   {
@@ -33,7 +34,8 @@ use Prometheus::Middleware::Collector, metrics_prefix: ENV['PROMETHEUS_METRICS_P
     method:       env['REQUEST_METHOD'].downcase,
     host:         env['HTTP_HOST'].to_s,
     path:         env['PATH_INFO'],
-    querystring:  env['QUERY_STRING']
+    querystring:  env['QUERY_STRING'],
+    route:        env['sinatra.route']
   }
 }
 # Run prometheus exporter to have a /metrics endpoint that can be scraped
