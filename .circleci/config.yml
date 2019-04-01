@@ -48,7 +48,7 @@ jobs:
           name: Deploy into staging via Jenkins
           command: |
             export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            curl -u $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY -X POST https://jenkinsapi-dev.library.nyu.edu/job/Salon%20Development%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
+            curl --fail --user $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY --request POST https://jenkinsapi-dev.library.nyu.edu/job/Salon%20Development%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
 
   deploy-prod:
     docker:
@@ -58,7 +58,7 @@ jobs:
           name: Deploy into production via Jenkins
           command: |
             export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            curl -u $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY -X POST https://jenkinsapi.library.nyu.edu/job/Salon%20Production%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
+            curl --fail --user $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY --request POST https://jenkinsapi.library.nyu.edu/job/Salon%20Production%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
 
 workflows:
   version: 2
