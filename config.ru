@@ -4,6 +4,9 @@ require 'sinatra/base'
 require_relative 'config/metrics'
 require 'raven'
 
+require 'ddtrace'
+require 'ddtrace/contrib/sinatra/tracer'
+
 # pull in the helpers and controllers
 Dir.glob('./app/{helpers,controllers}/*.rb').each { |file| require file }
 
