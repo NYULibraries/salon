@@ -19,6 +19,11 @@ Raven.configure do |config|
   config.server = ENV['SENTRY_DSN']
 end
 
+Datadog.configure do |c|
+  c.use :sinatra
+end
+
+use Datadog::Contrib::Rack::TraceMiddleware
 use Rack::Deflater
 # Run prometheus middleware to collect default metrics
 use Prometheus::Middleware::CollectorWithExclusions
