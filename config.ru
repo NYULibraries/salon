@@ -21,6 +21,7 @@ end
 
 Datadog.configure do |c|
   c.use :sinatra
+  c.tracer debug: true
 end
 
 use Datadog::Contrib::Rack::TraceMiddleware
