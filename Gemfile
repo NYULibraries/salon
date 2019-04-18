@@ -9,6 +9,7 @@ gem 'json', '~> 2.1'
 gem 'rest-client', '~> 2.0'
 
 gem 'sentry-raven', '~> 2'
+gem 'ddtrace', '~> 0.21.1'
 gem 'prometheus-client', '~> 0.8.0'
 
 group :test do

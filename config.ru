@@ -4,6 +4,14 @@ require 'sinatra/base'
 require_relative 'config/metrics'
 require 'raven'
 
+require 'ddtrace'
+require 'ddtrace/contrib/sinatra/tracer'
+
+Datadog.configure do |c|
+  c.use :sinatra, { service_name: 'Salon' }
+  c.tracer enabled: false if ENV['RACK_ENV'] != 'production'
+end
+
 # pull in the helpers and controllers
 Dir.glob('./app/{helpers,controllers}/*.rb').each { |file| require file }
 
