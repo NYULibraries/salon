@@ -5,7 +5,6 @@ require_relative 'config/metrics'
 require 'raven'
 
 require 'ddtrace'
-require 'ddtrace/contrib/sinatra/tracer'
 
 Datadog.configure do |c|
   c.use :sinatra, { service_name: 'Salon' }
