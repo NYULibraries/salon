@@ -7,7 +7,7 @@ require 'raven'
 require 'ddtrace'
 
 Datadog.configure do |c|
-  c.use :sinatra, { service_name: 'Salon' }
+  c.use :sinatra, service_name: 'Salon'
   c.tracer enabled: false if ENV['RACK_ENV'] != 'production'
 end
 
