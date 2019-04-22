@@ -1,6 +1,12 @@
-FROM ruby:2.5.1-alpine
+FROM ruby:2.6-alpine
 
 ENV INSTALL_PATH /app
+ENV BUNDLE_PATH=/usr/local/bundle \
+    BUNDLE_BIN=/usr/local/bundle/bin \
+    GEM_HOME=/usr/local/bundle
+ENV PATH="${BUNDLE_BIN}:${PATH}"
+ENV USER docker
+ENV BUNDLER_VERSION='2.0.1'
 
 RUN addgroup -g 1000 -S docker && \
   adduser -u 1000 -S -G docker docker
@@ -10,9 +16,11 @@ RUN chown docker:docker .
 
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 ENV RUBY_BUILD_PACKAGES ruby-dev build-base linux-headers
+ARG BUNDLE_WITHOUT="test"
 RUN apk add --no-cache $RUBY_BUILD_PACKAGES \
+  && gem install bundler -v ${BUNDLER_VERSION} \
   && bundle config --local github.https true \
-  && gem install bundler -v "1.17.1" && bundle install --jobs 20 --retry 5 \
+  && bundle install --without $BUNDLE_WITHOUT --jobs 20 --retry 5 \
   && rm -rf /root/.bundle && rm -rf /root/.gem \
   && rm -rf /usr/local/bundle/cache \
   && apk del $RUBY_BUILD_PACKAGES \
