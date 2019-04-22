@@ -8,7 +8,9 @@ require 'ddtrace'
 
 Datadog.configure do |c|
   c.use :sinatra, service_name: 'Salon'
-  c.tracer enabled: false if ENV['RACK_ENV'] != 'production'
+  c.tracer enabled: ((ENV['RACK_ENV'] == 'production') ? true : false), 
+           env: ENV['RACK_ENV'],
+           tags: { 'env' => ENV['RACK_ENV'], 'app' => 'salon', 'framework' => 'sinatra' }
 end
 
 # pull in the helpers and controllers
