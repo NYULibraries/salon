@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.5.2)
+    addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     coderay (1.1.2)
     coveralls (0.8.21)
@@ -21,7 +21,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     faraday (0.15.3)
       multipart-post (>= 1.2, < 3)
-    hashdiff (0.3.7)
+    hashdiff (0.3.8)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     json (2.1.0)
@@ -39,7 +39,7 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    public_suffix (3.0.1)
+    public_suffix (3.0.3)
     quantile (0.2.1)
     rack (1.6.11)
     rack-protection (1.5.5)
@@ -71,7 +71,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.0)
-    safe_yaml (1.0.4)
+    safe_yaml (1.0.5)
     sentry-raven (2.7.4)
       faraday (>= 0.7.6, < 1.0)
     simplecov (0.14.1)
@@ -95,7 +95,7 @@ GEM
       kgio (~> 2.6)
       raindrops (~> 0.7)
     vcr (4.0.0)
-    webmock (3.1.1)
+    webmock (3.5.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
@@ -123,4 +123,4 @@ DEPENDENCIES
   webmock (~> 3)
 
 BUNDLED WITH
-   1.17.1
+   2.0.1
