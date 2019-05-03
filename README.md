@@ -91,3 +91,4 @@ Run [dredd](https://github.com/apiaryio/dredd) tests, which check API JSON funct
 ```
 docker-compose run test rake dredd
 ```
+
