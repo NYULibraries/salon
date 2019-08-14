@@ -18,6 +18,20 @@ test: &test
       touch secrets.env
       docker-compose run test rake
 
+auth_quay: &auth_quay
+  run:
+    name: Authenticate Quay
+    command: |
+      docker login -u "$QUAY_USERNAME" -p "$QUAY_PASSWORD" quay.io
+
+hermes_deploy: &hermes_deploy
+  run:
+    name: Deploy via Hermes
+    command: |
+      export TAG=${CIRCLE_BRANCH//\//_}-${CIRCLE_SHA1}
+      docker run -e HERMES_HOST -e HERMES_SECRET quay.io/nyulibraries/hermesclient:master setImage -deployment=salon-unicorn -tag=$TAG
+      docker run -e HERMES_HOST -e HERMES_SECRET quay.io/nyulibraries/hermesclient:master rolloutStatus -deployment=salon-unicorn
+
 push_docker: &push_docker
   run:
     name: Push Docker
@@ -25,7 +39,6 @@ push_docker: &push_docker
       export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
       docker tag salon_arch quay.io/nyulibraries/salon:${BRANCH_NO_SLASH}
       docker tag salon_arch quay.io/nyulibraries/salon:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}
-      docker login -u "$QUAY_USERNAME" --password "$QUAY_PASSWORD" quay.io
       docker push quay.io/nyulibraries/salon:${BRANCH_NO_SLASH}
       docker push quay.io/nyulibraries/salon:${BRANCH_NO_SLASH}-${CIRCLE_SHA1}
 
@@ -38,27 +51,32 @@ jobs:
       - setup_remote_docker
       - <<: *build_docker
       - <<: *test
+      - <<: *auth_quay
       - <<: *push_docker
 
   deploy-dev:
-    docker:
-      - image: appropriate/curl
+    <<: *docker-defaults
     steps:
+      - setup_remote_docker
+      - <<: *auth_quay
       - run:
-          name: Deploy into staging via Jenkins
+          name: Export Hermes Dev env vars
           command: |
-            export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            curl --fail --user $JENKINS_STAGE_USERNAME:$JENKINS_STAGE_API_KEY --request POST https://jenkinsapi-dev.library.nyu.edu/job/Salon%20Development%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
+            echo 'export HERMES_HOST=https://hermes-dev.library.nyu.edu' >> $BASH_ENV
+            echo 'export HERMES_SECRET=$HERMES_SECRET_DEV' >> $BASH_ENV
+      - <<: *hermes_deploy
 
   deploy-prod:
-    docker:
-      - image: appropriate/curl
+    <<: *docker-defaults
     steps:
+      - setup_remote_docker
+      - <<: *auth_quay
       - run:
-          name: Deploy into production via Jenkins
+          name: Export Hermes Dev env vars
           command: |
-            export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            curl --fail --user $JENKINS_PROD_USERNAME:$JENKINS_PROD_API_KEY --request POST https://jenkinsapi.library.nyu.edu/job/Salon%20Production%20Deploy/build/api --data-urlencode json="{\"parameter\": [{\"name\":\"TAG\", \"value\":\"${BRANCH_NO_SLASH}-${CIRCLE_SHA1}\"}]}"
+            echo 'export HERMES_HOST=https://hermes.library.nyu.edu' >> $BASH_ENV
+            echo 'export HERMES_SECRET=$HERMES_SECRET_PROD' >> $BASH_ENV
+      - <<: *hermes_deploy
 
 workflows:
   version: 2

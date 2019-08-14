@@ -12,3 +12,7 @@ nginx/
 *.local.sh
 libguides.json
 libguides.txt
+
+.circleci
+Dockerfile*
+docker-compose.yml
