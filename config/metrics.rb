@@ -38,14 +38,13 @@ module Prometheus::Middleware
       counter_labels = {
         code:   code,
         method: env['REQUEST_METHOD'].downcase,
-        path:   strip_ids_from_path(env['PATH_INFO']),
-        # env['sinatra.route']&.gsub(/^#{env['REQUEST_METHOD'].upcase} /, "")
+        path:   strip_ids_from_path(env['sinatra.route']&.gsub(/^#{env['REQUEST_METHOD'].upcase} /, "")),
         app:    application_name,
       }
 
       duration_labels = {
         method: env['REQUEST_METHOD'].downcase,
-        path:   strip_ids_from_path(env['PATH_INFO']),
+        path:   strip_ids_from_path(env['sinatra.route']&.gsub(/^#{env['REQUEST_METHOD'].upcase} /, "")),
         app:    application_name,  
       }
 
