@@ -29,13 +29,11 @@ GEM
     mime-types-data (3.2016.0521)
     multipart-post (2.0.0)
     netrc (0.11.0)
-    prometheus-client (0.8.0)
-      quantile (~> 0.2.1)
+    prometheus-client (2.0.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
-    quantile (0.2.1)
     rack (1.6.12)
     rack-protection (1.5.5)
       rack
@@ -101,7 +99,7 @@ PLATFORMS
 DEPENDENCIES
   coveralls
   json (~> 2.1)
-  prometheus-client (~> 0.8.0)
+  prometheus-client (~> 2.0.0)
   pry
   rack-protection (~> 1.5.5)
   rack-test (~> 0.8.2)
@@ -117,4 +115,4 @@ DEPENDENCIES
   webmock (~> 3)
 
 BUNDLED WITH
-   2.0.1
+   2.0.2
