@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rake', '~> 12.0'
+gem 'rake', '~> 12.3'
 gem 'sinatra', '~> 1.4.8'
 gem 'rack-protection', '~> 1.5.5'
 gem 'redis-store', '~> 1.4.0'
