@@ -72,4 +72,6 @@ Salon authenticates using a token-based NYU Libraries OAuth at https://login.lib
 | /reset_with_array | POST | Destroy existing links after creating new persistent links | `[{'id':'abc123', 'url':'http://example.com'},{'url':'http://nyu.edu'}]` | Admin-Only |
 | /{id} | GET | Follow a persistent link | /abc123 | N/A |
 
-## [Testing](/wiki/Testing)
+## [Testing](wiki/Testing)
+
+See our [wiki article on running Salon tests locally](wiki/Testing)
