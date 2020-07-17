@@ -72,23 +72,4 @@ Salon authenticates using a token-based NYU Libraries OAuth at https://login.lib
 | /reset_with_array | POST | Destroy existing links after creating new persistent links | `[{'id':'abc123', 'url':'http://example.com'},{'url':'http://nyu.edu'}]` | Admin-Only |
 | /{id} | GET | Follow a persistent link | /abc123 | N/A |
 
-## Testing
-
-We recommend running tests in docker-compose `test` instance since it installs necessary dependencies:
-
-```
-docker-compose run test rake
-```
-
-Run rspec tests:
-
-```
-docker-compose run test rake spec
-```
-
-Run [dredd](https://github.com/apiaryio/dredd) tests, which check API JSON functionality against the [Swagger YAML](#swagger):
-
-```
-docker-compose run test rake dredd
-```
-
+## [Testing](/wiki/Testing)
