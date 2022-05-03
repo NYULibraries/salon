@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rake', '~> 12.3'
-gem 'sinatra', '~> 1.4.8'
-gem 'rack-protection', '~> 1.5.5'
+gem 'sinatra', '~> 2.2.0'
+gem 'rack-protection', '~> 2.2.0'
 gem 'redis-store', '~> 1.4.0'
 gem 'unicorn', '~> 5.3.0'
 gem 'json', '~> 2.3.0'
