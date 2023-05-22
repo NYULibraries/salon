@@ -12,14 +12,13 @@ class ResourceController < ApplicationController
     session[:access_token] = env.fetch('HTTP_AUTHORIZATION', '').slice(7..-1)
   end
 
-  before(/^(?!\/reset_with_array)/) do
+  before do
     next unless request.post?
-    authenticate!
-  end
-
-  before '/reset_with_array' do
-    next unless request.post?
-    authenticate!(admin: true)
+    if request.path_info == '/reset_with_array'
+      authenticate!(admin: true)
+    else
+      authenticate!
+    end
   end
 
   get '/healthcheck' do
