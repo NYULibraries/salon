@@ -8,7 +8,9 @@ ENV PATH="${BUNDLE_BIN}:${PATH}"
 ENV USER docker
 ENV BUNDLER_VERSION='2.0.1'
 
-ENV NODE_PACKAGES nodejs nodejs-npm
+WORKDIR $INSTALL_PATH
+
+ENV NODE_PACKAGES nodejs npm
 ENV NODE_BUILD_PACKAGES git
 RUN apk add --update --no-cache $NODE_PACKAGES $NODE_BUILD_PACKAGES \
   && npm install -g dredd@4.5.0 \
@@ -19,8 +21,6 @@ RUN apk add --update --no-cache $NODE_PACKAGES $NODE_BUILD_PACKAGES \
 
 RUN addgroup -g 1000 -S docker \
   && adduser -u 1000 -S -G docker docker
-
-WORKDIR $INSTALL_PATH
 
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 ENV RUBY_BUILD_PACKAGES ruby-dev build-base linux-headers
