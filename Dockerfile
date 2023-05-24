@@ -13,8 +13,6 @@ RUN addgroup -g 1000 -S docker && \
 WORKDIR $INSTALL_PATH
 RUN chown docker:docker .
 
-#RUN apk --no-cache --upgrade add --upgrade bzip2=~1.0.6-r7
-
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 ARG RUBY_BUILD_PACKAGES="ruby-dev build-base linux-headers"
 ARG BUNDLE_WITHOUT="test"
@@ -35,5 +33,4 @@ COPY --chown=docker:docker . .
 
 EXPOSE 9292
 
-#CMD [ "./scripts/start.sh", "arch" ]
 CMD ["puma", "config.ru", "-C", "config/puma.rb"]

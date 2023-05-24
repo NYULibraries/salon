@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rake', '~> 12.3'
 gem 'sinatra', '~> 3.0'
 gem 'rack-protection', '~> 3.0'
-gem 'redis-store', '= 1.9.1'
+gem 'redis-store', '= 1.9.1' # lock due to redis gem compatibility, see: https://github.com/redis-store/redis-store/issues/358; https://github.com/redis-store/redis-store/pull/359
 #gem 'unicorn', '~> 5.3.0'
 gem 'puma', '~> 6.2.2'
 gem 'json', '~> 2.3.0'
