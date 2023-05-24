@@ -1,4 +1,4 @@
-FROM ruby:2.6-alpine
+FROM ruby:3.2-alpine
 
 ENV INSTALL_PATH /app
 ENV BUNDLE_PATH=/usr/local/bundle \
@@ -6,7 +6,7 @@ ENV BUNDLE_PATH=/usr/local/bundle \
     GEM_HOME=/usr/local/bundle
 ENV PATH="${BUNDLE_BIN}:${PATH}"
 ENV USER docker
-ENV BUNDLER_VERSION='2.0.1'
+ENV BUNDLER_VERSION='2.4.13'
 
 WORKDIR $INSTALL_PATH
 

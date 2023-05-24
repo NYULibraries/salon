@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 gem 'rake', '~> 12.3'
 gem 'sinatra', '~> 3.0'
 gem 'rack-protection', '~> 3.0'
-gem 'redis-store', '~> 1.4.0'
-gem 'unicorn', '~> 5.3.0'
+gem 'redis-store', '= 1.9.1'
+#gem 'unicorn', '~> 5.3.0'
+gem 'puma', '~> 6.2.2'
 gem 'json', '~> 2.3.0'
 gem 'rest-client', '~> 2.0'
 
@@ -15,7 +16,8 @@ group :test do
   gem 'rack-test', '~> 0.8.2', require: "rack/test"
   gem 'vcr', '~> 4'
   gem 'webmock', '~> 3'
-  gem 'coveralls', require: false
+  gem 'rexml', '~> 3.2', '>= 3.2.4' # https://stackoverflow.com/questions/65479863/rails-6-1-ruby-3-0-0-tests-error-as-they-cannot-load-rexml
+  gem 'coveralls_reborn', require: false
 end
 
 gem 'sentry-raven', '~> 2'
