@@ -5,7 +5,6 @@ x-build_default: &build_default
   build:
     context: .
     cache_from:
-      - ruby:2.5.1-alpine
       - salon_arch
 
 x-build_test: &build_test
@@ -14,7 +13,6 @@ x-build_test: &build_test
     context: .
     dockerfile: Dockerfile.test
     cache_from:
-      - ruby:2.5.1-alpine
       - salon_test
 
 services:

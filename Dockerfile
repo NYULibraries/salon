@@ -1,19 +1,17 @@
-FROM ruby:2.6.3-alpine
+FROM ruby:3.2.2-alpine
 
 ENV INSTALL_PATH /app
 ENV BUNDLE_PATH=/usr/local/bundle \
     BUNDLE_BIN=/usr/local/bundle/bin \
     GEM_HOME=/usr/local/bundle
 ENV PATH="${BUNDLE_BIN}:${PATH}"
-ENV BUNDLER_VERSION='2.0.1'
+ENV BUNDLER_VERSION='2.4.13'
 
 RUN addgroup -g 1000 -S docker && \
   adduser -u 1000 -S -G docker docker
 
 WORKDIR $INSTALL_PATH
 RUN chown docker:docker .
-
-RUN apk --no-cache --upgrade add --upgrade bzip2=~1.0.6-r7
 
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 ARG RUBY_BUILD_PACKAGES="ruby-dev build-base linux-headers"
@@ -35,4 +33,4 @@ COPY --chown=docker:docker . .
 
 EXPOSE 9292
 
-CMD [ "./scripts/start.sh", "arch" ]
+CMD ["puma", "config.ru", "-C", "config/puma.rb"]

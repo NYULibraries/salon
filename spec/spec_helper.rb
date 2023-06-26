@@ -2,7 +2,7 @@ require 'coveralls'
 Coveralls.wear!
 require 'rack/test'
 require 'rspec'
-require 'pry'
+#require 'pry'
 require 'rspec/its'
 require 'rest-client'
 
