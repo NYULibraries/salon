@@ -38,5 +38,8 @@ RSpec.configure do |config|
     payload[:scope] = 'admin'
     response = RestClient.post(TOKEN_URL, payload)
     ENV['ADMIN_TOKEN'] = JSON.parse(response.body)['access_token']
+    # setup basic auth tokens
+    ENV['SALON_BASIC_AUTH_TOKEN'] = 'lesssecret'
+    ENV['SALON_ADMIN_BASIC_AUTH_TOKEN'] = 'supersecret'
   end
 end
