@@ -4,18 +4,18 @@ const request = require('sync-request');
 let stash = {};
 
 // Get a valid test token to pass to API calls
-hooks.beforeAll((transactions, done) => {
-  let res = request('POST', 'https://dev.login.library.nyu.edu/oauth/token', {
-    json: {
-      "grant_type": "client_credentials",
-      "client_id": process.env.TEST_CLIENT_ID,
-      "client_secret": process.env.TEST_CLIENT_SECRET,
-      "scope": "admin"
-    }
-  });
-  stash["token"] = JSON.parse(res.getBody('utf8'))["access_token"];
-  done();
-});
+//hooks.beforeAll((transactions, done) => {
+//  let res = request('POST', 'https://dev.login.library.nyu.edu/oauth/token', {
+//    json: {
+//      "grant_type": "client_credentials",
+//      "client_id": process.env.TEST_CLIENT_ID,
+//      "client_secret": process.env.TEST_CLIENT_SECRET,
+//      "scope": "admin"
+//    }
+//  });
+//  stash["token"] = JSON.parse(res.getBody('utf8'))["access_token"];
+//  done();
+//});
 
 hooks.beforeEach((transaction, done) => {
   // don't run GET /{id} tests
@@ -24,9 +24,13 @@ hooks.beforeEach((transaction, done) => {
     return done();
   }
 
-  // add auth headers unless testing 401
+  // add basic auth headers unless testing 401
   if (transaction.expected.statusCode !== '401') {
-    transaction.request.headers['Authorization'] = "Bearer " + stash['token'];
+    if (transaction.request.uri === '/reset_with_array' && transaction.request.method === 'POST') {
+      transaction.request.headers['Authorization'] = "Basic basicadminsecret";
+    } else {
+      transaction.request.headers['Authorization'] = "Basic basicsecret";
+    }
   }
 
   // replace with bad JSON for 400
