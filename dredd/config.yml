@@ -2,7 +2,8 @@ dry-run: null
 hookfiles: dredd/hooks/*
 language: nodejs
 sandbox: false
-server: bundle exec puma config.ru -C config/puma.rb -p 8081
+server: ./dredd/puma_start_mock_secrets.sh
+  #server: "bundle exec puma config.ru -C config/puma.rb -p 8081 -e SALON_BASIC_AUTH_TOKEN=basicsecret -e SALON_ADMIN_BASIC_AUTH_TOKEN=basicadminsecret"
 server-wait: 3
 init: false
 custom: {}

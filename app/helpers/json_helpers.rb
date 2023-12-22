@@ -5,8 +5,10 @@ module Sinatra
   module JsonHelper
     def json_params
       begin
-        @json_params ||= JSON.parse(request.body.read)
+        body = request.body.read
+        @json_params ||= JSON.parse(body)
       rescue JSON::ParserError => e
+        puts "Invalid json: #{e.message} --- body: #{body}"
         halt 400, { error: "Invalid JSON #{e.message}" }.to_json
       end
     end
