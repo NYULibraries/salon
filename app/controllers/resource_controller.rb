@@ -1,5 +1,6 @@
 require_relative 'application_controller'
 require_relative '../lib/oauth2/token'
+require_relative '../lib/basic_auth/token'
 require_relative '../helpers/json_to_redis_helpers'
 
 class ResourceController < ApplicationController
@@ -9,7 +10,12 @@ class ResourceController < ApplicationController
   helpers Sinatra::LinkHelper
 
   before do
-    session[:access_token] = env.fetch('HTTP_AUTHORIZATION', '').slice(7..-1)
+    auth_header = env.fetch('HTTP_AUTHORIZATION', '')
+    if auth_header.slice(0..5) == 'Bearer'
+      session[:access_token] = auth_header.slice(7..-1)
+    elsif auth_header.slice(0..4) == 'Basic'
+      session[:basic_token] = auth_header.slice(6..-1)
+    end
   end
 
   before do
@@ -79,7 +85,11 @@ class ResourceController < ApplicationController
   end
 
   def authenticate!(admin: false)
-    token = OAuth2::Token.new(access_token: session[:access_token])
+    if !session[:access_token] && session[:basic_token]
+      token = BasicAuth::Token.new(basic_token: session[:basic_token])
+    else
+      token = OAuth2::Token.new(access_token: session[:access_token])
+    end
     token.scope = 'admin' if admin
 
     unless token.valid?

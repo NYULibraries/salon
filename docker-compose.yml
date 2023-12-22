@@ -25,6 +25,8 @@ services:
       - REDIS_HOST=http://redis:6379
       - APP_NAME=arch
       - PORT=9292
+      - SALON_ADMIN_BASIC_AUTH_TOKEN
+      - SALON_BASIC_AUTH_TOKEN
     env_file:
       - secrets.env
     depends_on:
