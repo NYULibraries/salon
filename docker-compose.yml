@@ -45,6 +45,8 @@ services:
     command: ["bundle", "exec", "rake"]
     depends_on:
       - test_redis
+    #volumes:
+    #  - .:/app
 
   test_redis:
     image: redis:3-alpine
