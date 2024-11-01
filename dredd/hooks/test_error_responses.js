@@ -56,7 +56,7 @@ hooks.beforeEach((transaction, done) => {
 hooks.afterEach((transaction, done) => {
   let headers = transaction.request.headers;
   let name = caseless(headers).has('Authorization');
-  headers[name] = "Bearer t0ken";
+  headers[name] = "Basic t0ken";
   transaction.request.headers = headers;
   done();
 });
