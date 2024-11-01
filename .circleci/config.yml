@@ -1,6 +1,6 @@
 docker-defaults: &docker-defaults
-  docker:
-    - image: quay.io/nyulibraries/circleci_docker:18.06.1-dc-1.23.2-0
+  machine:
+    image: ubuntu-2204:current
   working_directory: ~/app
 
 build_docker: &build_docker
