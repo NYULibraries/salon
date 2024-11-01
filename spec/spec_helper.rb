@@ -25,19 +25,6 @@ RSpec.configure do |config|
   end
 
   config.before(:all) do
-    # request non-admin token
-    TOKEN_URL = 'https://dev.login.library.nyu.edu/oauth/token' unless defined?(TOKEN_URL)
-    payload = {
-      grant_type: "client_credentials",
-      client_id: ENV['TEST_CLIENT_ID'],
-      client_secret: ENV['TEST_CLIENT_SECRET'],
-    }
-    response = RestClient.post(TOKEN_URL, payload)
-    ENV['TOKEN'] = JSON.parse(response.body)['access_token']
-    # request admin token
-    payload[:scope] = 'admin'
-    response = RestClient.post(TOKEN_URL, payload)
-    ENV['ADMIN_TOKEN'] = JSON.parse(response.body)['access_token']
     # setup basic auth tokens
     ENV['SALON_BASIC_AUTH_TOKEN'] = 'lesssecret'
     ENV['SALON_ADMIN_BASIC_AUTH_TOKEN'] = 'supersecret'
