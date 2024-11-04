@@ -1,4 +1,4 @@
-FROM ruby:3.2-alpine
+FROM ruby:3.2.6-alpine
 
 ENV INSTALL_PATH /app
 ENV BUNDLE_PATH=/usr/local/bundle \
@@ -16,8 +16,8 @@ RUN apk add --update --no-cache $NODE_PACKAGES $NODE_BUILD_PACKAGES \
   && npm install -g dredd@4.5.0 \
   && npm install -g swagger-to-md \
   && npm install sync-request caseless \
-  && npm cache clean --force \
-  && apk del $NODE_BUILD_PACKAGES
+  && npm cache clean --force
+  #&& apk del $NODE_BUILD_PACKAGES
 
 RUN addgroup -g 1000 -S docker \
   && adduser -u 1000 -S -G docker docker
@@ -30,7 +30,7 @@ RUN apk add --no-cache $RUBY_BUILD_PACKAGES \
   && bundle install --jobs 20 --retry 5 \
   && rm -rf /root/.bundle && rm -rf /root/.gem \
   && rm -rf /usr/local/bundle/cache \
-  && apk del $RUBY_BUILD_PACKAGES \
+  #&& apk del $RUBY_BUILD_PACKAGES \
   && chown -R docker:docker /usr/local/bundle
 
 RUN mkdir coverage && chown docker:docker coverage

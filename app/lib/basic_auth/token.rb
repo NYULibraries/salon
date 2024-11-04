@@ -29,7 +29,7 @@ module BasicAuth
     end
 
     def valid_non_admin?
-      basic_token == non_admin_token
+      basic_token == non_admin_token || valid_as_admin?
     rescue RuntimeError => e
       puts "Rescued error: #{e.inspect}"
       false

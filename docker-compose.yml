@@ -38,8 +38,6 @@ services:
     <<: *build_test
     environment:
       REDIS_HOST: http://test_redis:6379
-      TEST_CLIENT_ID:
-      TEST_CLIENT_SECRET:
       COVERALLS_REPO_TOKEN:
       CI:
     env_file:
@@ -47,6 +45,8 @@ services:
     command: ["bundle", "exec", "rake"]
     depends_on:
       - test_redis
+    #volumes:
+    #  - .:/app
 
   test_redis:
     image: redis:3-alpine
