@@ -18,7 +18,7 @@ module BasicAuth
   private
 
     def valid_as_admin?
-      basic_token == admin_token
+      secure_is_equal?(basic_token, admin_token)
     rescue RuntimeError => e
       puts "Rescued error: #{e.inspect}"
       false
@@ -29,7 +29,7 @@ module BasicAuth
     end
 
     def valid_non_admin?
-      basic_token == non_admin_token || valid_as_admin?
+      secure_is_equal?(basic_token, non_admin_token) || valid_as_admin?
     rescue RuntimeError => e
       puts "Rescued error: #{e.inspect}"
       false
@@ -37,6 +37,10 @@ module BasicAuth
 
     def non_admin_token
       ENV.fetch('SALON_BASIC_AUTH_TOKEN'){ raise 'Must set SALON_BASIC_AUTH_TOKEN' } 
+    end
+
+    def secure_is_equal?(token1, token2)
+      Digest::SHA256.digest(token1) == Digest::SHA256.digest(token2)
     end
 
   end
