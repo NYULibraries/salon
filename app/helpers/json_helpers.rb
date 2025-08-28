@@ -5,6 +5,7 @@ module Sinatra
   module JsonHelper
     def json_params
       begin
+        request.body.rewind
         body = request.body.read
         @json_params ||= JSON.parse(body)
       rescue JSON::ParserError => e
