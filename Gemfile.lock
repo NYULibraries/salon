@@ -30,7 +30,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2026.0113)
+    mime-types-data (3.2026.0203)
     mize (0.6.1)
     multipart-post (2.4.1)
     mustermann (3.0.4)
@@ -45,7 +45,7 @@ GEM
     public_suffix (7.0.2)
     puma (6.6.1)
       nio4r (~> 2.0)
-    rack (3.2.4)
+    rack (3.2.5)
     rack-protection (4.2.1)
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
@@ -106,7 +106,7 @@ GEM
       tins (~> 1)
     thor (1.5.0)
     tilt (2.7.0)
-    tins (1.51.1)
+    tins (1.52.0)
       bigdecimal
       mize (~> 0.6)
       readline
