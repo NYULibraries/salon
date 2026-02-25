@@ -1,4 +1,4 @@
-FROM ruby:3.2.6-alpine
+FROM ruby:3.4.8-alpine
 
 ENV INSTALL_PATH /app
 ENV BUNDLE_PATH=/usr/local/bundle \
